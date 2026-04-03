@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latestMajor</LangVersion>
+    <Configurations>Release;Debug</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;IDE0051</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;IDE0051</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Tsurugi\SkillStates\SecondUtility\**" />
+    <Compile Remove="Weaver\**" />
+    <EmbeddedResource Remove="Tsurugi\SkillStates\SecondUtility\**" />
+    <EmbeddedResource Remove="Weaver\**" />
+    <None Remove="Tsurugi\SkillStates\SecondUtility\**" />
+    <None Remove="Weaver\**" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <None Remove=".gitignore" />
+    <None Remove="nuget.config" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="BepInEx.Analyzers" Version="1.0.*">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="BepInEx.Core" Version="5.*" />
+		<PackageReference Include="R2API.DamageType" Version="1.1.7" />
+		<PackageReference Include="R2API.Dot" Version="1.0.4" />
+		<PackageReference Include="R2API.Skins" Version="1.2.0" />
+		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.4.1-r.0" />
+		<PackageReference Include="UnityEngine.Modules" Version="2021.3.33" />
+		<PackageReference Include="MMHOOK.RoR2" Version="2025.11.19">
+			<NoWarn>NU1701</NoWarn>
+		</PackageReference>
+		<PackageReference Include="R2API.Core" Version="5.*" />
+		<PackageReference Include="R2API.Prefab" Version="1.*" />
+		<PackageReference Include="R2API.RecalculateStats" Version="1.*" />
+		<PackageReference Include="R2API.Language" Version="1.*" />
+		<PackageReference Include="R2API.Sound" Version="1.*" />
+		<PackageReference Include="R2API.Loadout" Version="1.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="GlobalContent\" />
+	  <Folder Include="Tsurugi\Components\" />
+	  <Folder Include="Tsurugi\SkillStates\Utility\" />
+	</ItemGroup>
+    
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Exec Command="./weave.bat $(TargetDir)" />
+    </Target>
+</Project>
