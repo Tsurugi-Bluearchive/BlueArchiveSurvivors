@@ -1,8 +1,8 @@
-﻿namespace BA.Tsurugi.Content
+﻿namespace BAMod.Tsurugi.Content
 {
     public static class TsurugiStaticValues
     {
-        public const float justiceDamage = 6.5f;
+        public const float justiceDamage = 0.5f;
 
         public const float chargeMusketMin = 1f;
 

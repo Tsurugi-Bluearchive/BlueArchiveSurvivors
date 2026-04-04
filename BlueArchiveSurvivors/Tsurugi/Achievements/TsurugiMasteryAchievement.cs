@@ -1,7 +1,7 @@
-﻿using BA.Modules.Achievements;
+﻿using BAMod.Modules.Achievements;
 using RoR2;
 
-namespace BA.Tsurugi.Achievements
+namespace BAMod.Tsurugi.Achievements
 {
     //automatically creates language tokens "ACHIEVMENT_{identifier.ToUpper()}_NAME" and "ACHIEVMENT_{identifier.ToUpper()}_DESCRIPTION"
     [RegisterAchievement(identifier, unlockableIdentifier, null, 10, null)]

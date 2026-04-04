@@ -2,7 +2,7 @@
 using BepInEx.Configuration;
 using UnityEngine;
 
-namespace BA.Modules
+namespace BAMod.Modules
 {
     public static class Config
     {

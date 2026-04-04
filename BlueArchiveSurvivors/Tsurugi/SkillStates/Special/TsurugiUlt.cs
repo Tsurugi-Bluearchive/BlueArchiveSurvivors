@@ -1,4 +1,4 @@
-﻿using BA.Tsurugi.SkillStates.BaseStates;
+﻿using BAMod.Tsurugi.SkillStates.BaseStates;
 using EntityStates;
 using RoR2;
 using System;
@@ -17,18 +17,10 @@ namespace BAMod.Tsurugi.SkillStates.Special
         public override void OnEnter()
         {
             base.OnEnter();
-            if (EntityStateMachine.TryFindByCustomName(characterBody.gameObject, "ShotgunLeft", out var left))
-            {
-                left.SetNextState(new LockSkill());
-            }
-            if (EntityStateMachine.TryFindByCustomName(characterBody.gameObject, "ShotgunRight", out var right))
-            {
-                right.SetNextState(new LockSkill());
-            }
-            if (EntityStateMachine.TryFindByCustomName(characterBody.gameObject, "Movement", out var move))
-            {
-                move.SetNextState(new LockSkill());
-            }
+            skillLocator.primary.SetSkillOverride(this.gameObject, TsurugiSurvivor.Lock, GenericSkill.SkillOverridePriority.Default);
+            skillLocator.secondary.SetSkillOverride(this.gameObject, TsurugiSurvivor.Lock, GenericSkill.SkillOverridePriority.Default);
+            skillLocator.utility.SetSkillOverride(this.gameObject, TsurugiSurvivor.Lock, GenericSkill.SkillOverridePriority.Default);
+
             characterMotor.enabled = false;
         }
 
@@ -37,7 +29,7 @@ namespace BAMod.Tsurugi.SkillStates.Special
             base.FixedUpdate();
             if (isAuthority)
             {
-                if (FullyChanneled)
+                if (fixedAge > duration && IsKeyDownAuthority())
                 {
                     skillLocator.primary.stock = skillLocator.primary.maxStock;
                     skillLocator.secondary.stock = skillLocator.secondary.maxStock;
@@ -46,7 +38,7 @@ namespace BAMod.Tsurugi.SkillStates.Special
                     outer.SetNextStateToMain();
                     return;
                 }
-                else if (!Channeling)
+                else if (!IsKeyDownAuthority())
                 {
                     activatorSkillSlot.AddOneStock();
                     outer.SetNextStateToMain();
@@ -58,18 +50,10 @@ namespace BAMod.Tsurugi.SkillStates.Special
         {
             base.OnExit();
 
-            if (EntityStateMachine.TryFindByCustomName(characterBody.gameObject, "ShotgunLeft", out var left))
-            {
-                left.SetNextStateToMain();
-            }
-            if (EntityStateMachine.TryFindByCustomName(characterBody.gameObject, "ShotgunRight", out var right))
-            {
-                right.SetNextStateToMain();
-            }
-            if (EntityStateMachine.TryFindByCustomName(characterBody.gameObject, "Movement", out var move))
-            {
-                move.SetNextStateToMain();
-            }
+            skillLocator.primary.UnsetSkillOverride(this.gameObject, TsurugiSurvivor.Lock, GenericSkill.SkillOverridePriority.Default);
+            skillLocator.secondary.UnsetSkillOverride(this.gameObject, TsurugiSurvivor.Lock, GenericSkill.SkillOverridePriority.Default);
+            skillLocator.utility.UnsetSkillOverride(this.gameObject, TsurugiSurvivor.Lock, GenericSkill.SkillOverridePriority.Default);
+
             characterMotor.enabled = true;
             characterMotor.velocity = Vector3.zero;
         }

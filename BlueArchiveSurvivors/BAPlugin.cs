@@ -1,4 +1,4 @@
-﻿using BA.Tsurugi;
+﻿using BAMod.Tsurugi;
 using BepInEx;
 using R2API;
 using R2API.Utils;
@@ -11,7 +11,7 @@ using System.Security.Permissions;
 #pragma warning restore CS0618 // Type or member is obsolete
 
 //rename this namespace
-namespace BA
+namespace BAMod
 {
     //[BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
@@ -27,7 +27,7 @@ namespace BA
         // if you do not change this, you are giving permission to deprecate the mod-
         //  please change the names to your own stuff, thanks
         //   this shouldn't even have to be said
-        public const string MODUID = "com.ami.v1";
+        public const string MODUID = "com.ami.BAMod";
         public const string MODNAME = "BASurvivors";
         public const string MODVERSION = "0.1.0";
 

@@ -1,31 +1,29 @@
-﻿using BA.Modules;
-using BA.Modules.Characters;
-using BA.Tsurugi.Content;
+﻿using BAMod.Modules;
+using BAMod.Modules.Characters;
 using BAMod.Tsurugi.Components;
 using BAMod.Tsurugi.SkillStates.Primary;
 using BAMod.Tsurugi.SkillStates.Secondary;
 using BAMod.Tsurugi.SkillStates.Special;
 using BAMod.Tsurugi.SkillStates.Utility;
-using R2API;
-using R2API.Utils;
 using RoR2;
 using RoR2.Skills;
-using System;
 using System.Collections.Generic;
-using UltrakillMod.V1.SkillStates.BaseStates;
 using UnityEngine;
-using static RoR2.Skills.SkillFamily;
-namespace BA.Tsurugi
+using BAMod.Tsurugi.Content;
+using BAMod.Tsurugi.SkillStates.BaseStates;
+using BAMod.Tsurugi.SkillStates.SpecialLock;
+using R2API;
+namespace BAMod.Tsurugi
 {
     public class TsurugiSurvivor : SurvivorBase<TsurugiSurvivor>
     {
-        public override string assetBundleName => "v1assetbundle"; 
-        public override string bodyName => "V1Body"; 
-        public override string masterName => "V1MonsterMaster"; 
-        public override string modelPrefabName => "mdlV1";
-        public override string displayPrefabName => "V1Display";
+        public override string assetBundleName => "tsurugiassetbundle"; 
+        public override string bodyName => "TsurugiBody"; 
+        public override string masterName => "TsurugiMonsterMaster"; 
+        public override string modelPrefabName => "mdlTsurugi";
+        public override string displayPrefabName => "TsurugiDisplay";
 
-        public const string V1_PREFIX = "AMI" + "_V1_";
+        public const string V1_PREFIX = "AMI" + "_TSURUGI_";
 
         //used when registering your survivor's language tokens
         public override string survivorTokenPrefix => V1_PREFIX;
@@ -53,6 +51,7 @@ namespace BA.Tsurugi
 
         public override UnlockableDef characterUnlockableDef => TsurugiUnlockables.characterUnlockableDef;
         
+        
         public override ItemDisplaysBase itemDisplays => new TsurugiItemDisplays();
 
         public override CustomRendererInfo[] customRendererInfos => new CustomRendererInfo[0];
@@ -77,6 +76,8 @@ namespace BA.Tsurugi
         public static SkillDef TsurugiUlt;
 
         public static SkillDef TsurugiStunRoll;
+
+        public static SkillDef Lock;
         public override void Initialize()
         {
             base.Initialize();;
@@ -94,6 +95,7 @@ namespace BA.Tsurugi
             TsurugiTokens.Init();
 
             TsurugiAssets.Init(assetBundle);
+            TsurugiBuffs.Init();
 
             InitializeEntityStateMachines();
             InitializeSkills();
@@ -151,6 +153,7 @@ namespace BA.Tsurugi
             AddSecondarySkills();
             AddUtiitySkills();
             AddSpecialSkills();
+            AddLockSkill();
         }
         //if this is your first look at skilldef creation, take a look at Secondary first
         private void AddPrimarySkills()
@@ -174,13 +177,13 @@ namespace BA.Tsurugi
                 baseRechargeInterval = float.MaxValue,
 
                 rechargeStock = 0,
-                requiredStock = 0,
+                requiredStock = 1,
                 stockToConsume = 1,
-                baseMaxStock = 3,
+                baseMaxStock = 5,
 
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
-                dontAllowPastMaxStocks = true,
+                dontAllowPastMaxStocks = false,
                 mustKeyPress = true,
                 beginSkillCooldownOnSkillEnd = false,
 
@@ -227,6 +230,8 @@ namespace BA.Tsurugi
 
         private void AddSecondarySkills()
         {
+
+            Skills.CreateGenericSkillWithSkillFamily(bodyPrefab, SkillSlot.Secondary);
             Gunpowder = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "Gunpowder",
@@ -242,13 +247,13 @@ namespace BA.Tsurugi
                 baseRechargeInterval = float.MaxValue,
 
                 rechargeStock = 0,
-                requiredStock = 0,
+                requiredStock = 1,
                 stockToConsume = 1,
-                baseMaxStock = 3,
+                baseMaxStock = 5,
 
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
-                dontAllowPastMaxStocks = true,
+                dontAllowPastMaxStocks = false,
                 mustKeyPress = true,
                 beginSkillCooldownOnSkillEnd = false,
 
@@ -311,13 +316,13 @@ namespace BA.Tsurugi
                 baseRechargeInterval = 3,
 
                 rechargeStock = 1,
-                requiredStock = 0,
+                requiredStock = 1,
                 stockToConsume = 1,
                 baseMaxStock = 1,
 
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
-                dontAllowPastMaxStocks = true,
+                dontAllowPastMaxStocks = false,
                 mustKeyPress = true,
                 beginSkillCooldownOnSkillEnd = false,
 
@@ -349,7 +354,7 @@ namespace BA.Tsurugi
                 baseRechargeInterval = 20,
 
                 rechargeStock = 1,
-                requiredStock = 0,
+                requiredStock = 1,
                 stockToConsume = 1,
                 baseMaxStock = 1,
 
@@ -368,6 +373,41 @@ namespace BA.Tsurugi
             Skills.AddSpecialSkills(bodyPrefab, TsurugiUlt);
         }
 
+        private void AddLockSkill()
+        {
+            Lock = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "Ultimate",
+                skillNameToken = V1_PREFIX + "SPECIAL_ULTIMATE_NAME",
+                skillDescriptionToken = V1_PREFIX + "PRIMARY_GUN_DESCRIPTION",
+                keywordTokens = ["KEYWORD_AGILE"],
+                skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SpecialLockDown)),
+                activationStateMachineName = "Ult",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = float.MaxValue,
+
+                rechargeStock = 0,
+                requiredStock = 1,
+                stockToConsume = 1,
+                baseMaxStock = 0,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = true,
+                mustKeyPress = true,
+                beginSkillCooldownOnSkillEnd = true,
+
+                isCombatSkill = false,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = false,
+
+            });
+        }
+
         #endregion skills
         
         #region skins
@@ -380,7 +420,7 @@ namespace BA.Tsurugi
 
             #region DefaultSkin
             //this creates a SkinDef with all default fields
-            var defaultSkin = BA.Modules.Skins.CreateSkinDef("DEFAULT_SKIN",
+            var defaultSkin = BAMod.Modules.Skins.CreateSkinDef("DEFAULT_SKIN",
                 assetBundle.LoadAsset<Sprite>("texMainSkin"),
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject);
@@ -448,7 +488,7 @@ namespace BA.Tsurugi
 
         private void AddHooks()
         {
-            TsurugiHooks.Init();            
+            TsurugiHooks.Init();
         }
     }
 }

@@ -3,7 +3,7 @@ using RoR2.Skills;
 using System;
 using UnityEngine;
 
-namespace BA.Modules
+namespace BAMod.Modules
 {
     //consolidate contentaddition here in case something breaks and/or want to move to r2api
     internal class Content

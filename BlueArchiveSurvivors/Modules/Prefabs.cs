@@ -5,9 +5,9 @@ using UnityEngine;
 using RoR2.CharacterAI;
 using System;
 using System.Linq;
-using BA.Modules.Characters;
+using BAMod.Modules.Characters;
 
-namespace BA.Modules
+namespace BAMod.Modules
 {
     // module for creating body prefabs and whatnot
     // recommended to simply avoid touching this unless you REALLY need to

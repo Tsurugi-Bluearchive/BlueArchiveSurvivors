@@ -2,7 +2,7 @@
 using RoR2.CharacterAI;
 using UnityEngine;
 
-namespace BA.Tsurugi.Content
+namespace BAMod.Tsurugi.Content
 {
     public static class TsurugiAI
     {

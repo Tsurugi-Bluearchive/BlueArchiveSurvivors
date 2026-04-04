@@ -1,6 +1,6 @@
 ﻿using EntityStates;
 
-namespace BA.Tsurugi.SkillStates.BaseStates
+namespace BAMod.Tsurugi.SkillStates.BaseStates
 {
     public class BaseTsurugiState : BaseSkillState
     {

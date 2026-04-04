@@ -1,10 +1,9 @@
 ﻿
+using BAMod.Tsurugi.SkillStates.BaseStates;
 using BAMod.Tsurugi.SkillStates.Primary;
 using BAMod.Tsurugi.SkillStates.Secondary;
 using BAMod.Tsurugi.SkillStates.Special;
-using UltrakillMod.V1.SkillStates.BaseStates;
-
-namespace BA.Tsurugi.Content
+namespace BAMod.Tsurugi.Content
 {
     public static class TsurugiStates
     {

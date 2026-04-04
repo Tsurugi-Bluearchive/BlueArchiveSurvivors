@@ -1,7 +1,7 @@
-﻿using BA.Modules;
+﻿using BAMod.Modules;
 using BepInEx.Configuration;
 
-namespace BA.Tsurugi.Content
+namespace BAMod.Tsurugi.Content
 {
     public static class TsurugiConfig
     {

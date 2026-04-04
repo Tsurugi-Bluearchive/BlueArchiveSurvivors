@@ -1,8 +1,8 @@
-﻿using BA.Tsurugi.Achievements;
+﻿using BAMod.Tsurugi.Achievements;
 using RoR2;
 using UnityEngine;
 
-namespace BA.Tsurugi.Content
+namespace BAMod.Tsurugi.Content
 {
     public static class TsurugiUnlockables
     {

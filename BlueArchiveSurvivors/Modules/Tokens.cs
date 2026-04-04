@@ -1,4 +1,4 @@
-﻿namespace BA.Modules
+﻿namespace BAMod.Modules
 {
     internal static class Tokens
     {

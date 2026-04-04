@@ -1,6 +1,6 @@
 ﻿using BepInEx.Logging;
 
-namespace BA
+namespace BAMod
 {
     internal static class Log
     {

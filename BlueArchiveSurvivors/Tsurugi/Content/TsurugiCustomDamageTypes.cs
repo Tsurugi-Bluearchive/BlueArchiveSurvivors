@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BA.Tsurugi.Content
+namespace BAMod.Tsurugi.Content
 {
     internal class TsurugiCustomDamageTypes
     {

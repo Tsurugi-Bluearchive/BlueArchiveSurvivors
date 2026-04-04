@@ -1,8 +1,8 @@
-﻿using BA.Modules;
-using BA.Tsurugi.Achievements;
+﻿using BAMod.Modules;
+using BAMod.Tsurugi.Achievements;
 using System;
 
-namespace BA.Tsurugi.Content
+namespace BAMod.Tsurugi.Content
 {
     public static class TsurugiTokens
     {
@@ -29,9 +29,9 @@ namespace BA.Tsurugi.Content
             var outro = "..and so he left, searching for a new identity.";
             var outroFailure = "..and so he vanished, forever a blank slate.";
 
-            Language.Add(prefix + "NAME", "Mami Tomoe");
+            Language.Add(prefix + "NAME", "Tsurugi");
             Language.Add(prefix + "DESCRIPTION", desc);
-            Language.Add(prefix + "SUBTITLE", "Intense Striker");
+            Language.Add(prefix + "SUBTITLE", "Shotgun Brawler");
             Language.Add(prefix + "LORE", "sample lore");
             Language.Add(prefix + "OUTRO_FLAVOR", outro);
             Language.Add(prefix + "OUTRO_FAILURE", outroFailure);

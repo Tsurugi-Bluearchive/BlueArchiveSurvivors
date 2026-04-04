@@ -2,7 +2,7 @@
 using UnityEngine;
 using RoR2.Projectile;
 
-namespace BA.Tsurugi.Content
+namespace BAMod.Tsurugi.Content
 {
     public static class TsurugiAssets
     {
@@ -22,6 +22,7 @@ namespace BA.Tsurugi.Content
 
         private static AssetBundle _assetBundle;
 
+        public static Sprite Malice;
         public static void Init(AssetBundle assetBundle)
         {
 
@@ -30,6 +31,8 @@ namespace BA.Tsurugi.Content
             CreateEffects();
 
             CreateProjectiles();
+
+            GrabBuffIcons();
         }
 
         #region effects
@@ -38,6 +41,14 @@ namespace BA.Tsurugi.Content
 
         }
         #endregion effects
+
+        #region buffs
+        private static void GrabBuffIcons()
+        {
+            Malice = _assetBundle.LoadAsset<Sprite>("Textures/Malice");
+        }
+
+        #endregion buffs
 
         #region projectiles
         private static void CreateProjectiles()

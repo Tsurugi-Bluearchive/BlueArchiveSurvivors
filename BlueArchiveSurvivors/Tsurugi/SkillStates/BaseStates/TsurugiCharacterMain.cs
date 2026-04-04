@@ -2,7 +2,7 @@
 using EntityStates;
 using RoR2;
 using BAMod.Tsurugi.SkillStates.Special;
-namespace UltrakillMod.V1.SkillStates.BaseStates
+namespace BAMod.Tsurugi.SkillStates.BaseStates
 {
     public class TsurugiCharacterMain : GenericCharacterMain
     {
@@ -39,12 +39,13 @@ namespace UltrakillMod.V1.SkillStates.BaseStates
         /// </summary>
         public bool resetStocks;
 
+        private ItemDef Magazine;
 
         //TsurugiCharacterMain.cs code start
         public override void OnEnter()
         {
             base.OnEnter();
-
+            Magazine = LegacyResourcesAPI.Load<ItemDef>("RoR2/Base/SecondarySkillMagazine/SecondarySkillMagazine");
         }
 
         public override void FixedUpdate()
@@ -57,6 +58,11 @@ namespace UltrakillMod.V1.SkillStates.BaseStates
                     skillLocator.utility.stock = skillLocator.utility.maxStock;
                     skillLocator.special.stock = skillLocator.special.maxStock;
                     resetStocks = false;
+                }
+                var primaryAmmo = characterBody.inventory.GetItemCountEffective(Magazine) + 5;
+                if (skillLocator.primary.maxStock != primaryAmmo)
+                {
+                    skillLocator.primary.OverrideMaxStock(primaryAmmo);
                 }
             }
         }

@@ -1,16 +1,16 @@
-﻿using BA.Tsurugi.SkillStates.BaseStates;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using RoR2;
+using BAMod.Tsurugi.SkillStates.BaseStates;
 
 namespace BAMod.Tsurugi.SkillStates.Utility
 {
     internal class StunRoll : BaseTsurugiSkillState
     {
         protected override float baseFireDelay => 0f;
-        protected override float baseDuration => 0.5f;
+        protected override float baseDuration => 0.3f;
 
         protected override float fireTime => 0f;
 

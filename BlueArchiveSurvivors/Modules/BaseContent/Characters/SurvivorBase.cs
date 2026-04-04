@@ -2,8 +2,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 using RoR2.Skills;
+using BAMod.Modules.Characters;
 
-namespace BA.Modules.Characters
+namespace BAMod.Modules.Characters
 {
     public abstract class SurvivorBase<T> : CharacterBase<T> where T : SurvivorBase<T>, new()
     {

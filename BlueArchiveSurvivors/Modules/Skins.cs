@@ -2,7 +2,7 @@
 using RoR2;
 using UnityEngine;
 
-namespace BA.Modules
+namespace BAMod.Modules
 {
     internal static class Skins
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace BA.Modules
+namespace BAMod.Modules
 {
     internal static class ItemDisplayCheck
     {

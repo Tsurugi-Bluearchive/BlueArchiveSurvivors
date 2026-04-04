@@ -1,6 +1,5 @@
-﻿using BA.Tsurugi.Content;
-using BA.Tsurugi.SkillStates.BaseStates;
-using BA.Tsurugi;
+﻿using BAMod.Tsurugi.Content;
+using BAMod.Tsurugi;
 using EntityStates.Commando.CommandoWeapon;
 using R2API;
 using Rewired.Demos;
@@ -8,12 +7,13 @@ using RoR2;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using BAMod.Tsurugi.SkillStates.BaseStates;
 
 namespace BAMod.Tsurugi.SkillStates.Primary
 {
     internal class Blood : BaseTsurugiSkillState
     {
-        protected override float baseDuration => 2;
+        protected override float baseDuration => 3;
         protected override float baseFireDelay => 0.5f;
         protected override float fireTime => 1;
         private bool fired = false;
@@ -35,7 +35,7 @@ namespace BAMod.Tsurugi.SkillStates.Primary
                     var aimRay = GetAimRay();
                     if (!TsurugiMain.primaryMysterious)
                     {
-                        var pelletVectors = ScatterVectors(aimRay.direction, 30, 45f, 0.2f);
+                        var pelletVectors = ScatterVectors(aimRay.direction, 30, 20f, 0.2f);
                         foreach (var p in pelletVectors)
                         {
                             BulletAttack bullet = new BulletAttack
@@ -58,7 +58,8 @@ namespace BAMod.Tsurugi.SkillStates.Primary
                                 stopperMask = BulletAttack.defaultStopperMask,
                                 smartCollision = true,
                                 maxDistance = 300f,
-                                damageType = damageType
+                                damageType = damageType,
+                                radius = 4
                             };
                             DamageAPI.AddModdedDamageType(bullet, TsurugiCustomDamageTypes.BloodBleed);
                             bullet.Fire();
@@ -71,7 +72,7 @@ namespace BAMod.Tsurugi.SkillStates.Primary
                         mysteriousSearch.searchDirection = aimRay.direction;
                         mysteriousSearch.searchOrigin = aimRay.origin;
                         mysteriousSearch.maxAngleFilter = 60;
-                        mysteriousSearch.maxDistanceFilter = 30;
+                        mysteriousSearch.maxDistanceFilter = 100;
                         mysteriousSearch.RefreshCandidates();
                         foreach (var target in mysteriousSearch.candidatesEnumerable)
                         {
@@ -85,9 +86,9 @@ namespace BAMod.Tsurugi.SkillStates.Primary
                                 teamIndex = this.characterBody.teamComponent.teamIndex,
                                 falloffModel = BlastAttack.FalloffModel.None,
                                 position = target.position,
-                                baseDamage = TsurugiStaticValues.justiceDamage * damageStat
+                                baseDamage = 10 * damageStat
                             };
-                            mysteriousKaboom.AddModdedDamageType(TsurugiCustomDamageTypes.GunpowderHeal);
+                            mysteriousKaboom.AddModdedDamageType(TsurugiCustomDamageTypes.BloodBleed);
                             mysteriousKaboom.Fire();
                         }
                     }
@@ -111,13 +112,13 @@ namespace BAMod.Tsurugi.SkillStates.Primary
             base.OnExit();
             if (!fired)
             {
-                activatorSkillSlot.AddOneStock();
+                skillLocator.primary.AddOneStock();
             }
-            else if (stock <= 0)
+            else if (stock <= 1)
             {
                 TsurugiMain.confirmedPrimaryKills = 0;
-                activatorSkillSlot.SetSkillOverride(this, TsurugiSurvivor.BloodReload, GenericSkill.SkillOverridePriority.Default);
-                activatorSkillSlot.skillDef = TsurugiSurvivor.BloodReload;
+                TsurugiMain.primaryMysterious = false;
+                skillLocator.primary.SetSkillOverride(this.gameObject, TsurugiSurvivor.BloodReload, GenericSkill.SkillOverridePriority.Default);
             }
         }
 

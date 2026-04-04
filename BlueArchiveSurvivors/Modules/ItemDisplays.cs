@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BA.Modules
+namespace BAMod.Modules
 {
     internal static class ItemDisplays
     {

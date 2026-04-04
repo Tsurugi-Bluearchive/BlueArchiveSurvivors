@@ -1,5 +1,5 @@
-﻿using BA.Modules;
-using BA.Modules.Characters;
+﻿using BAMod.Modules;
+using BAMod.Modules.Characters;
 using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +11,7 @@ using UnityEngine;
                     {localScale})
 */
 
-namespace BA.Tsurugi.Content
+namespace BAMod.Tsurugi.Content
 {
     public class TsurugiItemDisplays : ItemDisplaysBase
     {

@@ -2,10 +2,9 @@
 using RoR2;
 using RoR2.Skills;
 using RoR2BepInExPack.GameAssetPaths;
-using UltrakillMod.V1.SkillStates.BaseStates;
 using UnityEngine.PlayerLoop;
 
-namespace BA.Tsurugi.SkillStates.BaseStates
+namespace BAMod.Tsurugi.SkillStates.BaseStates
 {
     public abstract class BaseTsurugiSkillState : BaseSkillState
     {
@@ -107,7 +106,7 @@ namespace BA.Tsurugi.SkillStates.BaseStates
         public override void OnEnter()
         {
             base.OnEnter();
-            TsurugiMain = characterBody.gameObject.GetComponent<TsurugiCharacterMain>();
+            TsurugiMain = (TsurugiCharacterMain)EntityStateMachine.FindByCustomName(gameObject, "Body").state;
         }
     }
 }

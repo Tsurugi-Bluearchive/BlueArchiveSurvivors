@@ -4,7 +4,7 @@ using RoR2.Skills;
 using System;
 using UnityEngine;
 
-namespace BA.Modules
+namespace BAMod.Modules
 {
     internal static class Skills
     {
@@ -183,7 +183,7 @@ namespace BA.Modules
 
             skillDef.keywordTokens = skillDefInfo.keywordTokens;
 
-            BA.Modules.Content.AddSkillDef(skillDef);
+            BAMod.Modules.Content.AddSkillDef(skillDef);
 
 
             return skillDef;

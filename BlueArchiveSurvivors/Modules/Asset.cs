@@ -5,9 +5,9 @@ using RoR2;
 using System.Collections.Generic;
 using RoR2.Projectile;
 using Path = System.IO.Path;
-using BA;
+using BAMod;
 
-namespace BA.Modules
+namespace BAMod.Modules
 {
     internal static class Asset
     {

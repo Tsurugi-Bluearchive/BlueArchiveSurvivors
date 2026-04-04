@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4183927623
+CRC: 855144768
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 900cda5b6311820a104840247dc2dfd8
+    Hash: 6c7497e5225172aba40e11681fd3dabc
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 71158b44779a2d94a12809f61c6f98b1
+    Hash: bd9461d3ae6fa0fcf0d6c2a0f902fe4a
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -70,7 +70,7 @@ ClassTypes:
 - Class: 319
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
-- AssemblyName: Assembly-CSharp
+- AssemblyName: RoR2
   ClassName: ChildLocator/NameTransformPair
 - AssemblyName: Unity.Addressables
   ClassName: UnityEngine.AddressableAssets.AssetReferenceT`1[UnityEngine.Avatar]
@@ -201,6 +201,7 @@ Assets:
 - Assets/HenryAssets/HenryBundle/VFX/Materials/matSwingShadow.mat
 - Assets/HenryAssets/HenryBundle/Animation/clips/Ascend.anim
 - Assets/HenryAssets/HenryBundle/VFX/Materials/matHitSpark.mat
+- Assets/HenryAssets/HenryBundle/Textures/Malice.png
 - Assets/HenryAssets/HenryBundle/Mesh/meshHenryNeo.mesh
 - Assets/HenryAssets/HenryBundle/VFX/Materials/matHenrySwing2.mat
 - Assets/HenryAssets/HenryBundle/Mesh/meshHenrySwordAlt.mesh

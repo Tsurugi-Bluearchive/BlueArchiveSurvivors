@@ -1,9 +1,8 @@
-﻿using BA.Tsurugi;
-using RoR2;
-using BA.Tsurugi.SkillStates.BaseStates;
+﻿using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using BAMod.Tsurugi.SkillStates.BaseStates;
 
 namespace BAMod.Tsurugi.SkillStates.Secondary
 {
@@ -30,8 +29,7 @@ namespace BAMod.Tsurugi.SkillStates.Secondary
         public override void OnExit()
         {
             base.OnExit();
-            activatorSkillSlot.UnsetSkillOverride(this, TsurugiSurvivor.GunpowderReload, GenericSkill.SkillOverridePriority.Default);
-            activatorSkillSlot.skillDef = TsurugiSurvivor.Gunpowder;
+            skillLocator.secondary.UnsetSkillOverride(this.gameObject, TsurugiSurvivor.GunpowderReload, GenericSkill.SkillOverridePriority.Default);
         }
     }
 }

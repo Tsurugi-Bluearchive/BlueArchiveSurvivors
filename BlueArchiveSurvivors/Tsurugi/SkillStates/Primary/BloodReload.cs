@@ -1,6 +1,5 @@
-﻿using BA.Tsurugi;
+﻿using BAMod.Tsurugi.SkillStates.BaseStates;
 using RoR2;
-using BA.Tsurugi.SkillStates.BaseStates;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +8,7 @@ namespace BAMod.Tsurugi.SkillStates.Primary
 {
     internal class BloodReload : BaseTsurugiSkillState
     {
-        protected override float baseDuration => 1f;
+        protected override float baseDuration => 2f;
         protected override float baseFireDelay => 1f;
         protected override float fireTime => 1f;
 
@@ -30,8 +29,7 @@ namespace BAMod.Tsurugi.SkillStates.Primary
         public override void OnExit()
         {
             base.OnExit();
-            activatorSkillSlot.UnsetSkillOverride(this, TsurugiSurvivor.BloodReload, GenericSkill.SkillOverridePriority.Default);
-            activatorSkillSlot.skillDef = TsurugiSurvivor.Blood;
+            skillLocator.primary.UnsetSkillOverride(this.gameObject, TsurugiSurvivor.BloodReload, GenericSkill.SkillOverridePriority.Default);
         }
     }
 }
