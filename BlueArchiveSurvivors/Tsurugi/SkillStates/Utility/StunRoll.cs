@@ -19,6 +19,7 @@ namespace BAMod.Tsurugi.SkillStates.Utility
         {
             base.OnEnter();
             characterBody.fakeActorCounter += 1;
+            characterBody.AddBuff(LegacyResourcesAPI.Load<BuffDef>("RoR2/Base/Common/bdHiddenInvincibility"));
         }
         public override void FixedUpdate()
         {
@@ -58,14 +59,15 @@ namespace BAMod.Tsurugi.SkillStates.Utility
 
         public override void OnExit()
         {
-            base.OnExit();
             characterBody.fakeActorCounter -= 1;
+            characterBody.RemoveBuff(LegacyResourcesAPI.Load<BuffDef>("RoR2/Base/Common/bdHiddenInvincibility"));
+            base.OnExit();
         }
 
         private Vector3 GetMoveVector()
         {
             Vector3 moveVector = ((base.inputBank.moveVector == Vector3.zero) ? base.characterDirection.forward : base.inputBank.moveVector).normalized;
-            moveVector = moveVector * (10 * moveSpeedStat * GetDeltaTime());
+            moveVector = moveVector * (5 * moveSpeedStat * GetDeltaTime());
             return moveVector;
         }
     }

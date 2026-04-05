@@ -14,6 +14,10 @@ namespace BAMod.Tsurugi.SkillStates.BaseStates
         /// The confirmed secondary kills, resets when stock reaches zero
         /// </summary>
         public int confirmedSecondaryKills;
+        
+        public int primaryStock;
+
+        public int secondaryStock;
 
         /// <summary>
         /// Dictates if primary is crit for this rack
@@ -39,6 +43,11 @@ namespace BAMod.Tsurugi.SkillStates.BaseStates
         /// </summary>
         public bool resetStocks;
 
+        /// <summary>
+        /// Checked every frame, add to this to heal her accurately.
+        /// </summary>
+        public float HealBy;
+
         private ItemDef Magazine;
 
         //TsurugiCharacterMain.cs code start
@@ -63,6 +72,11 @@ namespace BAMod.Tsurugi.SkillStates.BaseStates
                 if (skillLocator.primary.maxStock != primaryAmmo)
                 {
                     skillLocator.primary.OverrideMaxStock(primaryAmmo);
+                }
+                if (HealBy > 0)
+                {
+                    healthComponent.Heal(HealBy, new ProcChainMask());
+                    HealBy = 0;
                 }
             }
         }

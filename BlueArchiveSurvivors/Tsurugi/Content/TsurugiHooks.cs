@@ -29,6 +29,10 @@ namespace BAMod.Tsurugi.Content
                 {
                     args.primarySkill.bonusStockAdd += sender.skillLocator.secondary.maxStock - 5;
                 }
+                if (sender.HasBuff(TsurugiBuffs.TsurugiUltShield))
+                {
+                    args.baseShieldAdd += sender.healthComponent.fullCombinedHealth * 0.25f;
+                }
             }
         }
         private static void GlobalEventManager_ServerDamageDealt(On.RoR2.GlobalEventManager.orig_ServerDamageDealt orig, DamageReport damageReport)
@@ -53,7 +57,7 @@ namespace BAMod.Tsurugi.Content
                 }
                 if (DamageAPI.HasModdedDamageType(ref damageReport.damageInfo.damageType, TsurugiCustomDamageTypes.GunpowderHeal))
                 {
-                    damageReport.attackerBody.healthComponent.Heal(((float)tsurugi.confirmedSecondaryKills * (damageReport.damageDealt * 0.1f)) + (damageReport.damageDealt * 0.1f), new ProcChainMask());
+                    tsurugi.HealBy += damageReport.damageDealt * 0.1f;
                 }
             }
             orig(damageReport);

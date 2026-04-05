@@ -41,7 +41,7 @@ namespace BAMod.Tsurugi
             podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
 
             maxHealth = 90f,
-            healthRegen = 3f,
+            healthRegen = 0.5f,
             armor = 0f,
             healthGrowth = 10f,
             moveSpeed = 10f,
@@ -184,7 +184,7 @@ namespace BAMod.Tsurugi
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
                 dontAllowPastMaxStocks = false,
-                mustKeyPress = true,
+                mustKeyPress = false,
                 beginSkillCooldownOnSkillEnd = false,
 
                 isCombatSkill = false,
@@ -254,7 +254,7 @@ namespace BAMod.Tsurugi
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
                 dontAllowPastMaxStocks = false,
-                mustKeyPress = true,
+                mustKeyPress = false,
                 beginSkillCooldownOnSkillEnd = false,
 
                 isCombatSkill = false,
@@ -305,7 +305,7 @@ namespace BAMod.Tsurugi
             {
                 skillName = "StunRoll",
                 skillNameToken = V1_PREFIX + "UTILITY_STUN_NAME",
-                skillDescriptionToken = V1_PREFIX + "PRIMARY_GUN_DESCRIPTION",
+                skillDescriptionToken = V1_PREFIX + "UTILITY_STUN_DESCRIPTION",
                 keywordTokens = ["KEYWORD_AGILE"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
 
@@ -343,7 +343,7 @@ namespace BAMod.Tsurugi
             {
                 skillName = "Ultimate",
                 skillNameToken = V1_PREFIX + "SPECIAL_ULTIMATE_NAME",
-                skillDescriptionToken = V1_PREFIX + "PRIMARY_GUN_DESCRIPTION",
+                skillDescriptionToken = V1_PREFIX + "SPECIAL_ULTIMATE_DESCRIPTION",
                 keywordTokens = ["KEYWORD_AGILE"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
 
@@ -351,7 +351,7 @@ namespace BAMod.Tsurugi
                 activationStateMachineName = "Ult",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                baseRechargeInterval = 20,
+                baseRechargeInterval = 120,
 
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -379,7 +379,7 @@ namespace BAMod.Tsurugi
             {
                 skillName = "Ultimate",
                 skillNameToken = V1_PREFIX + "SPECIAL_ULTIMATE_NAME",
-                skillDescriptionToken = V1_PREFIX + "PRIMARY_GUN_DESCRIPTION",
+                skillDescriptionToken = V1_PREFIX + "SPECIAL_ULTIMATE_DESCRIPTION",
                 keywordTokens = ["KEYWORD_AGILE"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
 

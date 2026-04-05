@@ -52,6 +52,7 @@
 
 	<ItemGroup>
 	  <Folder Include="GlobalContent\" />
+	  <Folder Include="Saori\Components\" />
 	  <Folder Include="Tsurugi\Components\" />
 	  <Folder Include="Tsurugi\SkillStates\Utility\" />
 	</ItemGroup>

@@ -2,7 +2,7 @@
 {
     public static class TsurugiStaticValues
     {
-        public const float justiceDamage = 0.5f;
+        public const float justiceDamage = 0.1f;
 
         public const float chargeMusketMin = 1f;
 

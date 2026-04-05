@@ -1,6 +1,7 @@
 ﻿using BAMod.Tsurugi;
 using BAMod.Tsurugi.Content;
 using BAMod.Tsurugi.SkillStates.BaseStates;
+using EntityStates;
 using EntityStates.Commando.CommandoWeapon;
 using R2API;
 using RoR2;
@@ -32,7 +33,7 @@ namespace BAMod.Tsurugi.SkillStates.Secondary
                 if (fixedAge > fireDelay && IsKeyDownAuthority() && !fired)
                 {
                     var aimRay = GetAimRay();
-                    if (!TsurugiMain.primaryMysterious)
+                    if (!TsurugiMain.secondaryMysterious)
                     {
                         var pelletVectors = ScatterVectors(aimRay.direction, 30, 20f, 0.2f);
                         foreach (var p in pelletVectors)
@@ -72,6 +73,7 @@ namespace BAMod.Tsurugi.SkillStates.Secondary
                         mysteriousSearch.searchOrigin = aimRay.origin;
                         mysteriousSearch.maxAngleFilter = 60;
                         mysteriousSearch.maxDistanceFilter = 100;
+                        mysteriousSearch.viewer = characterBody;
                         mysteriousSearch.RefreshCandidates();
                         foreach (var target in mysteriousSearch.candidatesEnumerable)
                         {
@@ -85,7 +87,8 @@ namespace BAMod.Tsurugi.SkillStates.Secondary
                                 teamIndex = this.characterBody.teamComponent.teamIndex,
                                 falloffModel = BlastAttack.FalloffModel.None,
                                 position = target.position,
-                                baseDamage = 10 * damageStat
+                                baseDamage = 10 * damageStat,
+                                procCoefficient = 5f
                             };
                             mysteriousKaboom.AddModdedDamageType(TsurugiCustomDamageTypes.GunpowderHeal);
                             mysteriousKaboom.Fire();
@@ -98,7 +101,7 @@ namespace BAMod.Tsurugi.SkillStates.Secondary
                     outer.SetNextStateToMain();
                     return;
                 }
-                else if (!fired && !IsKeyDownAuthority())
+                else if (!fired && !IsKeyDownAuthority() && fixedAge < fireDelay)
                 {
                     outer.SetNextStateToMain();
                     return;
@@ -113,7 +116,7 @@ namespace BAMod.Tsurugi.SkillStates.Secondary
             {
                 activatorSkillSlot.AddOneStock();
             }
-            else if (stock <= 1)
+            else if (stock <= 0)
             {
                 TsurugiMain.confirmedSecondaryKills = 0;
                 TsurugiMain.secondaryMysterious = false;
@@ -153,5 +156,10 @@ namespace BAMod.Tsurugi.SkillStates.Secondary
 
             return directions;
         }
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
+
     }
 }

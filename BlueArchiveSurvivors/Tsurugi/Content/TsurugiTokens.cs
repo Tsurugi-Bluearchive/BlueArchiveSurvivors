@@ -46,23 +46,23 @@ namespace BAMod.Tsurugi.Content
             #endregion
 
             #region Primary
-            Language.Add(prefix + "PRIMARY_SCARF_NAME", "Scarf");
-            Language.Add(prefix + "PRIMARY_SCARF_DESCRIPTION", $"Swing forward for <style=cIsDamage>{100f * TsurugiStaticValues.justiceDamage}% damage</style>.");
+            Language.Add(prefix + "PRIMARY_GUN_NAME", "Blood");
+            Language.Add(prefix + "PRIMARY_GUN_DESCRIPTION", $"Agile. Channeled. Shoot a shotgun blast after holding for half asecond for <style=cIsDamage>30x{100f * TsurugiStaticValues.justiceDamage}%</style> damage with 1.0 Proc every 3 seconds. Starts with 5 rounds and switches to a reload skill once out. Shotgun blasts deal Malice, which hurts enemies for 0.5% HP over 5 seconds per stack</style>.");
             #endregion
 
             #region Secondary
-            Language.Add(prefix + "SECONDARY_GUN_NAME", "Precision Strike");
-            Language.Add(prefix + "SECONDARY_GUN_DESCRIPTION", $"IMPLANT. Hold still and fire a picked up gun for <style=cIsDamage>{100f * TsurugiStaticValues.bigGunDamageCefficeient}% damage</style>.");
+            Language.Add(prefix + "SECONDARY_GUN_NAME", "Gunpowder");
+            Language.Add(prefix + "SECONDARY_GUN_DESCRIPTION", $"Agile. Channeled. Piercing. Shoot a shotgun blast after holding for half asecond for <style=cIsDamage>30x{100f * TsurugiStaticValues.justiceDamage}%</style> damage with 1.0 Proc every 3 seconds. Starts with 5 rounds and switches to a reload skill once out. Shotgun blasts heal for 10% of damage dealt");
             #endregion
 
             #region Utility
-            Language.Add(prefix + "UTILITY_ROLL_NAME", "Roll");
-            Language.Add(prefix + "UTILITY_ROLL_DESCRIPTION", "Roll a short distance, gaining <style=cIsUtility>300 armor</style>. <style=cIsUtility>You cannot be hit during the roll.</style>");
+            Language.Add(prefix + "UTILITY_STUN_NAME", "You think you can catch ME?");
+            Language.Add(prefix + "UTILITY_STUN_DESCRIPTION", "Etherial. Dodge a large distance while stunning everything that's passed through.");
             #endregion
 
             #region Special
-            Language.Add(prefix + "SPECIAL_BOMB_NAME", "Bomb");
-            Language.Add(prefix + "SPECIAL_BOMB_DESCRIPTION", $"Throw a bomb for <style=cIsDamage>{100f * TsurugiStaticValues.bigGunDamageCefficeient}% damage</style>.");
+            Language.Add(prefix + "SPECIAL_ULTIMATE_NAME", "Strange and mysterious");
+            Language.Add(prefix + "SPECIAL_ULTIMATE_DESCRIPTION", $"Rooting. Channeled. Etherial. Channel for 2s while remaining immortal during the cast. Both shotguns now attack for <style=cIsDamage>1000%</style> damage via exploding enemies directly.");
             #endregion
 
             #region Achievements

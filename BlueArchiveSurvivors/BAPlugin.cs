@@ -1,4 +1,5 @@
-﻿using BAMod.Tsurugi;
+﻿using BAMod.Saori;
+using BAMod.Tsurugi;
 using BepInEx;
 using R2API;
 using R2API.Utils;
@@ -47,6 +48,7 @@ namespace BAMod
 
 
             // character initializatio
+            new SaoriSurvivor().Initialize();
             new TsurugiSurvivor().Initialize();
 
             // make a content pack and add it. this has to be last

@@ -6,21 +6,26 @@ namespace BAMod.Tsurugi.Content
 {
     public static class TsurugiBuffs
     {
+        public static BuffDef TsurugiUltShield;
         public static BuffDef MaliceDef;
         public static DotController.DotIndex Malice;
 
         public static void Init()
         {
-            MaliceDef = new BuffDef()
-            {
-                buffColor = Color.white,
-                canStack = true,
-                isDOT = true,
-                isDebuff = true,
-                name = "Malice",
-                iconSprite = TsurugiAssets.Malice,
-                isHidden = false,
-            };
+            MaliceDef = Modules.Content.CreateAndAddBuff(
+                "Malice",
+                TsurugiAssets.Malice,
+                Color.white,
+                true,
+                true);
+
+            TsurugiUltShield = Modules.Content.CreateAndAddBuff(
+                "Ult Shield",
+                LegacyResourcesAPI.Load<BuffDef>("BuffDefs/HiddenInvincibility").iconSprite,
+                Color.white,
+                false,
+                false);
+
             Malice = DotAPI.RegisterDotDef(new DotController.DotDef()
             {
                 associatedBuff = MaliceDef,

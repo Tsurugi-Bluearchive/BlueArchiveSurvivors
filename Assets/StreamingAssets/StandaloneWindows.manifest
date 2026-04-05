@@ -1,7 +1,11 @@
 ManifestFileVersion: 0
-CRC: 2195758047
+CRC: 3226906745
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: tsurugiassetbundle
+      Dependencies:
+        Dependency_0: saoriassetbundle
+    Info_1:
+      Name: saoriassetbundle
       Dependencies: {}

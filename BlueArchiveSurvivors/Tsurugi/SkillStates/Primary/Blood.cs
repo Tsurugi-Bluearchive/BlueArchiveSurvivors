@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using BAMod.Tsurugi.SkillStates.BaseStates;
+using EntityStates;
 
 namespace BAMod.Tsurugi.SkillStates.Primary
 {
@@ -73,6 +74,7 @@ namespace BAMod.Tsurugi.SkillStates.Primary
                         mysteriousSearch.searchOrigin = aimRay.origin;
                         mysteriousSearch.maxAngleFilter = 60;
                         mysteriousSearch.maxDistanceFilter = 100;
+                        mysteriousSearch.viewer = characterBody;
                         mysteriousSearch.RefreshCandidates();
                         foreach (var target in mysteriousSearch.candidatesEnumerable)
                         {
@@ -86,7 +88,8 @@ namespace BAMod.Tsurugi.SkillStates.Primary
                                 teamIndex = this.characterBody.teamComponent.teamIndex,
                                 falloffModel = BlastAttack.FalloffModel.None,
                                 position = target.position,
-                                baseDamage = 10 * damageStat
+                                baseDamage = 10 * damageStat,
+                                procCoefficient = 5f
                             };
                             mysteriousKaboom.AddModdedDamageType(TsurugiCustomDamageTypes.BloodBleed);
                             mysteriousKaboom.Fire();
@@ -99,7 +102,7 @@ namespace BAMod.Tsurugi.SkillStates.Primary
                     outer.SetNextStateToMain();
                     return;
                 }
-                else if (!fired && !IsKeyDownAuthority())
+                else if (!fired && !IsKeyDownAuthority() && fixedAge < fireDelay)
                 {
                     outer.SetNextStateToMain();
                     return;
@@ -114,7 +117,7 @@ namespace BAMod.Tsurugi.SkillStates.Primary
             {
                 skillLocator.primary.AddOneStock();
             }
-            else if (stock <= 1)
+            else if (stock <= 0)
             {
                 TsurugiMain.confirmedPrimaryKills = 0;
                 TsurugiMain.primaryMysterious = false;
@@ -155,6 +158,9 @@ namespace BAMod.Tsurugi.SkillStates.Primary
             return directions;
         }
 
-
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
     }
 }
