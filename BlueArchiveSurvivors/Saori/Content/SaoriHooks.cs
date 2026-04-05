@@ -26,11 +26,13 @@ namespace BAMod.Saori.Content
             {
                 if (sender.HasBuff(SaoriBuffs.HyperCritBuff))
                 {
-                    args.critDamageMultAdd += 5;
+                    args.critDamageMultAdd += 2.5f;
+                    args.critAdd += 100;
                 }
                 if (sender.HasBuff(SaoriBuffs.SaoriUltShield))
                 {
-                    sender.baseMaxShield += sender.healthComponent.fullCombinedHealth * 0.1f;
+
+                    args.baseShieldAdd += sender.healthComponent.fullCombinedHealth * 0.25f;
                 }
             }
         }

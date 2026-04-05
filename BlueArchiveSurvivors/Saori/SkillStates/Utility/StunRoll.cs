@@ -68,7 +68,7 @@ namespace BAMod.Saori.SkillStates.Utility
         private Vector3 GetMoveVector()
         {
             Vector3 moveVector = ((base.inputBank.moveVector == Vector3.zero) ? base.characterDirection.forward : base.inputBank.moveVector).normalized;
-            moveVector = moveVector * (10 * moveSpeedStat * GetDeltaTime());
+            moveVector = moveVector * (5 * moveSpeedStat * GetDeltaTime());
             return moveVector;
         }
     }

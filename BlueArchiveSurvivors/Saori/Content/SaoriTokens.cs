@@ -61,8 +61,8 @@ namespace BAMod.Saori.Content
             #endregion
 
             #region Special
-            Language.Add(prefix + "SPECIAL_ULTIMATE_NAME", "et omnia vanitas！  ...and all is vanity!");
-            Language.Add(prefix + "SPECIAL_ULTIMATE_DESCRIPTION", $"Rooting. Channeled. Etherial. Channel for 2s while remaining immortal during the cast. You and allies now HYPERCRIT each shot, dealing an additional 500% crit damage and gaurintee'd double damage on boss enemies.");
+            Language.Add(prefix + "SPECIAL_ULTIMATE_NAME", "Et Omnia Vnitas！  ...and all is vanity!");
+            Language.Add(prefix + "SPECIAL_ULTIMATE_DESCRIPTION", $"Rooting. Shielding. Implant and Gain of TOTAL HEALTH as shield and remain rooted for 3s while chargin, after finished allies now gaurintee Crit and habe 250% additional crit damage");
             #endregion
 
             #region Achievements

@@ -62,7 +62,7 @@ namespace BAMod.Tsurugi.Content
 
             #region Special
             Language.Add(prefix + "SPECIAL_ULTIMATE_NAME", "Strange and mysterious");
-            Language.Add(prefix + "SPECIAL_ULTIMATE_DESCRIPTION", $"Rooting. Channeled. Etherial. Channel for 2s while remaining immortal during the cast. Both shotguns now attack for <style=cIsDamage>1000%</style> damage via exploding enemies directly.");
+            Language.Add(prefix + "SPECIAL_ULTIMATE_DESCRIPTION", $"Rooting. Sheilding. Implant and gain 25% of TOTAL HEALTH as sheild and.Remain in cast for 3s. Both shotguns now attack for <style=cIsDamage>1000%</style> damage via exploding enemies directly.");
             #endregion
 
             #region Achievements

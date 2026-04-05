@@ -36,7 +36,7 @@ namespace BAMod.Saori.SkillStates.Special
                     var teammates = TeamComponent.GetTeamMembers(teamComponent.teamIndex);
                     foreach (var member in teammates)
                     {
-                        member.body.AddTimedBuff(SaoriBuffs.HyperCritBuff, 10f);
+                        member.body.AddTimedBuff(SaoriBuffs.HyperCritBuff, 20f);
                     }
                     outer.SetNextStateToMain();
                     return;
@@ -45,13 +45,13 @@ namespace BAMod.Saori.SkillStates.Special
         }
         public override void OnExit()
         {
-            base.OnExit();
             characterBody.RemoveBuff(SaoriBuffs.SaoriUltShield);
             skillLocator.primary.UnsetSkillOverride(this.gameObject, SaoriSurvivor.Lock, GenericSkill.SkillOverridePriority.Default);
             skillLocator.secondary.UnsetSkillOverride(this.gameObject, SaoriSurvivor.Lock, GenericSkill.SkillOverridePriority.Default);
             skillLocator.utility.UnsetSkillOverride(this.gameObject, SaoriSurvivor.Lock, GenericSkill.SkillOverridePriority.Default);
             characterMotor.enabled = true;
             characterMotor.velocity = Vector3.zero;
+            base.OnExit();
         }
     }
 }
