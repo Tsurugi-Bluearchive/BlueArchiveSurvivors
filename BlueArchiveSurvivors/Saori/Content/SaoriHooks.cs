@@ -1,5 +1,5 @@
-﻿using BAMod.Tsurugi.Content;
-using BAMod.Tsurugi.SkillStates.BaseStates;
+﻿using BAMod.Mashiro.Content;
+using BAMod.Mashiro.SkillStates.BaseStates;
 using Newtonsoft.Json.Utilities;
 using R2API;
 using RoR2;
@@ -16,7 +16,6 @@ namespace BAMod.Saori.Content
         public static void Init()
         {
             BleedDebuff = LegacyResourcesAPI.Load<BuffDef>("RoR2/Base/Common/bdBleeding");
-            On.RoR2.GlobalEventManager.ServerDamageDealt += GlobalEventManager_ServerDamageDealt;
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
         }
 
@@ -34,14 +33,6 @@ namespace BAMod.Saori.Content
 
                     args.baseShieldAdd += sender.healthComponent.fullCombinedHealth * 0.25f;
                 }
-            }
-        }
-
-        private static void GlobalEventManager_ServerDamageDealt(On.RoR2.GlobalEventManager.orig_ServerDamageDealt orig, DamageReport damageReport)
-        {
-            if (damageReport.attackerBody && damageReport.victim && damageReport.attackerBody.HasBuff(SaoriBuffs.HyperCritBuff) && damageReport.victimBody.isBoss)
-            {
-                damageReport.damageDealt *= 2;
             }
         }
     }

@@ -1,0 +1,199 @@
+ManifestFileVersion: 0
+CRC: 254514354
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 39bed721889d8fbcf82e3d703f12f975
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 732bd3a6184131cd916f701da0f746d8
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -517518216, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 319
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: RoR2
+  ClassName: ChildLocator/NameTransformPair
+Assets:
+- Assets/TsurugiBundle/Icons/texGrandMasteryAchievement.png
+- Assets/TsurugiBundle/VFX/Textures/texPunchImpactShadow.png
+- Assets/TsurugiBundle/Mesh/meshDante.mesh
+- Assets/TsurugiBundle/Icons/texSecondaryIcon.png
+- Assets/TsurugiBundle/Icons/texDanteAchievement.png
+- Assets/TsurugiBundle/Animation/clips/Ascend.anim
+- Assets/TsurugiBundle/VFX/HenryBazookaExplosionEffect.prefab
+- Assets/TsurugiBundle/Icons/texBoxingGlovesIcon.png
+- Assets/TsurugiBundle/Materials/matHenryJedi.mat
+- Assets/TsurugiBundle/Materials/matShotgun.mat
+- Assets/TsurugiBundle/VFX/Mesh/meshSwing.asset
+- Assets/TsurugiBundle/Materials/matBazooka.mat
+- Assets/TsurugiBundle/Materials/matRoy.mat
+- Assets/TsurugiBundle/VFX/Materials/matHitSparkPunch.mat
+- Assets/TsurugiBundle/VFX/Materials/matSwingShadow.mat
+- Assets/TsurugiBundle/Animation/maskGesture.mask
+- Assets/TsurugiBundle/Mesh/meshHenryAlt.mesh
+- Assets/TsurugiBundle/VFX/Materials/matSwingEffect.mat
+- Assets/TsurugiBundle/Icons/texPistolIcon.png
+- Assets/TsurugiBundle/Icons/texStingerIcon.png
+- Assets/TsurugiBundle/Animation/clips/IdleAdditive.anim
+- Assets/TsurugiBundle/Textures/texBazooka.png
+- Assets/TsurugiBundle/Icons/texBazookaIcon.png
+- Assets/TsurugiBundle/Icons/texBazookaIconScepter.png
+- Assets/TsurugiBundle/mdlTsurugi.prefab
+- Assets/TsurugiBundle/Animation/clips/DefaultPose.anim
+- Assets/TsurugiBundle/Materials/matDante.mat
+- Assets/TsurugiBundle/Materials/matBazookaRocket.mat
+- Assets/TsurugiBundle/Icons/texHenryIcon.png
+- Assets/TsurugiBundle/Animation/clips/WalkB.anim
+- Assets/TsurugiBundle/Materials/matHenry.mat
+- Assets/TsurugiBundle/Mesh/meshUzi.mesh
+- Assets/TsurugiBundle/Textures/texHenryJediEmission.png
+- Assets/TsurugiBundle/Mesh/meshHenryNeo.mesh
+- Assets/TsurugiBundle/Mesh/meshNeoCoat.mesh
+- Assets/TsurugiBundle/VFX/Mesh/meshPunchShockwave.mesh
+- Assets/TsurugiBundle/VFX/Materials/matPunchImpact.mat
+- Assets/TsurugiBundle/Animation/maskBandana.mask
+- Assets/TsurugiBundle/VFX/ImpactHenrySlash.prefab
+- Assets/TsurugiBundle/Textures/texHenryNeo.png
+- Assets/TsurugiBundle/Animation/clips/AimPitch.anim
+- Assets/TsurugiBundle/Animation/clips/Roll.anim
+- Assets/TsurugiBundle/VFX/ImpactHenryPunch.prefab
+- Assets/TsurugiBundle/Animation/clips/LightImpact.anim
+- Assets/TsurugiBundle/Animation/clips/SprintR.anim
+- Assets/TsurugiBundle/Textures/texHenryDante.png
+- Assets/TsurugiBundle/Textures/texShotgun.png
+- Assets/TsurugiBundle/Mesh/meshVergilCoat.mesh
+- Assets/TsurugiBundle/Mesh/meshHenrySword.mesh
+- Assets/TsurugiBundle/Materials/matRebellion.mat
+- Assets/TsurugiBundle/Mesh/meshRebellion.mesh
+- Assets/TsurugiBundle/Animation/clips/RestIdleIn.anim
+- Assets/TsurugiBundle/Animation/animHenryMenu.controller
+- Assets/TsurugiBundle/Animation/clips/Slash2.anim
+- Assets/TsurugiBundle/Animation/clips/WalkF.anim
+- Assets/TsurugiBundle/Materials/matHenryNeo.mat
+- Assets/TsurugiBundle/Animation/clips/Descend.anim
+- Assets/TsurugiBundle/Textures/Malice.png
+- Assets/TsurugiBundle/TsurugiDisplay.prefab
+- Assets/TsurugiBundle/Materials/matVergil.mat
+- Assets/TsurugiBundle/VFX/Materials/matHenrySwing2.mat
+- Assets/TsurugiBundle/VFX/Textures/texPunchImpact.png
+- Assets/TsurugiBundle/Animation/clips/RestIdle.anim
+- Assets/TsurugiBundle/VFX/Textures/texSlash.png
+- Assets/TsurugiBundle/VFX/Materials/matPunchImpactShadow.mat
+- Assets/TsurugiBundle/Textures/texHenryJedi.png
+- Assets/TsurugiBundle/Icons/texMainSkin.png
+- Assets/TsurugiBundle/Icons/texPassiveIcon.png
+- Assets/TsurugiBundle/TsurugiMonsterMaster.prefab
+- Assets/TsurugiBundle/VFX/Textures/texFistSwing.png
+- Assets/TsurugiBundle/Icons/texBazookaFireIcon.png
+- Assets/TsurugiBundle/Animation/animHenry.controller
+- Assets/TsurugiBundle/VFX/Materials/matPunchEffect.mat
+- Assets/TsurugiBundle/Animation/maskAimBazooka.mask
+- Assets/TsurugiBundle/VFX/Textures/texHenrySwing2.png
+- Assets/TsurugiBundle/Mesh/meshHenry.mesh
+- Assets/TsurugiBundle/VFX/Materials/matDust.mat
+- Assets/TsurugiBundle/Animation/clips/WalkL.anim
+- Assets/TsurugiBundle/Animation/clips/Jump.anim
+- Assets/TsurugiBundle/Mesh/MeshHenryGun.mesh
+- Assets/TsurugiBundle/Animation/maskAimYaw.mask
+- Assets/TsurugiBundle/VFX/HenryBazookaMuzzleFlash.prefab
+- Assets/TsurugiBundle/VFX/Materials/matTrail.mat
+- Assets/TsurugiBundle/Animation/clips/DescendFast.anim
+- Assets/TsurugiBundle/VFX/HenrySwordSwingEffect.prefab
+- Assets/TsurugiBundle/VFX/Textures/texDust.png
+- Assets/TsurugiBundle/VFX/Materials/matAnimeShapes.mat
+- Assets/TsurugiBundle/Icons/texBazookaOutIcon.png
+- Assets/TsurugiBundle/Animation/clips/WalkR.anim
+- Assets/TsurugiBundle/VFX/Materials/matFire.mat
+- Assets/TsurugiBundle/VFX/HenryFistSwingEffect.prefab
+- Assets/TsurugiBundle/VFX/Textures/texLightning.tif
+- Assets/TsurugiBundle/VFX/Materials/matHitSpark.mat
+- Assets/TsurugiBundle/Animation/maskImpact.mask
+- Assets/TsurugiBundle/Icons/texUtilityIcon.png
+- Assets/TsurugiBundle/VFX/BombExplosionEffect.prefab
+- Assets/TsurugiBundle/VFX/Textures/texEmbers.png
+- Assets/TsurugiBundle/Animation/clips/MenuIdle.anim
+- Assets/TsurugiBundle/VFX/Textures/texFire.tga
+- Assets/TsurugiBundle/Textures/texHenry.png
+- Assets/TsurugiBundle/Animation/clips/ThrowBomb.anim
+- Assets/TsurugiBundle/VFX/Materials/matSlash.mat
+- Assets/TsurugiBundle/VFX/Materials/matRipple.mat
+- Assets/TsurugiBundle/VFX/Textures/texSmoke.png
+- Assets/TsurugiBundle/Mesh/meshVergil.mesh
+- Assets/TsurugiBundle/Textures/texBoxingGlove.png
+- Assets/TsurugiBundle/Animation/clips/AimYaw.anim
+- Assets/TsurugiBundle/VFX/Materials/matEmbers.mat
+- Assets/TsurugiBundle/Icons/texPrimaryIcon.png
+- Assets/TsurugiBundle/Mesh/meshHenrySwordAlt.mesh
+- Assets/TsurugiBundle/Textures/texHenryVergil.png
+- Assets/TsurugiBundle/Icons/texUziIcon.png
+- Assets/TsurugiBundle/Textures/texHenryDanteEmission.png
+- Assets/TsurugiBundle/Animation/clips/SprintL.anim
+- Assets/TsurugiBundle/VFX/Textures/texHitSpark.png
+- Assets/TsurugiBundle/VFX/Mesh/meshBoxingGlove.mesh
+- Assets/TsurugiBundle/Icons/texShotgunIcon.png
+- Assets/TsurugiBundle/VFX/Materials/matFistSwing.mat
+- Assets/TsurugiBundle/Materials/matBoxingGlove.mat
+- Assets/TsurugiBundle/Icons/texScepterSpecialIcon.png
+- Assets/TsurugiBundle/Mesh/meshYamato.mesh
+- Assets/TsurugiBundle/Animation/clips/Idle.anim
+- Assets/TsurugiBundle/Animation/maskAimPitch.mask
+- Assets/TsurugiBundle/Animation/clips/IdleIn.anim
+- Assets/TsurugiBundle/Mesh/meshDanteCoat.mesh
+- Assets/TsurugiBundle/Materials/matHenryAlt.mat
+- Assets/TsurugiBundle/Icons/texMasteryAchievement.png
+- Assets/TsurugiBundle/Icons/texSpecialIcon.png
+- Assets/TsurugiBundle/VFX/Materials/matSmoke.mat
+- Assets/TsurugiBundle/Animation/maskLeftArm.mask
+- Assets/TsurugiBundle/Icons/texHenryAchievement.png
+- Assets/TsurugiBundle/Animation/clips/ShootGun.anim
+- Assets/TsurugiBundle/Animation/clips/SprintF.anim
+- Assets/TsurugiBundle/VFX/FistBarrageEffect.prefab
+- Assets/TsurugiBundle/Textures/texHenryAlt.png
+- Assets/TsurugiBundle/Animation/clips/MenuIdleIn.anim
+- Assets/TsurugiBundle/Animation/clips/Slash1.anim
+- Assets/TsurugiBundle/Mesh/meshPistol.mesh
+- Assets/TsurugiBundle/VFX/Textures/texSwingEffect.png
+- Assets/TsurugiBundle/VFX/HenryDustEffect.prefab
+- Assets/TsurugiBundle/Icons/texVergilAchievement.png
+- Assets/TsurugiBundle/VFX/Textures/texRipple.png
+Dependencies:
+- C:/Users/dmans/BlueArchiveSurvivors/AssetBundles/StandaloneWindows/saoriassetbundle

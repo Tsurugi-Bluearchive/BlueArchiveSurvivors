@@ -1,5 +1,5 @@
 ﻿using BAMod.Saori.SkillStates.BaseStates;
-using BAMod.Tsurugi.SkillStates.BaseStates;
+using BAMod.Mashiro.SkillStates.BaseStates;
 using RoR2;
 using System;
 using System.Collections.Generic;

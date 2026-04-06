@@ -43,7 +43,7 @@ namespace BAMod.Tsurugi.SkillStates.Secondary
                                 owner = base.gameObject,
                                 weapon = base.gameObject,
                                 origin = aimRay.origin,
-                                aimVector = p,
+                                aimVector = p + aimRay.direction * 2f,
                                 minSpread = 0f,
                                 maxSpread = base.characterBody.spreadBloomAngle,
                                 bulletCount = 1U,
@@ -94,7 +94,9 @@ namespace BAMod.Tsurugi.SkillStates.Secondary
                             mysteriousKaboom.Fire();
                         }
                     }
-                        fired = true;
+
+                    AddRecoil(20, 20, 0, 0);
+                    fired = true;
                 }
                 if (fired && fixedAge > duration)
                 {

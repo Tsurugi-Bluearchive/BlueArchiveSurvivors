@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3751141138
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: tsurugiassetbundle
+      Dependencies:
+        Dependency_0: saoriassetbundle
+    Info_1:
+      Name: saoriassetbundle
+      Dependencies: {}
+    Info_2:
+      Name: mashiroassetbundle
+      Dependencies:
+        Dependency_0: tsurugiassetbundle
+        Dependency_1: saoriassetbundle

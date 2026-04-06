@@ -2,7 +2,7 @@
 using RoR2;
 using UnityEngine;
 
-namespace BAMod.Tsurugi.Content
+namespace BAMod.Mashiro.Content
 {
     public static class SaoriBuffs
     {
@@ -12,7 +12,7 @@ namespace BAMod.Tsurugi.Content
         {
             HyperCritBuff = Modules.Content.CreateAndAddBuff(
                 "Hypercrit",
-                LegacyResourcesAPI.Load<Sprite>("RoR2/Base/Bandit2/texBuffBanditSkullIcon"),
+                LegacyResourcesAPI.Load<BuffDef>("BuffDefs/BanditSkull").iconSprite,
                 Color.white,
                 false,
                 false);

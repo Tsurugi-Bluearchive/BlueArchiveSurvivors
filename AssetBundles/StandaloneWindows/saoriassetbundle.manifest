@@ -1,0 +1,198 @@
+ManifestFileVersion: 0
+CRC: 3596765301
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ef8bd5262c6bd3cae9e824126ef4e7fb
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 732bd3a6184131cd916f701da0f746d8
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -517518216, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 319
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: RoR2
+  ClassName: ChildLocator/NameTransformPair
+Assets:
+- Assets/SaoriBundle/VFX/ImpactHenryPunch.prefab
+- Assets/SaoriBundle/Mesh/meshVergilCoat.mesh
+- Assets/SaoriBundle/Animation/clips/WalkL.anim
+- Assets/SaoriBundle/VFX/HenrySwordSwingEffect.prefab
+- Assets/SaoriBundle/VFX/Mesh/meshSwing.asset
+- Assets/SaoriBundle/Icons/texBazookaOutIcon.png
+- Assets/SaoriBundle/Animation/clips/DescendFast.anim
+- Assets/SaoriBundle/Icons/texGrandMasteryAchievement.png
+- Assets/SaoriBundle/Materials/matRoy.mat
+- Assets/SaoriBundle/Materials/matVergil.mat
+- Assets/SaoriBundle/Animation/animHenryMenu.controller
+- Assets/SaoriBundle/Mesh/meshHenrySwordAlt.mesh
+- Assets/SaoriBundle/Icons/texMainSkin.png
+- Assets/SaoriBundle/Icons/texBazookaIconScepter.png
+- Assets/SaoriBundle/Animation/maskImpact.mask
+- Assets/SaoriBundle/Mesh/meshHenryNeo.mesh
+- Assets/SaoriBundle/VFX/Textures/texHitSpark.png
+- Assets/SaoriBundle/Animation/clips/Idle.anim
+- Assets/SaoriBundle/Animation/clips/MenuIdle.anim
+- Assets/SaoriBundle/Materials/matBazookaRocket.mat
+- Assets/SaoriBundle/VFX/Materials/matSwingEffect.mat
+- Assets/SaoriBundle/Mesh/meshRebellion.mesh
+- Assets/SaoriBundle/Animation/maskBandana.mask
+- Assets/SaoriBundle/VFX/Materials/matAnimeShapes.mat
+- Assets/SaoriBundle/VFX/Materials/matHitSparkPunch.mat
+- Assets/SaoriBundle/Animation/clips/RestIdleIn.anim
+- Assets/SaoriBundle/Mesh/meshDante.mesh
+- Assets/SaoriBundle/VFX/Materials/matEmbers.mat
+- Assets/SaoriBundle/VFX/Textures/texSlash.png
+- Assets/SaoriBundle/VFX/Materials/matHitSpark.mat
+- Assets/SaoriBundle/Icons/texStingerIcon.png
+- Assets/SaoriBundle/Animation/clips/Descend.anim
+- Assets/SaoriBundle/Textures/texHenry.png
+- Assets/SaoriBundle/Animation/animHenry.controller
+- Assets/SaoriBundle/Animation/clips/Roll.anim
+- Assets/SaoriBundle/Animation/clips/ThrowBomb.anim
+- Assets/SaoriBundle/Materials/matHenryAlt.mat
+- Assets/SaoriBundle/Materials/matBazooka.mat
+- Assets/SaoriBundle/VFX/Mesh/meshPunchShockwave.mesh
+- Assets/SaoriBundle/Animation/clips/IdleIn.anim
+- Assets/SaoriBundle/Mesh/meshHenryAlt.mesh
+- Assets/SaoriBundle/Animation/clips/WalkF.anim
+- Assets/SaoriBundle/VFX/Textures/texFire.tga
+- Assets/SaoriBundle/Textures/texHenryVergil.png
+- Assets/SaoriBundle/VFX/Textures/texHenrySwing2.png
+- Assets/SaoriBundle/Icons/texShotgunIcon.png
+- Assets/SaoriBundle/VFX/HenryFistSwingEffect.prefab
+- Assets/SaoriBundle/Animation/maskLeftArm.mask
+- Assets/SaoriBundle/VFX/Textures/texPunchImpactShadow.png
+- Assets/SaoriBundle/Icons/texPistolIcon.png
+- Assets/SaoriBundle/Mesh/meshHenrySword.mesh
+- Assets/SaoriBundle/Icons/texBazookaFireIcon.png
+- Assets/SaoriBundle/Animation/clips/Ascend.anim
+- Assets/SaoriBundle/VFX/HenryBazookaMuzzleFlash.prefab
+- Assets/SaoriBundle/SaoriDisplay.prefab
+- Assets/SaoriBundle/Animation/maskAimBazooka.mask
+- Assets/SaoriBundle/Mesh/MeshHenryGun.mesh
+- Assets/SaoriBundle/Icons/texScepterSpecialIcon.png
+- Assets/SaoriBundle/Animation/clips/ShootGun.anim
+- Assets/SaoriBundle/VFX/ImpactHenrySlash.prefab
+- Assets/SaoriBundle/Materials/matHenryNeo.mat
+- Assets/SaoriBundle/Mesh/meshPistol.mesh
+- Assets/SaoriBundle/Icons/texHenryIcon.png
+- Assets/SaoriBundle/VFX/Textures/texEmbers.png
+- Assets/SaoriBundle/Animation/clips/IdleAdditive.anim
+- Assets/SaoriBundle/VFX/Materials/matPunchImpactShadow.mat
+- Assets/SaoriBundle/Animation/clips/WalkR.anim
+- Assets/SaoriBundle/Animation/maskAimPitch.mask
+- Assets/SaoriBundle/VFX/Textures/texDust.png
+- Assets/SaoriBundle/Textures/texShotgun.png
+- Assets/SaoriBundle/Mesh/meshHenry.mesh
+- Assets/SaoriBundle/Mesh/meshYamato.mesh
+- Assets/SaoriBundle/Animation/clips/SprintF.anim
+- Assets/SaoriBundle/VFX/Materials/matFire.mat
+- Assets/SaoriBundle/Animation/clips/AimPitch.anim
+- Assets/SaoriBundle/VFX/Textures/texFistSwing.png
+- Assets/SaoriBundle/Animation/clips/Jump.anim
+- Assets/SaoriBundle/mdlSaori.prefab
+- Assets/SaoriBundle/Mesh/meshDanteCoat.mesh
+- Assets/SaoriBundle/VFX/Materials/matRipple.mat
+- Assets/SaoriBundle/Animation/clips/WalkB.anim
+- Assets/SaoriBundle/Icons/texUziIcon.png
+- Assets/SaoriBundle/Materials/matShotgun.mat
+- Assets/SaoriBundle/VFX/Materials/matDust.mat
+- Assets/SaoriBundle/Animation/clips/SprintR.anim
+- Assets/SaoriBundle/Textures/texHenryNeo.png
+- Assets/SaoriBundle/Icons/texBoxingGlovesIcon.png
+- Assets/SaoriBundle/VFX/BombExplosionEffect.prefab
+- Assets/SaoriBundle/Icons/texHenryAchievement.png
+- Assets/SaoriBundle/VFX/Materials/matSwingShadow.mat
+- Assets/SaoriBundle/Animation/clips/AimYaw.anim
+- Assets/SaoriBundle/VFX/Materials/matHenrySwing2.mat
+- Assets/SaoriBundle/VFX/Materials/matPunchImpact.mat
+- Assets/SaoriBundle/Animation/clips/Slash2.anim
+- Assets/SaoriBundle/SaoriMonsterMaster.prefab
+- Assets/SaoriBundle/Textures/texHenryJediEmission.png
+- Assets/SaoriBundle/HenryBazookaRocketGhost.prefab
+- Assets/SaoriBundle/VFX/Textures/texSwingEffect.png
+- Assets/SaoriBundle/Textures/texHenryAlt.png
+- Assets/SaoriBundle/Animation/clips/LightImpact.anim
+- Assets/SaoriBundle/Materials/matBoxingGlove.mat
+- Assets/SaoriBundle/Materials/matHenry.mat
+- Assets/SaoriBundle/Materials/matRebellion.mat
+- Assets/SaoriBundle/Animation/maskGesture.mask
+- Assets/SaoriBundle/VFX/Materials/matSlash.mat
+- Assets/SaoriBundle/VFX/Materials/matPunchEffect.mat
+- Assets/SaoriBundle/VFX/Textures/texPunchImpact.png
+- Assets/SaoriBundle/Animation/clips/Slash1.anim
+- Assets/SaoriBundle/VFX/HenryDustEffect.prefab
+- Assets/SaoriBundle/Icons/texSpecialIcon.png
+- Assets/SaoriBundle/VFX/Mesh/meshBoxingGlove.mesh
+- Assets/SaoriBundle/Icons/texVergilAchievement.png
+- Assets/SaoriBundle/Materials/matDante.mat
+- Assets/SaoriBundle/Icons/texSecondaryIcon.png
+- Assets/SaoriBundle/Icons/texBazookaIcon.png
+- Assets/SaoriBundle/Icons/texUtilityIcon.png
+- Assets/SaoriBundle/Materials/matHenryJedi.mat
+- Assets/SaoriBundle/VFX/Textures/texSmoke.png
+- Assets/SaoriBundle/Textures/texHenryDanteEmission.png
+- Assets/SaoriBundle/Mesh/meshVergil.mesh
+- Assets/SaoriBundle/Textures/texBoxingGlove.png
+- Assets/SaoriBundle/Animation/maskAimYaw.mask
+- Assets/SaoriBundle/VFX/Textures/texLightning.tif
+- Assets/SaoriBundle/Mesh/meshUzi.mesh
+- Assets/SaoriBundle/Icons/texDanteAchievement.png
+- Assets/SaoriBundle/VFX/FistBarrageEffect.prefab
+- Assets/SaoriBundle/VFX/HenryBazookaExplosionEffect.prefab
+- Assets/SaoriBundle/VFX/Materials/matFistSwing.mat
+- Assets/SaoriBundle/VFX/Textures/texRipple.png
+- Assets/SaoriBundle/Animation/clips/DefaultPose.anim
+- Assets/SaoriBundle/Animation/clips/SprintL.anim
+- Assets/SaoriBundle/Textures/texBazooka.png
+- Assets/SaoriBundle/Mesh/meshNeoCoat.mesh
+- Assets/SaoriBundle/Icons/texMasteryAchievement.png
+- Assets/SaoriBundle/Textures/texHenryJedi.png
+- Assets/SaoriBundle/VFX/Materials/matSmoke.mat
+- Assets/SaoriBundle/Animation/clips/RestIdle.anim
+- Assets/SaoriBundle/VFX/Materials/matTrail.mat
+- Assets/SaoriBundle/Icons/texPrimaryIcon.png
+- Assets/SaoriBundle/Icons/texPassiveIcon.png
+- Assets/SaoriBundle/Animation/clips/MenuIdleIn.anim
+- Assets/SaoriBundle/Textures/texHenryDante.png
+Dependencies: []

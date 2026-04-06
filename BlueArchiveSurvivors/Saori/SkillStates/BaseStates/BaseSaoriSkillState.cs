@@ -1,4 +1,4 @@
-﻿using BAMod.Tsurugi.SkillStates.BaseStates;
+﻿using BAMod.Mashiro.SkillStates.BaseStates;
 using EntityStates;
 using RoR2;
 using RoR2.Skills;

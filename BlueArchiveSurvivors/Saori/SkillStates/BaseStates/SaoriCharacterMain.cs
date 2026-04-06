@@ -2,7 +2,7 @@
 using EntityStates;
 using RoR2;
 using BAMod.Saori.SkillStates.Special;
-namespace BAMod.Tsurugi.SkillStates.BaseStates
+namespace BAMod.Mashiro.SkillStates.BaseStates
 {
     public class SaoriCharacterMain : GenericCharacterMain
     {

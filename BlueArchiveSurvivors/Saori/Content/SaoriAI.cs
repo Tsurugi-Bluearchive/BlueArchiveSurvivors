@@ -2,7 +2,7 @@
 using RoR2.CharacterAI;
 using UnityEngine;
 
-namespace BAMod.Tsurugi.Content
+namespace BAMod.Mashiro.Content
 {
     public static class SaoriAI
     {

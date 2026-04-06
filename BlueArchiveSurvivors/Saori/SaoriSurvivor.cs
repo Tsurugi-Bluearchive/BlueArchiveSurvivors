@@ -8,12 +8,12 @@ using RoR2;
 using RoR2.Skills;
 using System.Collections.Generic;
 using UnityEngine;
-using BAMod.Tsurugi.Content;
+using BAMod.Mashiro.Content;
 using BAMod.Saori.SkillStates.BaseStates;
 using BAMod.Saori.SkillStates.SpecialLock;
 using R2API;
 using BAMod.Saori.Content;
-using BAMod.Tsurugi.SkillStates.BaseStates;
+using BAMod.Mashiro.SkillStates.BaseStates;
 namespace BAMod.Saori
 {
     public class SaoriSurvivor : SurvivorBase<SaoriSurvivor>
@@ -109,6 +109,8 @@ namespace BAMod.Saori
 
         private void AdditionalBodySetup()
         {
+            bodyPrefab.AddComponent<ModelSkinController>();
+            displayPrefab.AddComponent<ModelSkinController>();
             AddHitboxes();
         }
 

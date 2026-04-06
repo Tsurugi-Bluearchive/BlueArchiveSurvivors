@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8315140139193097814, guid: a32fb17ad7dfd7b4f8b893feaf7d7512, type: 3}
       propertyPath: m_Name
-      value: TsurugiDisplay
+      value: MashiroDisplay
       objectReference: {fileID: 0}
     - target: {fileID: 8315140139193319990, guid: a32fb17ad7dfd7b4f8b893feaf7d7512, type: 3}
       propertyPath: m_RootOrder
@@ -128,5 +128,70 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 4397b394b0996d44ba60f0f7769a33d1, type: 2}
     m_RemovedComponents:
-    - {fileID: 7238953315125949139, guid: a32fb17ad7dfd7b4f8b893feaf7d7512, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: a32fb17ad7dfd7b4f8b893feaf7d7512, type: 3}
+--- !u!1 &8038699471940491053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8315140139193097814, guid: a32fb17ad7dfd7b4f8b893feaf7d7512, type: 3}
+  m_PrefabInstance: {fileID: 2083615708860664187}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-5076934751025702357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8038699471940491053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1143142494, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 0}
+  itemDisplayRuleSet: {fileID: 0}
+  autoPopulateLightInfos: 1
+  gameObjectActivationTransforms: []
+  customGameObjectActivationTransforms: []
+  baseRendererInfos: []
+  fullBodyPing: 0
+  baseLightInfos: []
+  constraintItemDisplaysScale: 0
+  ignoreJitterBones: 0
+  corpseFade: 1
+  speedFade: 1
+  CharacterOnScreen: 0
+  visibilityChecker: {fileID: 0}
+  useHullForFadeCalc: 0
+  activeOverlays: 0
+  oldOverlays: 0
+  hitFlashValue: 0
+  healFlashValue: 0
+  oldHit: 0
+  oldHeal: 0
+  oldFade: 0
+  forceUpdate: 0
+--- !u!114 &7572051563350465102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8038699471940491053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1533710874, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DelayLoadingAnimatorUntilMaterialsHaveCompleted: 0
+  _animatorControllerAddress:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+  _animatorController: {fileID: 0}
+  _avatarAddress:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+  _avatar: {fileID: 0}
+  skins: []
+  prefabInstantiationDatas: []

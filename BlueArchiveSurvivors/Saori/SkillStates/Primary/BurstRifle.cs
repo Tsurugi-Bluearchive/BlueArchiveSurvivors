@@ -44,7 +44,7 @@ namespace BAMod.Saori.SkillStates.Primary
                             owner = base.gameObject,
                             weapon = base.gameObject,
                             origin = aimRay.origin,
-                            aimVector = p,
+                            aimVector = p + aimRay.direction * 2,
                             minSpread = 0f,
                             maxSpread = base.characterBody.spreadBloomAngle,
                             bulletCount = 1U,

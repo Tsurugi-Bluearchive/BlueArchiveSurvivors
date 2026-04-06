@@ -15,11 +15,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Tsurugi\SkillStates\SecondUtility\**" />
+    <Compile Remove="Mashiro\SkillStates\SecondUtility\**" />
     <Compile Remove="Weaver\**" />
-    <EmbeddedResource Remove="Tsurugi\SkillStates\SecondUtility\**" />
+    <EmbeddedResource Remove="Mashiro\SkillStates\SecondUtility\**" />
     <EmbeddedResource Remove="Weaver\**" />
-    <None Remove="Tsurugi\SkillStates\SecondUtility\**" />
+    <None Remove="Mashiro\SkillStates\SecondUtility\**" />
     <None Remove="Weaver\**" />
   </ItemGroup>
     
@@ -53,8 +53,7 @@
 	<ItemGroup>
 	  <Folder Include="GlobalContent\" />
 	  <Folder Include="Saori\Components\" />
-	  <Folder Include="Tsurugi\Components\" />
-	  <Folder Include="Tsurugi\SkillStates\Utility\" />
+	  <Folder Include="Mashiro\Components\" />
 	</ItemGroup>
     
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">

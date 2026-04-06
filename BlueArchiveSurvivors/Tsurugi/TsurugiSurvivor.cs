@@ -110,6 +110,8 @@ namespace BAMod.Tsurugi
         {
             AddHitboxes();
             bodyPrefab.AddComponent<CrazyWomanPassiveDictator>();
+            bodyPrefab.AddComponent<ModelSkinController>();
+            displayPrefab.AddComponent<ModelSkinController>();
         }
 
         public void AddHitboxes()

@@ -1,0 +1,218 @@
+ManifestFileVersion: 0
+CRC: 2716083244
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2f7cd5f9a7d5d554b8d5d0e0bfe8b6a0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a42d17593b43c1a226a6eb02a8ad9fab
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1143142494, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1533710874, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 678291247, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -517518216, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 319
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: RoR2
+  ClassName: ChildLocator/NameTransformPair
+- AssemblyName: Unity.Addressables
+  ClassName: UnityEngine.AddressableAssets.AssetReferenceT`1[UnityEngine.Avatar]
+- AssemblyName: Unity.Addressables
+  ClassName: UnityEngine.AddressableAssets.AssetReferenceT`1[UnityEngine.RuntimeAnimatorController]
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent
+Assets:
+- Assets/MatshiroBundle/Animation/maskAimYaw.mask
+- Assets/MatshiroBundle/VFX/Mesh/meshBoxingGlove.mesh
+- Assets/MatshiroBundle/VFX/Mesh/meshSwing.asset
+- Assets/MatshiroBundle/Textures/texHenryJedi.png
+- Assets/MatshiroBundle/VFX/Materials/matPunchEffect.mat
+- Assets/MatshiroBundle/Mesh/meshRebellion.mesh
+- Assets/MatshiroBundle/VFX/Materials/matSlash.mat
+- Assets/MatshiroBundle/Icons/texSecondaryIcon.png
+- Assets/MatshiroBundle/Animation/clips/WalkF.anim
+- Assets/MatshiroBundle/Materials/matDante.mat
+- Assets/MatshiroBundle/Icons/texBoxingGlovesIcon.png
+- Assets/MatshiroBundle/VFX/Textures/texDust.png
+- Assets/MatshiroBundle/Animation/clips/RestIdle.anim
+- Assets/MatshiroBundle/Animation/maskGesture.mask
+- Assets/MatshiroBundle/VFX/HenrySwordSwingEffect.prefab
+- Assets/MatshiroBundle/VFX/Materials/matHenrySwing2.mat
+- Assets/MatshiroBundle/Icons/texHenryIcon.png
+- Assets/MatshiroBundle/Animation/clips/WalkB.anim
+- Assets/MatshiroBundle/Icons/texBazookaIcon.png
+- Assets/MatshiroBundle/Icons/texMasteryAchievement.png
+- Assets/MatshiroBundle/Animation/maskAimPitch.mask
+- Assets/MatshiroBundle/VFX/Materials/matPunchImpact.mat
+- Assets/MatshiroBundle/VFX/HenryDustEffect.prefab
+- Assets/MatshiroBundle/Icons/texBazookaIconScepter.png
+- Assets/MatshiroBundle/Animation/clips/Slash1.anim
+- Assets/MatshiroBundle/VFX/FistBarrageEffect.prefab
+- Assets/MatshiroBundle/Mesh/meshHenryNeo.mesh
+- Assets/MatshiroBundle/Textures/texHenryJediEmission.png
+- Assets/MatshiroBundle/Materials/matBazookaRocket.mat
+- Assets/MatshiroBundle/VFX/Textures/texSmoke.png
+- Assets/MatshiroBundle/Icons/texSpecialIcon.png
+- Assets/MatshiroBundle/VFX/Textures/texSlash.png
+- Assets/MatshiroBundle/Icons/texDanteAchievement.png
+- Assets/MatshiroBundle/VFX/Materials/matSwingShadow.mat
+- Assets/MatshiroBundle/Animation/clips/ShootGun.anim
+- Assets/MatshiroBundle/Animation/clips/SprintF.anim
+- Assets/MatshiroBundle/VFX/Textures/texFistSwing.png
+- Assets/MatshiroBundle/Mesh/meshVergilCoat.mesh
+- Assets/MatshiroBundle/Animation/clips/WalkR.anim
+- Assets/MatshiroBundle/Mesh/MeshHenryGun.mesh
+- Assets/MatshiroBundle/Animation/clips/SprintL.anim
+- Assets/MatshiroBundle/VFX/ImpactHenryPunch.prefab
+- Assets/MatshiroBundle/Animation/clips/AimYaw.anim
+- Assets/MatshiroBundle/Animation/maskBandana.mask
+- Assets/MatshiroBundle/Textures/texHenryAlt.png
+- Assets/MatshiroBundle/Icons/texScepterSpecialIcon.png
+- Assets/MatshiroBundle/Animation/clips/DefaultPose.anim
+- Assets/MatshiroBundle/Mesh/meshDante.mesh
+- Assets/MatshiroBundle/Icons/texPassiveIcon.png
+- Assets/MatshiroBundle/Animation/clips/LightImpact.anim
+- Assets/MatshiroBundle/VFX/Textures/texHitSpark.png
+- Assets/MatshiroBundle/VFX/Textures/texEmbers.png
+- Assets/MatshiroBundle/Animation/animHenryMenu.controller
+- Assets/MatshiroBundle/Textures/texBoxingGlove.png
+- Assets/MatshiroBundle/VFX/HenryBazookaExplosionEffect.prefab
+- Assets/MatshiroBundle/VFX/Materials/matFire.mat
+- Assets/MatshiroBundle/VFX/Materials/matPunchImpactShadow.mat
+- Assets/MatshiroBundle/Mesh/meshHenryAlt.mesh
+- Assets/MatshiroBundle/Icons/texUziIcon.png
+- Assets/MatshiroBundle/VFX/Materials/matEmbers.mat
+- Assets/MatshiroBundle/mdlMashiro.prefab
+- Assets/MatshiroBundle/Animation/clips/AimPitch.anim
+- Assets/MatshiroBundle/VFX/Materials/matHitSparkPunch.mat
+- Assets/MatshiroBundle/Animation/clips/Jump.anim
+- Assets/MatshiroBundle/Mashiro Tank Round.fbx
+- Assets/MatshiroBundle/MashiroDisplay.prefab
+- Assets/MatshiroBundle/Textures/Malice.png
+- Assets/MatshiroBundle/Icons/texMainSkin.png
+- Assets/MatshiroBundle/VFX/Materials/matSwingEffect.mat
+- Assets/MatshiroBundle/MashiroMonsterMaster.prefab
+- Assets/MatshiroBundle/Animation/clips/Slash2.anim
+- Assets/MatshiroBundle/Textures/texHenryNeo.png
+- Assets/MatshiroBundle/VFX/Textures/texSwingEffect.png
+- Assets/MatshiroBundle/VFX/ImpactHenrySlash.prefab
+- Assets/MatshiroBundle/MashiroBigGhost.prefab
+- Assets/MatshiroBundle/MashiroSmallGhost.prefab
+- Assets/MatshiroBundle/VFX/Materials/matRipple.mat
+- Assets/MatshiroBundle/Animation/clips/SprintR.anim
+- Assets/MatshiroBundle/Icons/texBazookaOutIcon.png
+- Assets/MatshiroBundle/Materials/matShotgun.mat
+- Assets/MatshiroBundle/Mesh/meshDanteCoat.mesh
+- Assets/MatshiroBundle/Mesh/meshPistol.mesh
+- Assets/MatshiroBundle/Animation/clips/Descend.anim
+- Assets/MatshiroBundle/Animation/clips/MenuIdleIn.anim
+- Assets/MatshiroBundle/Icons/texPistolIcon.png
+- Assets/MatshiroBundle/Textures/texHenryDante.png
+- Assets/MatshiroBundle/Textures/texHenry.png
+- Assets/MatshiroBundle/VFX/Textures/texHenrySwing2.png
+- Assets/MatshiroBundle/VFX/Mesh/meshPunchShockwave.mesh
+- Assets/MatshiroBundle/VFX/Textures/texFire.tga
+- Assets/MatshiroBundle/Animation/clips/MenuIdle.anim
+- Assets/MatshiroBundle/VFX/Materials/matAnimeShapes.mat
+- Assets/MatshiroBundle/Animation/animHenry.controller
+- Assets/MatshiroBundle/VFX/Textures/texPunchImpactShadow.png
+- Assets/MatshiroBundle/Animation/clips/WalkL.anim
+- Assets/MatshiroBundle/VFX/Materials/matHitSpark.mat
+- Assets/MatshiroBundle/Animation/maskLeftArm.mask
+- Assets/MatshiroBundle/Animation/clips/Ascend.anim
+- Assets/MatshiroBundle/Animation/maskAimBazooka.mask
+- Assets/MatshiroBundle/Materials/matBazooka.mat
+- Assets/MatshiroBundle/VFX/Materials/matTrail.mat
+- Assets/MatshiroBundle/Textures/texHenryDanteEmission.png
+- Assets/MatshiroBundle/Animation/clips/DescendFast.anim
+- Assets/MatshiroBundle/Materials/matBoxingGlove.mat
+- Assets/MatshiroBundle/VFX/Textures/texRipple.png
+- Assets/MatshiroBundle/VFX/BombExplosionEffect.prefab
+- Assets/MatshiroBundle/Mesh/meshNeoCoat.mesh
+- Assets/MatshiroBundle/Materials/matHenryJedi.mat
+- Assets/MatshiroBundle/Materials/matRebellion.mat
+- Assets/MatshiroBundle/Materials/matHenryAlt.mat
+- Assets/MatshiroBundle/Icons/texVergilAchievement.png
+- Assets/MatshiroBundle/Icons/texGrandMasteryAchievement.png
+- Assets/MatshiroBundle/Mesh/meshYamato.mesh
+- Assets/MatshiroBundle/Icons/texHenryAchievement.png
+- Assets/MatshiroBundle/Animation/maskImpact.mask
+- Assets/MatshiroBundle/Textures/texHenryVergil.png
+- Assets/MatshiroBundle/Animation/clips/RestIdleIn.anim
+- Assets/MatshiroBundle/Animation/clips/ThrowBomb.anim
+- Assets/MatshiroBundle/Mesh/meshUzi.mesh
+- Assets/MatshiroBundle/Icons/texShotgunIcon.png
+- Assets/MatshiroBundle/Materials/matVergil.mat
+- Assets/MatshiroBundle/Textures/texBazooka.png
+- Assets/MatshiroBundle/Animation/clips/IdleAdditive.anim
+- Assets/MatshiroBundle/VFX/Materials/matSmoke.mat
+- Assets/MatshiroBundle/VFX/Materials/matFistSwing.mat
+- Assets/MatshiroBundle/VFX/Textures/texLightning.tif
+- Assets/MatshiroBundle/VFX/Textures/texPunchImpact.png
+- Assets/MatshiroBundle/Icons/texBazookaFireIcon.png
+- Assets/MatshiroBundle/Icons/texUtilityIcon.png
+- Assets/MatshiroBundle/Mesh/meshHenrySwordAlt.mesh
+- Assets/MatshiroBundle/VFX/HenryFistSwingEffect.prefab
+- Assets/MatshiroBundle/VFX/HenryBazookaMuzzleFlash.prefab
+- Assets/MatshiroBundle/Materials/matHenryNeo.mat
+- Assets/MatshiroBundle/Animation/clips/IdleIn.anim
+- Assets/MatshiroBundle/VFX/Materials/matDust.mat
+- Assets/MatshiroBundle/Mesh/meshVergil.mesh
+- Assets/MatshiroBundle/Mesh/meshHenry.mesh
+- Assets/MatshiroBundle/Icons/texPrimaryIcon.png
+- Assets/MatshiroBundle/Materials/matRoy.mat
+- Assets/MatshiroBundle/Textures/texShotgun.png
+- Assets/MatshiroBundle/Animation/clips/Idle.anim
+- Assets/MatshiroBundle/Animation/clips/Roll.anim
+- Assets/MatshiroBundle/Materials/matHenry.mat
+- Assets/MatshiroBundle/Matshiro Snapshot Round.fbx
+- Assets/MatshiroBundle/Icons/texStingerIcon.png
+- Assets/MatshiroBundle/Mesh/meshHenrySword.mesh
+Dependencies:
+- C:/Users/dmans/BlueArchiveSurvivors/AssetBundles/StandaloneWindows/saoriassetbundle
+- C:/Users/dmans/BlueArchiveSurvivors/AssetBundles/StandaloneWindows/tsurugiassetbundle

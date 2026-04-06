@@ -1,6 +1,6 @@
 ﻿using BAMod.Saori.SkillStates.BaseStates;
-using BAMod.Tsurugi.Content;
-using BAMod.Tsurugi.SkillStates.BaseStates;
+using BAMod.Mashiro.Content;
+using BAMod.Mashiro.SkillStates.BaseStates;
 using EntityStates;
 using RoR2;
 using System;

@@ -1,10 +1,11 @@
 ﻿using BAMod.Saori;
-using BAMod.Tsurugi;
+using BAMod.Mashiro;
 using BepInEx;
 using R2API;
 using R2API.Utils;
 using System.Security;
 using System.Security.Permissions;
+using BAMod.Tsurugi;
 
 [module: UnverifiableCode]
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -49,6 +50,7 @@ namespace BAMod
 
             // character initializatio
             new SaoriSurvivor().Initialize();
+            new MashiroSurvivor().Initialize();
             new TsurugiSurvivor().Initialize();
 
             // make a content pack and add it. this has to be last

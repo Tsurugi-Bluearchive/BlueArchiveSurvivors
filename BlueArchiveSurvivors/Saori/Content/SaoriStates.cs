@@ -2,7 +2,7 @@
 using BAMod.Saori.SkillStates.Primary;
 using BAMod.Saori.SkillStates.Secondary;
 using BAMod.Saori.SkillStates.Special;
-using BAMod.Tsurugi.SkillStates.BaseStates;
+using BAMod.Mashiro.SkillStates.BaseStates;
 namespace BAMod.Saori.Content
 {
     public static class SaoriStates

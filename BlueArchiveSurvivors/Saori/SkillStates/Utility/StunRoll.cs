@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using RoR2;
-using BAMod.Tsurugi.SkillStates.BaseStates;
+using BAMod.Mashiro.SkillStates.BaseStates;
 using BAMod.Saori.SkillStates.BaseStates;
 
 namespace BAMod.Saori.SkillStates.Utility

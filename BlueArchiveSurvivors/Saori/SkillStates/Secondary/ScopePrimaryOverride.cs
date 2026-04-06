@@ -1,6 +1,6 @@
 ﻿using BAMod.Saori.Content;
 using BAMod.Saori.SkillStates.BaseStates;
-using BAMod.Tsurugi.SkillStates.BaseStates;
+using BAMod.Mashiro.SkillStates.BaseStates;
 using EntityStates.Commando.CommandoWeapon;
 using RoR2;
 using System;
@@ -35,7 +35,7 @@ namespace BAMod.Saori.SkillStates.Secondary
                 {
                     owner = base.gameObject,
                     weapon = base.gameObject,
-                    origin = aimRay.origin,
+                    origin = aimRay.origin + aimRay.direction * 2,
                     aimVector = aimRay.direction,
                     minSpread = 0f,
                     maxSpread = base.characterBody.spreadBloomAngle,

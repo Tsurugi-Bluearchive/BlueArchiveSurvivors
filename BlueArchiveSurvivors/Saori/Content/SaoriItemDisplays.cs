@@ -11,7 +11,7 @@ using UnityEngine;
                     {localScale})
 */
 
-namespace BAMod.Tsurugi.Content
+namespace BAMod.Mashiro.Content
 {
     public class SaoriItemDisplays : ItemDisplaysBase
     {

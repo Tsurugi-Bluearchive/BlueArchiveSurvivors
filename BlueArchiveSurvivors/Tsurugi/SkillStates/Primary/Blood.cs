@@ -44,7 +44,7 @@ namespace BAMod.Tsurugi.SkillStates.Primary
                                 owner = base.gameObject,
                                 weapon = base.gameObject,
                                 origin = aimRay.origin,
-                                aimVector = p,
+                                aimVector = p + aimRay.direction * 2f,
                                 minSpread = 0f,
                                 maxSpread = base.characterBody.spreadBloomAngle,
                                 bulletCount = 1U,
@@ -56,7 +56,7 @@ namespace BAMod.Tsurugi.SkillStates.Primary
                                 hitEffectPrefab = this.hitEffectPrefab,
                                 isCrit = base.RollCrit(),
                                 HitEffectNormal = false,
-                                stopperMask = BulletAttack.defaultStopperMask,
+                                stopperMask = BulletAttack.defaultHitMask,
                                 smartCollision = true,
                                 maxDistance = 300f,
                                 damageType = damageType,
@@ -95,6 +95,8 @@ namespace BAMod.Tsurugi.SkillStates.Primary
                             mysteriousKaboom.Fire();
                         }
                     }
+
+                    AddRecoil(20, 20, 0, 0);
                     fired = true;
                 }
                 if (fired && fixedAge > duration)
