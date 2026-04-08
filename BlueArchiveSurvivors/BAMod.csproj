@@ -51,7 +51,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="GlobalContent\" />
 	  <Folder Include="Saori\Components\" />
 	  <Folder Include="Mashiro\Components\" />
 	</ItemGroup>
