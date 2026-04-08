@@ -1,7 +1,10 @@
-﻿using BAMod.Modules;
+﻿using BAMod.GlobalContent.Components;
+using BAMod.GlobalContent.Scripts;
+using BAMod.Modules;
 using Rewired;
 using RoR2;
 using RoR2.Projectile;
+using RoR2BepInExPack.GameAssetPaths;
 using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -27,6 +30,9 @@ namespace BAMod.Mashiro.Content
         private static AssetBundle _assetBundle;
 
         public static bool Abort;
+
+        public static int MashiroBigBullet;
+        public static int MashiroSmallBullet;
 
         public static Sprite Malice;
         public static GameObject BigProjectikle;
@@ -64,9 +70,11 @@ namespace BAMod.Mashiro.Content
         #region projectiles
         private static void CreateProjectiles()
         {
-            BigProjectikle = _assetBundle.LoadAsset<GameObject>("MashiroBig");
+            BigProjectikle = _assetBundle.LoadAsset<GameObject>("MashiroBigGhost");
+            SimBulletManager.RegisterSimBulletObject(out MashiroBigBullet, BigProjectikle);
 
-
+            SmallProjectile = _assetBundle.LoadAsset<GameObject>("MashiroSmallGhost");
+            SimBulletManager.RegisterSimBulletObject(out MashiroSmallBullet, SmallProjectile);
         }
 
         #endregion projectiles

@@ -6,6 +6,8 @@ using R2API.Utils;
 using System.Security;
 using System.Security.Permissions;
 using BAMod.Tsurugi;
+using BAMod.GlobalContent.Components;
+using BAMod.GlobalContent.Scripts;
 
 [module: UnverifiableCode]
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -46,6 +48,7 @@ namespace BAMod
 
             // used when you want to properly set up language folders
             Modules.Language.Init();
+            SimBulletManager.Init();
 
 
             // character initializatio

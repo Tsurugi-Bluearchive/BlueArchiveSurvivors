@@ -10,6 +10,7 @@ using UnityEngine;
 using BAMod.Mashiro.SkillStates.BaseStates;
 using EntityStates;
 using RoR2.Projectile;
+using BAMod.GlobalContent.Scripts;
 
 namespace BAMod.Mashiro.SkillStates.Primary
 {
@@ -34,20 +35,29 @@ namespace BAMod.Mashiro.SkillStates.Primary
                 if (!fired)
                 {
                     var aimRay = base.GetAimRay();
-                    var snapshotround = new FireProjectileInfo()
+                    SimBulletManager.Fire(new SimBulletManager.SimBullet()
                     {
-                        crit = base.RollCrit(),
-                        damage = MashiroStaticValues.smallGunDamageCoefficient * damageStat,
-                        fuseOverride = float.MaxValue,
-                        useSpeedOverride = true,
-                        owner = this.characterBody.gameObject,
-                        position = aimRay.origin + aimRay.direction * 2,
-                        rotation = Quaternion.LookRotation(aimRay.direction),
-                        projectilePrefab = MashiroAssets.SmallProjectile,
-                        force = 200,
-                        speedOverride = 400
-                    };
-                    ProjectileManager.instance.FireProjectile(snapshotround);
+                        radius = 5,
+                        resolution = 10,
+                        damageInfo = new DamageInfo()
+                        {
+                            damageColorIndex = DamageColorIndex.Default,
+                            damage = damageStat * MashiroStaticValues.smallGunDamageCoefficient,
+                            damageType = damageType,
+                            attacker = this.gameObject,
+                            crit = base.RollCrit()
+                        },
+                        direction = aimRay.direction,
+                        dropSpeed = 10,
+                        maximumDistance = 300,
+                        origin = aimRay.origin,
+                        hitMask = BulletAttack.defaultHitMask,
+                        stopperMask = LayerIndex.world.collisionMask,
+                        velocity = 20,
+                        owner = this.gameObject,
+                        prefabIndex = MashiroAssets.MashiroSmallBullet,
+                        type = GlobalContent.Components.SimBulletType.exponential,
+                    });
                     fired = true;
                 }
                 if (fixedAge > duration)
