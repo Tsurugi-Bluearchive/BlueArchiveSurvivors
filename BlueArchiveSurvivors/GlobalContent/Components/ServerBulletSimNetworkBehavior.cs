@@ -1,20 +1,19 @@
 ﻿using BAMod.GlobalContent.Scripts;
 using RoR2;
+using RoR2BepInExPack.GameAssetPaths;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using static BAMod.GlobalContent.Scripts.SimulatedBulletAttack;
+using static BAMod.GlobalContent.Scripts.SimBulletManager;
 
 namespace BAMod.GlobalContent.Components
 {
-    internal class BulletSimNetworkBehavior : NetworkBehaviour
+    internal class ServerBulletSimNetworkBehavior : NetworkBehaviour
     {
         public static Dictionary<int, SimBullet> ServerBullets = new();
-        public static Dictionary<int, ClientSimBullet> ClientBullets = new();
+        public static Dictionary<int, BulletSimComponent> ClientBullets = new();
         public static List<(int key, RaycastHit hit)> PendingDestroy = new();
-
-        public static BulletSimNetworkBehavior ServerInstance;
 
         public static float PhysicsStep;
         public static float PhysicsTime;
@@ -39,19 +38,50 @@ namespace BAMod.GlobalContent.Components
                 var simBullet = bullet.Value;
                 List<ReturnPositionalValues> points = new();
                 PhysicsStep = Time.fixedDeltaTime / simBullet.resolution;
-
                 for (int i = 0; i < simBullet.resolution; i++)
                 {
-                    simBullet.attack.Evaluate(
-                        out var newPosition,
-                        simBullet.travelTime,
-                        simBullet.travelTime + PhysicsStep * ((i + 1) / (float)simBullet.resolution)
-                    );
+                    float prevTime = simBullet.travelTime;
+                    float currTime = simBullet.travelTime + PhysicsStep * ((i + 1) / (float)simBullet.resolution);
+
+                    ReturnPositionalValues newPosition;
+
+                    switch (simBullet.type)
+                    {
+                        case SimBulletType.linear:
+                            SimBulletManager.LinearDrop.Evaluate(
+                                simBullet,
+                                prevTime,
+                                currTime,
+                                out newPosition
+                            );
+                            break;
+
+                        case SimBulletType.logarithmic:
+                            SimBulletManager.LogarithmicDrop.Evaluate(
+                                simBullet,
+                                prevTime,
+                                currTime,
+                                out newPosition
+                            );
+                            break;
+
+                        case SimBulletType.exponential:
+                            SimBulletManager.ExponentialDrop.Evaluate(
+                                simBullet,
+                                prevTime,
+                                currTime,
+                                out newPosition
+                            );
+                            break;
+                        default:
+                            continue;
+                    }
+
                     points.Add(newPosition);
                 }
 
                 RaycastHit[] hits = Array.Empty<RaycastHit>();
-                if (isExpired(points, simBullet, out hits, out var endPoint))
+                if (SimBulletManager.IsExpired(points, simBullet, out hits, out var endPoint))
                 {
                     PendingDestroy.Add((bullet.Key, endPoint));
                 }
@@ -74,11 +104,11 @@ namespace BAMod.GlobalContent.Components
         }
 
         [Command]
-        void CmdRegisterBullet(AttemptDamagePacket damagePacket, Vector3 origin, Vector3 direction, float velocity, float dropSpeed, byte resolution)
+        void CmdRegisterBullet(AttemptDamagePacket damagePacket, Vector3 origin, Vector3 direction, float velocity, float dropSpeed, byte resolution, int bulletIndex)
         {
             int newId = _nextBulletId++;
 
-            var bullet = new SimBullet(damagePacket.type)
+            var bullet = new SimBullet()
             {
                 origin = origin,
                 direction = direction,
@@ -90,28 +120,34 @@ namespace BAMod.GlobalContent.Components
             };
 
             ServerBullets[newId] = bullet;
-            RPCSpawnBullet(newId, origin, direction);
+            RpcSpawnBullet(bulletIndex, newId);
         }
 
         [ClientRpc]
-        void RPCSpawnBullet(int id, Vector3 origin, Vector3 direction)
+        void RpcSpawnBullet(int index, int ID)
         {
             if (!isClient) return;
-
-            ClientBullets[id] = new ClientSimBullet
+            if (SimBulletManager.ReturnSimbBulletObject(out var toInstantiate, index))
             {
-                position = origin,
-                direction = direction
-            };
+                ClientBullets.Add(ID, Instantiate(toInstantiate, this.gameObject.transform).GetComponent<BulletSimComponent>());
+                ClientBullets[ID].ID = ID;
+            }
+            else
+            {
+                Log.Error("Attempted to instantiate a SimBullet clientSide but couldn't!");
+            }
         }
 
         [ClientRpc]
         void RPCExpireAttack(int id)
         {
             if (!isClient) return;
-            if (ClientBullets.TryGetValue(id, out var bullet))
+            if (ClientBullets.TryGetValue(id, out var component))
             {
-                if (bullet.ghostPrefab) Destroy(bullet.ghostPrefab);
+                component.Destroy = true;
+            }
+            else
+            {
                 ClientBullets.Remove(id);
             }
         }
@@ -157,37 +193,27 @@ namespace BAMod.GlobalContent.Components
         {
             if (isServer)
             {
-                if (ServerInstance != this) ServerInstance = this;
+                if (SimBulletManager.ServerInstance != this)
+                {
+                    SimBulletManager.ServerInstance = this;
+                    RpcSetClientInstances(this.netId);
+                }
                 ServerPhysicsUpdate();
             }
         }
 
-        [ClientCallback]
-        void Update()
+        [ClientRpc]
+        void RpcSetClientInstances(NetworkInstanceId ID)
         {
-            foreach (var bullet in ClientBullets.Values)
-            {
-                bullet.position += bullet.direction * bullet.forwardsVelocity * Time.deltaTime;
-                if (bullet.ghostPrefab)
-                    bullet.ghostPrefab.transform.position = bullet.position;
-            }
+            SimBulletManager.ServerInstance = Util.FindNetworkObject(ID).GetComponent<ServerBulletSimNetworkBehavior>();
         }
-        public void RegisterBullet(AttemptDamagePacket damagePacket, Vector3 origin, Vector3 direction, float velocity, float dropSpeed, byte resolution)
+        public void RegisterBullet(AttemptDamagePacket damagePacket, Vector3 origin, Vector3 direction, float velocity, float dropSpeed, byte resolution, int bulletIndex)
         {
             if (isClient)
             {
-                CmdRegisterBullet(damagePacket, origin, direction, velocity, dropSpeed, resolution);
+                CmdRegisterBullet(damagePacket, origin, direction, velocity, dropSpeed, resolution, bulletIndex);
             }
         }
-    }
-
-    internal class ClientSimBullet
-    {
-        public Vector3 position;
-        public Vector3 direction;
-        public float forwardsVelocity;
-        public GameObject ghostPrefab;
-        public GameObject tracerPrefab;
     }
 
     internal struct AttemptDamagePacket

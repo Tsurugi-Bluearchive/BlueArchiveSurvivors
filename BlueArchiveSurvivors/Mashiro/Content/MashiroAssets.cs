@@ -1,5 +1,4 @@
-﻿using BAMod.GlobalContent.AttackComponents;
-using BAMod.Modules;
+﻿using BAMod.Modules;
 using Rewired;
 using RoR2;
 using RoR2.Projectile;
@@ -66,8 +65,7 @@ namespace BAMod.Mashiro.Content
         private static void CreateProjectiles()
         {
             BigProjectikle = _assetBundle.LoadAsset<GameObject>("MashiroBig");
-            var controller = BigProjectikle.AddComponent<BulletSimController>();
-            controller.projectileGhostPrefab = _assetBundle.LoadAsset<GameObject>("MashiroBigGhost");
+
 
         }
 
