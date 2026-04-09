@@ -8,6 +8,7 @@ namespace BAMod.GlobalContent.Scripts
     static class ClientSimBulletPool
     {
         public static Dictionary<int, (BulletSimComponent bulletInstance, SimBullet bullet)> ClientBullets = new();
+        public static Queue<int> DestroyClientBullets = new();
 
         private static int _nextClientId = 1;
 
@@ -65,13 +66,20 @@ namespace BAMod.GlobalContent.Scripts
             return false;
         }
 
+        public static void UpdatePool()
+        {
+            foreach(var queued in DestroyClientBullets)
+            {
+                ClientBullets[queued].bulletInstance.shouldDestroy = true;
+                DestroyClientBullets.Dequeue();      }
+        }
         public static void RemoveBullet(int id)
         {
             if (ClientBullets.TryGetValue(id, out var pair))
             {
                 if (pair.bulletInstance != null)
                 {
-                    pair.bulletInstance.Destroy = true;
+                    pair.bulletInstance.shouldDestroy = true;
                 }
             }
             ClientBullets.Remove(id);
@@ -83,7 +91,7 @@ namespace BAMod.GlobalContent.Scripts
             {
                 if (pair.bulletInstance != null)
                 {
-                    pair.bulletInstance.Destroy = true;
+                    pair.bulletInstance.shouldDestroy = true;
                 }
             }
             ClientBullets.Clear();

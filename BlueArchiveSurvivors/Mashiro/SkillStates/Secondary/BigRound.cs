@@ -1,4 +1,5 @@
-﻿using BAMod.Mashiro;
+﻿using BAMod.GlobalContent.Scripts;
+using BAMod.Mashiro;
 using BAMod.Mashiro.Content;
 using BAMod.Mashiro.SkillStates.BaseStates;
 using EntityStates;
@@ -35,24 +36,31 @@ namespace BAMod.Mashiro.SkillStates.Secondary
                 var aimRay = base.GetAimRay();
                 if (!fired)
                 {
-
-                    var snapshotround = new FireProjectileInfo()
+                    SimBulletManager.Fire(new SimBulletManager.SimBullet()
                     {
-                        crit = base.RollCrit(),
-                        damage = MashiroStaticValues.bigGunDamageCefficeient * damageStat,
-                        fuseOverride = float.MaxValue,
-                        useSpeedOverride = true,
-                        speedOverride = 200,
-                        force = 200,
+                        radius = 1f,
+                        resolution = 10,
+                        damageInfo = new DamageInfo()
+                        {
+                            damageColorIndex = DamageColorIndex.Default,
+                            damage = damageStat * MashiroStaticValues.smallGunDamageCoefficient,
+                            damageType = damageType,
+                            attacker = this.gameObject,
+                            crit = base.RollCrit()
+                        },
+                        direction = aimRay.direction,
+                        dropSpeed = 20,
+                        maximumDistance = 300,
+                        origin = aimRay.origin + aimRay.direction * 2,
+                        hitMask = BulletAttack.defaultHitMask,
+                        stopperMask = LayerIndex.world.mask,
+                        velocity = 200,
                         owner = this.gameObject,
-                        position = aimRay.origin,
-                        rotation = Quaternion.LookRotation(aimRay.direction),
-                        projectilePrefab = MashiroAssets.BigProjectikle,
-                    };
-                    ProjectileManager.instance.FireProjectile(snapshotround);
-                    RecoilVector = -aimRay.direction.normalized * 10;
-                    fired = true;
-
+                        prefabIndex = MashiroAssets.MashiroBigBullet,
+                        type = GlobalContent.Components.SimBulletType.exponential,
+                        falloffModel = BlastAttack.FalloffModel.None,
+                        explodeOnExpire = true
+                    });
                 }
                 if (fixedAge < 0.3f)
                 {
@@ -65,7 +73,7 @@ namespace BAMod.Mashiro.SkillStates.Secondary
 
                 }
             }
-            
+
         }
 
         public override void OnExit()

@@ -1,8 +1,6 @@
 ﻿using BAMod.Mashiro.SkillStates.BaseStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using UnityEngine;
 
 namespace BAMod.Mashiro.SkillStates.Secondary
 {
@@ -12,29 +10,51 @@ namespace BAMod.Mashiro.SkillStates.Secondary
         protected override float baseFireDelay => 0f;
         protected override float fireTime => 0f;
 
+        private int cachedSecondaryStock;
+        private int cachedSecondaryMaxStock;
+
         public override void OnEnter()
         {
             base.OnEnter();
-            skillLocator.primary.SetSkillOverride(this.gameObject, MashiroSurvivor.BigRound, GenericSkill.SkillOverridePriority.Default);
+
+            cachedSecondaryStock = skillLocator.secondary.stock;
+            cachedSecondaryMaxStock = skillLocator.secondary.maxStock;
+
+            skillLocator.primary.SetSkillOverride(gameObject, MashiroSurvivor.BigRound, GenericSkill.SkillOverridePriority.Default);
+
+            skillLocator.primary.OverrideMaxStock(cachedSecondaryMaxStock);
+            skillLocator.primary.stock = cachedSecondaryStock;
+
+            skillLocator.secondary.stock = 0;
         }
+
         public override void FixedUpdate()
         {
-            if (isAuthority)
+            base.FixedUpdate();
+
+            if (isAuthority && !IsKeyDownAuthority())
             {
-                if (!IsKeyDownAuthority())
-                {
-                    outer.SetNextStateToMain();
-                    return;
-                }
+                outer.SetNextStateToMain();
             }
         }
+
         public override void OnExit()
         {
             base.OnExit();
-            skillLocator.primary.UnsetSkillOverride(this.gameObject, MashiroSurvivor.BigRound, GenericSkill.SkillOverridePriority.Default);
-            if (skillLocator.primary.stock <= 0)
+
+            int remaining = skillLocator.primary.stock;
+
+            skillLocator.primary.UnsetSkillOverride(gameObject, MashiroSurvivor.BigRound, GenericSkill.SkillOverridePriority.Default);
+
+            skillLocator.primary.OverrideMaxStock(0);
+
+            if (remaining <= 0)
             {
-                skillLocator.secondary.SetSkillOverride(this.gameObject, MashiroSurvivor.BigRoundReload, GenericSkill.SkillOverridePriority.Default);
+                skillLocator.secondary.SetSkillOverride(gameObject, MashiroSurvivor.BigRoundReload, GenericSkill.SkillOverridePriority.Default);
+            }
+            else
+            {
+                skillLocator.secondary.stock = Mathf.Min(remaining, cachedSecondaryMaxStock);
             }
         }
     }

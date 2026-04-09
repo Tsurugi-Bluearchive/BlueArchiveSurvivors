@@ -48,7 +48,7 @@ namespace BAMod
 
             // used when you want to properly set up language folders
             Modules.Language.Init();
-            SimBulletManager.Init();
+            AwaitRunStart.Init();
 
 
             // character initializatio

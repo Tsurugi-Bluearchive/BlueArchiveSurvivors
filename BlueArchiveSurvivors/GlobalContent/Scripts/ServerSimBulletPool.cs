@@ -7,7 +7,7 @@ namespace BAMod.GlobalContent.Scripts
     internal class ServerSimBulletPool
     {
         public Dictionary<int, SimBullet> ServerBullets = new Dictionary<int, SimBullet>();
-        public List<(int key, RaycastHit hit)> PendingDestroy = new List<(int key, RaycastHit hit)>();
+        public Queue<(int key, RaycastHit hit)> PendingDestroy = new Queue<(int key, RaycastHit hit)>();
 
         private static int _nextBulletId = 1;
 
@@ -31,6 +31,23 @@ namespace BAMod.GlobalContent.Scripts
             return false;
         }
 
+        public void ProcessPendingDestroy()
+        {
+            if (PendingDestroy.Count == 0) return;
+
+            // ✅ Take a snapshot of the queue
+            var destroySnapshot = new List<(int key, RaycastHit hit)>(PendingDestroy);
+
+            // ✅ Clear original queue immediately
+            PendingDestroy.Clear();
+
+            // ✅ Process snapshot safely
+            foreach (var entry in destroySnapshot)
+            {
+                ServerBullets.Remove(entry.key);
+            }
+        }
+
         /// <summary>
         /// Creates a new bullet with a unique ID.
         /// </summary>
@@ -42,23 +59,12 @@ namespace BAMod.GlobalContent.Scripts
             return id;
         }
 
-        /// <summary>
-        /// Call this at the start of every ServerPhysicsUpdate.
-        /// </summary>
-        public void ProcessPendingDestroy()
+        public void Modify(Dictionary<int, SimBullet> modification)
         {
-            if (PendingDestroy.Count == 0) return;
-
-            foreach (var entry in PendingDestroy)
+            foreach (var pair in modification)
             {
-                if (ServerBullets.TryGetValue(entry.key, out var bullet))
-                {
-                    bullet.active = false;
-                }
-                ServerBullets.Remove(entry.key);
+                ServerBullets[pair.Key] = pair.Value;
             }
-
-            PendingDestroy.Clear();
         }
 
         /// <summary>

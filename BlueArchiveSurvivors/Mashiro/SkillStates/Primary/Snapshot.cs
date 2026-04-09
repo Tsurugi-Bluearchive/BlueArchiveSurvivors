@@ -37,7 +37,7 @@ namespace BAMod.Mashiro.SkillStates.Primary
                     var aimRay = base.GetAimRay();
                     SimBulletManager.Fire(new SimBulletManager.SimBullet()
                     {
-                        radius = 5,
+                        radius = 1f,
                         resolution = 10,
                         damageInfo = new DamageInfo()
                         {
@@ -48,12 +48,12 @@ namespace BAMod.Mashiro.SkillStates.Primary
                             crit = base.RollCrit()
                         },
                         direction = aimRay.direction,
-                        dropSpeed = 10,
+                        dropSpeed = 20,
                         maximumDistance = 300,
-                        origin = aimRay.origin,
+                        origin = aimRay.origin + aimRay.direction * 2,
                         hitMask = BulletAttack.defaultHitMask,
-                        stopperMask = LayerIndex.world.collisionMask,
-                        velocity = 20,
+                        stopperMask = LayerIndex.world.mask,
+                        velocity = 400,
                         owner = this.gameObject,
                         prefabIndex = MashiroAssets.MashiroSmallBullet,
                         type = GlobalContent.Components.SimBulletType.exponential,

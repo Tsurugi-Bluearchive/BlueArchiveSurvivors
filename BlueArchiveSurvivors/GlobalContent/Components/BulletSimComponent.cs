@@ -1,51 +1,48 @@
 ﻿using BAMod.GlobalContent.Scripts;
+using RoR2.Projectile;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace BAMod.GlobalContent.Components
 {
-    internal class BulletSimComponent : NetworkBehaviour
+    internal class BulletSimComponent : MonoBehaviour
     {
         public SimBulletType type;
-        public bool Destroy;
+        public bool shouldDestroy;
         public int ID;
 
         private float timeAlive = 0f;
         private Vector3 currentPosition;
         private Vector3 currentDirection;
+
         public SimBulletManager.SimBullet SimBullet;
+
         public int PrefabID;
         public float? arg1;
         public float? arg2;
         public float? arg3;
         public float? arg4;
+
         public float timeAirborne;
+
         void Awake()
         {
-            if (!isClient)
-            {
-                Destroy(gameObject);
-                Log.Warning("Client-side visual effect registered on the server! Deleting!");
-                return;
-            }
-
             currentPosition = transform.position;
             currentDirection = transform.forward;
+            if (GetComponent<ProjectileGhostController>())
+            {
+                GetComponent<ProjectileGhostController>().enabled = false;
+            }
         }
 
         void Update()
         {
-            if (isClient)
-            {
-                ClientVisualUpdate();
-            }
+            ClientVisualUpdate();
         }
 
-        [ClientCallback]
         void ClientVisualUpdate()
         {
-            if (Destroy)
+            if (shouldDestroy)
             {
                 Destroy(gameObject);
                 return;
@@ -53,7 +50,7 @@ namespace BAMod.GlobalContent.Components
 
             timeAlive += Time.deltaTime;
 
-            ReturnEvalutation(out var update, timeAlive);
+            ReturnEvaluation(out var update, timeAlive);
 
             transform.position = update.currentPosition;
             transform.forward = update.direction;
@@ -65,7 +62,10 @@ namespace BAMod.GlobalContent.Components
                 for (int i = 0; i < SimBullet.resolution; i++)
                 {
                     float t = timeAlive * (i / (float)SimBullet.resolution);
-                    ReturnEvalutation(out update, t);
+                    float prevT = t - (timeAlive / SimBullet.resolution);
+                    if (prevT < 0f) prevT = 0f;
+
+                    ReturnEvaluation(out update, t, prevT);
                     evaluation.Add(update);
                 }
 
@@ -75,34 +75,32 @@ namespace BAMod.GlobalContent.Components
             timeAirborne = timeAlive;
         }
 
-        void ReturnEvalutation(out SimBulletManager.ReturnPositionalValues update, float newTime)
+        void ReturnEvaluation(out SimBulletManager.ReturnPositionalValues update, float newTime, float prevTimeOverride = -1f)
         {
+            float prevTime = prevTimeOverride >= 0f ? prevTimeOverride : timeAirborne;
+
             switch (type)
             {
                 case SimBulletType.linear:
-                    SimBulletManager.LinearDrop.Evaluate(SimBullet, timeAirborne, newTime, out update);
+                    SimBulletManager.LinearDrop.Evaluate(SimBullet, prevTime, newTime, out update);
                     break;
 
                 case SimBulletType.logarithmic:
-                    SimBulletManager.LogarithmicDrop.Evaluate(SimBullet, timeAirborne, newTime, out update);
+                    SimBulletManager.LogarithmicDrop.Evaluate(SimBullet, prevTime, newTime, out update);
                     break;
 
                 case SimBulletType.exponential:
-                    SimBulletManager.ExponentialDrop.Evaluate(SimBullet, timeAirborne, newTime, out update);
+                    SimBulletManager.ExponentialDrop.Evaluate(SimBullet, prevTime, newTime, out update);
                     break;
 
                 case SimBulletType.realisticGravity:
-                    SimBulletManager.LinearDrop.Evaluate(SimBullet, timeAirborne, newTime, out update);
+                    SimBulletManager.LinearDrop.Evaluate(SimBullet, prevTime, newTime, out update);
                     break;
 
                 default:
-                    SimBulletManager.LinearDrop.Evaluate(SimBullet, timeAirborne, newTime, out update);
+                    SimBulletManager.LinearDrop.Evaluate(SimBullet, prevTime, newTime, out update);
                     break;
             }
-        }
-        void OnDestroy()
-        {
-            if (!isClient) return;
         }
     }
 }

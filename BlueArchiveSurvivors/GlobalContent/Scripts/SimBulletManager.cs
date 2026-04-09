@@ -1,7 +1,16 @@
 ﻿using BAMod.GlobalContent.Components;
+using BAMod.Mashiro.Content;
+using R2API.Utils;
 using RoR2;
+using RoR2.Projectile;
+using RoR2BepInExPack.GameAssetPaths;
 using System;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using Unity.Collections;
+using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -43,14 +52,97 @@ namespace BAMod.GlobalContent.Scripts
             public GameObject simBulletPrefab;
             public bool active;
             public int prefabIndex;
-        }
 
+            // New explosion fields
+            public bool explodeOnPassthrough;
+            public bool explodeOnExpire;
+            public float explosionRadius = 8f;
+            public float explosionDamage = 1f;
+            public DamageTypeCombo explosionDamageType = DamageTypeCombo.Generic;
+            public float explosionProcCoefficient = 1f;
+            public float explosionForce = 0f;
+            public BlastAttack.FalloffModel falloffModel;
+
+            public SimBullet Clone()
+            {
+                return new SimBullet
+                {
+                    aborted = this.aborted,
+                    type = this.type,
+                    tracerPrefab = this.tracerPrefab,
+                    owner = this.owner,
+                    damageInfo = this.damageInfo,
+                    hits = new List<HurtBox>(this.hits),
+                    origin = this.origin,
+                    direction = this.direction,
+                    hitMask = this.hitMask,
+                    stopperMask = this.stopperMask,
+                    radius = this.radius,
+                    maximumDistance = this.maximumDistance,
+                    velocity = this.velocity,
+                    dropSpeed = this.dropSpeed,
+                    resolution = this.resolution,
+                    travelTime = this.travelTime,
+                    fireTime = this.fireTime,
+                    simBulletPrefab = this.simBulletPrefab,
+                    active = this.active,
+                    prefabIndex = this.prefabIndex,
+
+                    // Explosion fields
+                    explodeOnPassthrough = this.explodeOnPassthrough,
+                    explodeOnExpire = this.explodeOnExpire,
+                    explosionRadius = this.explosionRadius,
+                    explosionDamage = this.explosionDamage,
+                    explosionDamageType = this.explosionDamageType,
+                    explosionProcCoefficient = this.explosionProcCoefficient,
+                    explosionForce = this.explosionForce
+
+                };
+            }
+            public void Explode(Vector3 position, Vector3? impactNormal = null)
+            {
+                if (owner == null || damageInfo?.attacker == null)
+                {
+                    Debug.LogWarning("SimBullet.Explode: Missing owner or attacker!");
+                    return;
+                }
+
+                BlastAttack blast = new BlastAttack
+                {
+                    position = position,
+                    radius = explosionRadius,
+                    baseDamage = damageInfo.damage * explosionDamage,
+                    baseForce = explosionForce,
+                    damageType = explosionDamageType,
+                    procCoefficient = explosionProcCoefficient,
+                    attacker = damageInfo.attacker,
+                    inflictor = owner,
+                    teamIndex = damageInfo.attacker.GetComponent<TeamComponent>()?.teamIndex ?? TeamIndex.None,
+                    falloffModel = falloffModel
+                };
+
+                if (impactNormal.HasValue)
+                {
+                    blast.position += impactNormal.Value * 0.5f;
+                }
+
+                BlastAttack.Result result = blast.Fire();
+            }
+        }
         public static class LinearDrop
         {
             public static void Evaluate(SimBullet bullet, float previousTime, float currentTime, out ReturnPositionalValues update)
             {
-                Vector3 prevPos = bullet.origin + bullet.direction * bullet.velocity * previousTime + Vector3.down * (0.5f * bullet.dropSpeed * previousTime * previousTime);
-                Vector3 currPos = bullet.origin + bullet.direction * bullet.velocity * currentTime + Vector3.down * (0.5f * bullet.dropSpeed * currentTime * currentTime);
+                float g = bullet.dropSpeed;
+
+                Vector3 prevPos = bullet.origin
+                    + bullet.direction * bullet.velocity * previousTime
+                    + Vector3.down * (0.5f * g * previousTime * previousTime);
+
+                Vector3 currPos = bullet.origin
+                    + bullet.direction * bullet.velocity * currentTime
+                    + Vector3.down * (0.5f * g * currentTime * currentTime);
+
                 Vector3 dir = (currPos - prevPos).normalized;
 
                 update = new ReturnPositionalValues()
@@ -70,11 +162,17 @@ namespace BAMod.GlobalContent.Scripts
                 float prevDist = bullet.velocity * previousTime;
                 float currDist = bullet.velocity * currentTime;
 
-                float prevDrop = bullet.dropSpeed * Mathf.Log(baseValue + prevDist * multiplier) * previousTime;
-                float currDrop = bullet.dropSpeed * Mathf.Log(baseValue + currDist * multiplier) * currentTime;
+                float gPrev = bullet.dropSpeed * Mathf.Log(baseValue + prevDist * multiplier);
+                float gCurr = bullet.dropSpeed * Mathf.Log(baseValue + currDist * multiplier);
 
-                Vector3 prevPos = bullet.origin + bullet.direction * prevDist + Vector3.down * prevDrop;
-                Vector3 currPos = bullet.origin + bullet.direction * currDist + Vector3.down * currDrop;
+                Vector3 prevPos = bullet.origin
+                    + bullet.direction * prevDist
+                    + Vector3.down * (0.5f * gPrev * previousTime * previousTime);
+
+                Vector3 currPos = bullet.origin
+                    + bullet.direction * currDist
+                    + Vector3.down * (0.5f * gCurr * currentTime * currentTime);
+
                 Vector3 dir = (currPos - prevPos).normalized;
 
                 update = new ReturnPositionalValues()
@@ -89,16 +187,22 @@ namespace BAMod.GlobalContent.Scripts
 
         public static class ExponentialDrop
         {
-            public static void Evaluate(SimBullet bullet, float previousTime, float currentTime, out ReturnPositionalValues update, float baseValue = 1f, float multiplier = 1f, float power = 2f)
+            public static void Evaluate(SimBullet bullet, float previousTime, float currentTime, out ReturnPositionalValues update, float baseValue = 1f, float multiplier = 0.01f, float power = 2f)
             {
                 float prevDist = bullet.velocity * previousTime;
                 float currDist = bullet.velocity * currentTime;
 
-                float prevDrop = bullet.dropSpeed * Mathf.Pow(baseValue + prevDist * multiplier, power) * previousTime;
-                float currDrop = bullet.dropSpeed * Mathf.Pow(baseValue + currDist * multiplier, power) * currentTime;
+                float gPrev = bullet.dropSpeed * Mathf.Pow(baseValue + prevDist * multiplier, power);
+                float gCurr = bullet.dropSpeed * Mathf.Pow(baseValue + currDist * multiplier, power);
 
-                Vector3 prevPos = bullet.origin + bullet.direction * prevDist + Vector3.down * prevDrop;
-                Vector3 currPos = bullet.origin + bullet.direction * currDist + Vector3.down * currDrop;
+                Vector3 prevPos = bullet.origin
+                    + bullet.direction * prevDist
+                    + Vector3.down * (0.5f * gPrev * previousTime * previousTime);
+
+                Vector3 currPos = bullet.origin
+                    + bullet.direction * currDist
+                    + Vector3.down * (0.5f * gCurr * currentTime * currentTime);
+
                 Vector3 dir = (currPos - prevPos).normalized;
 
                 update = new ReturnPositionalValues()
@@ -111,9 +215,6 @@ namespace BAMod.GlobalContent.Scripts
             }
         }
 
-        private static readonly HashSet<Collider> _hitSet = new HashSet<Collider>();
-        private static readonly RaycastHit[] _hitBuffer = new RaycastHit[64];
-
         public static bool IsExpired(
             List<ReturnPositionalValues> points,
             SimBullet bullet,
@@ -121,95 +222,105 @@ namespace BAMod.GlobalContent.Scripts
             out RaycastHit stopperCollision)
         {
             stopperCollision = new RaycastHit();
-            _hitSet.Clear();
+            validCollisions = Array.Empty<RaycastHit>();
 
-            int totalHits = 0;
-            float totalDistance = 0f;
+            if (points == null || points.Count < 2)
+                return false;
 
-            foreach (var point in points)
+            int segmentCount = points.Count - 1;
+
+            var commands = new NativeArray<SpherecastCommand>(segmentCount, Allocator.TempJob);
+            var stopperHits = new NativeArray<RaycastHit>(segmentCount, Allocator.TempJob);
+
+            // Phase 1: Find the closest stopper (using stopperMask)
+            for (int i = 0; i < segmentCount; i++)
             {
-                Vector3 delta = point.currentPosition - point.previousPosition;
-                float distance = delta.magnitude;
+                Vector3 start = points[i].currentPosition;
+                Vector3 end = points[i + 1].currentPosition;
+                Vector3 dir = (end - start).normalized;
+                float dist = Vector3.Distance(start, end);
 
-                if (distance <= 0f)
-                    continue;
-
-                Vector3 direction = delta / distance;
-
-                if (Physics.SphereCast(
-                    point.previousPosition,
+                commands[i] = new SpherecastCommand(
+                    start,
                     bullet.radius,
-                    direction,
-                    out RaycastHit stopHit,
-                    distance,
-                    bullet.stopperMask,
-                    QueryTriggerInteraction.Collide))
-                {
-                    stopperCollision = stopHit;
-
-                    // Collect hits only up to the stopper
-                    int hitCount = Physics.SphereCastNonAlloc(
-                        point.previousPosition,
-                        bullet.radius,
-                        direction,
-                        _hitBuffer,
-                        stopHit.distance,
-                        bullet.hitMask,
-                        QueryTriggerInteraction.Collide);
-
-                    for (int i = 0; i < hitCount; i++)
-                    {
-                        Collider col = _hitBuffer[i].collider;
-                        if (col != null && _hitSet.Add(col))
-                        {
-                            _hitBuffer[totalHits++] = _hitBuffer[i];
-                        }
-                    }
-
-                    validCollisions = new RaycastHit[totalHits];
-                    Array.Copy(_hitBuffer, validCollisions, totalHits);
-                    return true;
-                }
-
-                int count = Physics.SphereCastNonAlloc(
-                    point.previousPosition,
-                    bullet.radius,
-                    direction,
-                    _hitBuffer,
-                    distance,
-                    bullet.hitMask,
-                    QueryTriggerInteraction.Collide);
-
-                for (int i = 0; i < count; i++)
-                {
-                    Collider col = _hitBuffer[i].collider;
-                    if (col != null && _hitSet.Add(col))
-                    {
-                        _hitBuffer[totalHits++] = _hitBuffer[i];
-                    }
-                }
-
-                totalDistance += distance;
-
-                if (totalDistance >= bullet.maximumDistance)
-                {
-                    break;
-                }
+                    dir,
+                    dist,
+                    bullet.stopperMask
+                );
             }
 
-            validCollisions = new RaycastHit[totalHits];
-            Array.Copy(_hitBuffer, validCollisions, totalHits);
+            JobHandle handle = SpherecastCommand.ScheduleBatch(commands, stopperHits, 32);
+            handle.Complete();
 
-            return false;
-        }
-        private static RaycastHit[] TrimResults(RaycastHit[] source, int count)
-        {
-            if (count == 0)
-                return Array.Empty<RaycastHit>();
+            // Find the closest stopper hit across all segments
+            float closestDistanceAlongPath = float.PositiveInfinity;
+            float accumulated = 0f;
 
-            RaycastHit[] result = new RaycastHit[count];
-            Array.Copy(source, result, count);
-            return result;
+            for (int i = 0; i < segmentCount; i++)
+            {
+                var hit = stopperHits[i];
+                if (hit.collider != null)
+                {
+                    float distToHit = accumulated + hit.distance;
+                    if (distToHit < closestDistanceAlongPath)
+                    {
+                        closestDistanceAlongPath = distToHit;
+                        stopperCollision = hit;
+                    }
+                }
+                accumulated += Vector3.Distance(points[i].currentPosition, points[i + 1].currentPosition);
+            }
+
+            float evaluatedMaxDistance = stopperCollision.collider != null
+                ? closestDistanceAlongPath
+                : bullet.maximumDistance;
+
+            var hitCommands = new NativeArray<SpherecastCommand>(segmentCount, Allocator.TempJob);
+            int validCommandCount = 0;
+            float currentDistance = 0f;
+
+            for (int i = 0; i < segmentCount; i++)
+            {
+                Vector3 start = points[i].currentPosition;
+                Vector3 end = points[i + 1].currentPosition;
+                Vector3 dir = (end - start).normalized;
+                float segmentLength = Vector3.Distance(start, end);
+
+                float remaining = evaluatedMaxDistance - currentDistance;
+                if (remaining <= 0f) break;
+
+                float castDistance = Mathf.Min(segmentLength, remaining);
+
+                hitCommands[validCommandCount] = new SpherecastCommand(
+                    start,
+                    bullet.radius,
+                    dir,
+                    castDistance,
+                    bullet.hitMask
+                );
+
+                currentDistance += castDistance;
+                validCommandCount++;
+
+                if (castDistance < segmentLength) break;
+            }
+
+            if (validCommandCount == 0)
+                return stopperCollision.collider != null;
+
+            using var hits = new NativeArray<RaycastHit>(validCommandCount, Allocator.TempJob);
+
+            handle = SpherecastCommand.ScheduleBatch(
+                hitCommands.GetSubArray(0, validCommandCount),
+                hits,
+                32
+            );
+            handle.Complete();
+
+            validCollisions = new RaycastHit[validCommandCount];
+            hits.CopyTo(validCollisions);
+
+            return stopperCollision.collider != null;
         }
 
         public static void Fire(SimBullet bullet)
@@ -221,14 +332,14 @@ namespace BAMod.GlobalContent.Scripts
                 Damage = bullet.damageInfo.damage,
                 AttackerNetworkID = bullet.owner.GetComponent<NetworkIdentity>().netId,
                 colorIndex = bullet.damageInfo.damageColorIndex,
-                InflictorNetworkID = bullet.damageInfo.inflictor.GetComponent<NetworkIdentity>().netId,
+                InflictorNetworkID = bullet.damageInfo.inflictor ? bullet.damageInfo.inflictor.GetComponent<NetworkIdentity>().netId : bullet.owner.GetComponent<NetworkIdentity>().netId,
                 crit = bullet.damageInfo.crit,
                 force = bullet.damageInfo.force,
                 procChainMask = bullet.damageInfo.procChainMask,
                 procCoefficient = bullet.damageInfo.procCoefficient,
                 type = bullet.type
             };
-            ServerInstance.RegisterBullet(NetworkPacket, bullet.origin, bullet.direction, bullet.velocity, bullet.dropSpeed, bullet.resolution, bullet.prefabIndex);
+            ServerInstance.RegisterBullet(NetworkPacket, bullet.origin, bullet.direction, bullet.velocity, bullet.dropSpeed, bullet.resolution, bullet.prefabIndex, bullet.hitMask, bullet.stopperMask, bullet.radius, MashiroAssets.MashiroSmallBullet);
         }
 
         /// <summary>
@@ -252,7 +363,10 @@ namespace BAMod.GlobalContent.Scripts
             {
                 bulletObject.AddComponent<NetworkIdentity>();
             }
-
+            if (bulletObject.GetComponent<ProjectileGhostController>())
+            {
+                bulletObject.GetComponent<ProjectileGhostController>().enabled = false;
+            }
             SimBulletPrefabs.Add(bulletObject);
             Index = SimBulletPrefabs.Count - 1;
         }
@@ -277,8 +391,6 @@ namespace BAMod.GlobalContent.Scripts
 
             var identity = globalSimBullet.AddComponent<NetworkIdentity>();
             var behavior = globalSimBullet.AddComponent<ServerBulletSimNetworkBehavior>();
-
-            GameObject.DontDestroyOnLoad(globalSimBullet);
 
             NetworkServer.Spawn(globalSimBullet);
         }

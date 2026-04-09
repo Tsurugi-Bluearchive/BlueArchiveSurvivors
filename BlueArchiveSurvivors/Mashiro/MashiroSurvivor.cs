@@ -244,7 +244,7 @@ namespace BAMod.Mashiro
                 skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(BigRound)),
-                activationStateMachineName = "LeftShotgun",
+                activationStateMachineName = "Gun",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseRechargeInterval = float.MaxValue,
