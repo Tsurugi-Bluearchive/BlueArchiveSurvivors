@@ -40,11 +40,13 @@ namespace BAMod.Mashiro
             crosshair = Asset.LoadCrosshair("Standard"),
             podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
 
-            maxHealth = 90f,
+            maxHealth = 110f,
             healthRegen = 0.5f,
             armor = 0f,
             healthGrowth = 10f,
             moveSpeed = 10f,
+            damage = 12,
+            damageGrowth = 2.4f,
 
             jumpCount = 2,
         };
@@ -268,14 +270,14 @@ namespace BAMod.Mashiro
 
             BigRoundReload = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "Mashiro Big Snipe",
+                skillName = "Mashiro Reload",
                 skillNameToken = V1_PREFIX + "PRIMARY_SNiPE_NAME",
                 skillDescriptionToken = V1_PREFIX + "PRIMARY_SNIPE_DESCRIPTION",
                 keywordTokens = ["KEYWORD_AGILE"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(BigRound)),
-                activationStateMachineName = "LeftShotgun",
+                activationState = new EntityStates.SerializableEntityStateType(typeof(BigRoundReload)),
+                activationStateMachineName = "Gun",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseRechargeInterval = float.MaxValue,

@@ -37,7 +37,7 @@ namespace BAMod.GlobalContent.Scripts
             public GameObject tracerPrefab;
             public GameObject owner;
             public DamageInfo damageInfo;
-            public List<HurtBox> hits = new List<HurtBox>();
+            public List<HealthComponent> hitHealthComponents = new List<HealthComponent>();
             public Vector3 origin;
             public Vector3 direction;
             public LayerMask hitMask;
@@ -72,7 +72,7 @@ namespace BAMod.GlobalContent.Scripts
                     tracerPrefab = this.tracerPrefab,
                     owner = this.owner,
                     damageInfo = this.damageInfo,
-                    hits = new List<HurtBox>(this.hits),
+                    hitHealthComponents = new List<HealthComponent>(this.hitHealthComponents),
                     origin = this.origin,
                     direction = this.direction,
                     hitMask = this.hitMask,
@@ -232,7 +232,6 @@ namespace BAMod.GlobalContent.Scripts
             var commands = new NativeArray<SpherecastCommand>(segmentCount, Allocator.TempJob);
             var stopperHits = new NativeArray<RaycastHit>(segmentCount, Allocator.TempJob);
 
-            // Phase 1: Find the closest stopper (using stopperMask)
             for (int i = 0; i < segmentCount; i++)
             {
                 Vector3 start = points[i].currentPosition;
@@ -252,7 +251,6 @@ namespace BAMod.GlobalContent.Scripts
             JobHandle handle = SpherecastCommand.ScheduleBatch(commands, stopperHits, 32);
             handle.Complete();
 
-            // Find the closest stopper hit across all segments
             float closestDistanceAlongPath = float.PositiveInfinity;
             float accumulated = 0f;
 
@@ -326,6 +324,11 @@ namespace BAMod.GlobalContent.Scripts
         public static void Fire(SimBullet bullet)
         {
             if (bullet.aborted) return;
+            if (ServerInstance.gameObject.activeSelf == false)
+            {
+                ServerInstance.gameObject.SetActive(true);
+
+            }
             bullet.fireTime = Time.time;
             var NetworkPacket = new AttemptDamagePacket()
             {
@@ -385,13 +388,13 @@ namespace BAMod.GlobalContent.Scripts
             return false;
         }
 
-        public static void Init()
+        public static void Init(bool client = false)
         {
-            var globalSimBullet = new GameObject("SimBulletServer");
+            var globalSimBullet = GameObject.Instantiate(new GameObject("SimBulletSever"));
 
             var identity = globalSimBullet.AddComponent<NetworkIdentity>();
             var behavior = globalSimBullet.AddComponent<ServerBulletSimNetworkBehavior>();
-
+            
             NetworkServer.Spawn(globalSimBullet);
         }
     }

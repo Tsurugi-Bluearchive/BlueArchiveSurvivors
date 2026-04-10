@@ -8,9 +8,9 @@
 
         public const float chargeMusketMax = 7f;
 
-        public const float bigGunDamageCefficeient = 10f;
+        public const float bigGunDamageCefficeient = 20f;
 
-        public const float smallGunDamageCoefficient = 3f;
+        public const float smallGunDamageCoefficient = 6f;
 
         public const float barrageDamageCefficient = 9f;
     }

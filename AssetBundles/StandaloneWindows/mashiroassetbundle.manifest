@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2716083244
+CRC: 1393839567
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2f7cd5f9a7d5d554b8d5d0e0bfe8b6a0
+    Hash: af7ba74c4bda6f84253dce8c4231605c
   TypeTreeHash:
     serializedVersion: 2
-    Hash: a42d17593b43c1a226a6eb02a8ad9fab
+    Hash: 7998c9b3c4dd5b7e0227b58138a6e818
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -36,11 +36,11 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 1143142494, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: 678291247, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1533710874, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 678291247, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -517518216, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 115
@@ -210,7 +210,7 @@ Assets:
 - Assets/MatshiroBundle/Animation/clips/Idle.anim
 - Assets/MatshiroBundle/Animation/clips/Roll.anim
 - Assets/MatshiroBundle/Materials/matHenry.mat
-- Assets/MatshiroBundle/Matshiro Snapshot Round.fbx
+- Assets/MatshiroBundle/Mashiro Snapshot Round.fbx
 - Assets/MatshiroBundle/Icons/texStingerIcon.png
 - Assets/MatshiroBundle/Mesh/meshHenrySword.mesh
 Dependencies:

@@ -1,4 +1,6 @@
 ﻿using BAMod.GlobalContent.Scripts;
+using HarmonyLib;
+using Newtonsoft.Json.Utilities;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,7 @@ namespace BAMod.GlobalContent.Components
         [ServerCallback]
         void ServerPhysicsUpdate()
         {
+            // Spawn pending bullets
             while (_pendingBullets.Count > 0)
             {
                 var (id, bullet, prefabIndex) = _pendingBullets.Dequeue();
@@ -68,29 +71,41 @@ namespace BAMod.GlobalContent.Components
 
                 foreach (var hit in hits)
                 {
-                    if (hit.collider == null) continue;
+                    if (hit.collider == null)
+                        continue;
 
-                    if (hit.collider.TryGetComponent<HurtBox>(out var hurtbox) &&
-                        hurtbox.healthComponent &&
-                        hurtbox.healthComponent.body)
+                    HurtBox hurtbox = hit.collider.GetComponentInParent<HurtBox>();
+                    if (hurtbox == null || hurtbox.healthComponent == null)
+                        continue;
+
+                    var hc = hurtbox.healthComponent;
+
+                    if (simBullet.hitHealthComponents.Contains(hc))
+                        continue;
+
+                    var attackerBody = simBullet.damageInfo.attacker?.GetComponent<CharacterBody>();
+
+                    if (attackerBody != null && hc.body == attackerBody)
+                        continue;
+
+                    if (hurtbox.teamIndex == simBullet.damageInfo.attacker?.GetComponent<TeamComponent>()?.teamIndex)
+                        continue;
+
+                    var dmg = ConstructDamageInfoFromHurtbox(simBullet.damageInfo, hurtbox, hit);
+                    if (dmg != null)
                     {
-                        var dmg = ConstructDamageInfoFromHurtbox(simBullet.damageInfo, hurtbox, hit);
-                        if (dmg != null)
-                        {
-                            dmg.inflictor = hurtbox.healthComponent.gameObject;
-
-                            if (hurtbox.healthComponent.body != dmg.attacker.GetComponent<CharacterBody>() &&
-                                hurtbox.teamIndex != dmg.attacker.GetComponent<TeamComponent>().teamIndex)
-                            {
-                                hurtbox.healthComponent.TakeDamage(dmg);
-                            }
-                        }
+                        dmg.inflictor = hc.gameObject;
+                        hc.TakeDamage(dmg);
                     }
+
+                    simBullet.hitHealthComponents.Add(hc);
 
                     if (simBullet.explodeOnPassthrough)
                     {
                         simBullet.Explode(hit.point, hit.normal);
                     }
+
+                    break;
                 }
 
                 if (expired)
@@ -103,12 +118,12 @@ namespace BAMod.GlobalContent.Components
                     {
                         simBullet.Explode(pos);
                     }
+
                     _bulletPool.PendingDestroy.Enqueue((bulletPair.Key, endPoint));
                 }
             }
 
             _bulletPool.ProcessPendingDestroy();
-
         }
 
         [ClientRpc]
@@ -234,26 +249,8 @@ namespace BAMod.GlobalContent.Components
         {
             if (isServer && NetworkServer.active)
             {
-                if (SimBulletManager.ServerInstance != this)
-                {
-                    SimBulletManager.ServerInstance = this;
-                    RpcSetClientInstances(this.netId);
-                }
-
                 ServerPhysicsUpdate();
             }
-            else if (!NetworkServer.active)
-            {
-                Destroy(gameObject);
-            }
-        }
-
-        [ClientRpc]
-        void RpcSetClientInstances(NetworkInstanceId id)
-        {
-            var obj = Util.FindNetworkObject(id);
-            if (obj != null)
-                SimBulletManager.ServerInstance = obj.GetComponent<ServerBulletSimNetworkBehavior>();
         }
 
         public void RegisterBullet(
@@ -269,12 +266,17 @@ namespace BAMod.GlobalContent.Components
             float radius,
             int prefabIndex)
         {
-            if (isClient)
+            if (isClient && hasAuthority)
                 CmdRegisterBullet(packet, origin, direction, velocity, dropSpeed, resolution, bulletIndex, hitMask, stopperMask, radius, prefabIndex);
         }
 
         void Awake()
         {
+            if (SimBulletManager.ServerInstance != null)
+            {
+                Destroy(SimBulletManager.ServerInstance.gameObject);
+            }
+            SimBulletManager.ServerInstance = this;
             DontDestroyOnLoad(gameObject);
         }
     }

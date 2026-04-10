@@ -56,7 +56,7 @@ namespace BAMod.Mashiro.Content
             #endregion
 
             #region Utility
-            Language.Add(prefix + "UTILITY_FLY_NAME", "Wind Burst?");
+            Language.Add(prefix + "UTILITY_FLY_NAME", "Take Flight");
             Language.Add(prefix + "UTILITY_FLY_DESCRIPTION", "Boost up into the sky and take flight");
             #endregion
 

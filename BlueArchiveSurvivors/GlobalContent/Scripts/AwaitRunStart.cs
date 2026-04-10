@@ -8,7 +8,6 @@ namespace BAMod.GlobalContent.Scripts
     static class AwaitRunStart
     {
         private static bool initialized;
-
         public static void Init()
         {
             On.RoR2.Run.Start += Run_Start;
@@ -30,6 +29,7 @@ namespace BAMod.GlobalContent.Scripts
             }
 
             SimBulletManager.Init();
+
         }
     }
 }

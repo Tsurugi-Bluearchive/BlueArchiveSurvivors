@@ -35,13 +35,10 @@ namespace BAMod.GlobalContent.Scripts
         {
             if (PendingDestroy.Count == 0) return;
 
-            // ✅ Take a snapshot of the queue
             var destroySnapshot = new List<(int key, RaycastHit hit)>(PendingDestroy);
 
-            // ✅ Clear original queue immediately
             PendingDestroy.Clear();
 
-            // ✅ Process snapshot safely
             foreach (var entry in destroySnapshot)
             {
                 ServerBullets.Remove(entry.key);

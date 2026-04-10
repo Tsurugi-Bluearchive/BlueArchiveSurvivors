@@ -19,30 +19,39 @@ namespace BAMod.Mashiro.SkillStates.Utility
         {
             base.OnEnter();
             characterBody.fakeActorCounter += 1;
-            characterBody.AddBuff(LegacyResourcesAPI.Load<BuffDef>("RoR2/Base/Common/bdHiddenInvincibility"));
+            characterBody.AddBuff(LegacyResourcesAPI.Load<BuffDef>("BuffDefs/HiddenInvincibility"));
         }
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (isAuthority)
+
+            if (!isAuthority)
+                return;
+
+            if (fixedAge >= baseDuration)
             {
-                if (fixedAge < baseDuration)
-                {
-                    characterMotor.velocity = Vector3.zero;
-                    characterMotor.rootMotion += new Vector3(0, 20, 0);
-                }
-                else
-                {
-                    outer.SetNextStateToMain();
-                    return;
-                }
+                outer.SetNextStateToMain();
+                return;
             }
+
+            LayerMask ceilingMask = LayerIndex.world.mask | LayerIndex.triggerZone.mask;
+
+            Ray upwardRay = new Ray(characterBody.corePosition, Vector3.up);
+
+            if (Physics.Raycast(upwardRay, out RaycastHit hit, 20f, ceilingMask))
+            {
+                outer.SetNextStateToMain();
+                return;
+            }
+
+            characterMotor.velocity = Vector3.zero;
+            characterMotor.rootMotion += new Vector3(0f, 15f, 0f);
         }
 
         public override void OnExit()
         {
             characterBody.fakeActorCounter -= 1;
-            characterBody.RemoveBuff(LegacyResourcesAPI.Load<BuffDef>("RoR2/Base/Common/bdHiddenInvincibility"));
+            characterBody.RemoveBuff(LegacyResourcesAPI.Load<BuffDef>("BuffDefs/HiddenInvincibility"));
             base.OnExit();
         }
     }

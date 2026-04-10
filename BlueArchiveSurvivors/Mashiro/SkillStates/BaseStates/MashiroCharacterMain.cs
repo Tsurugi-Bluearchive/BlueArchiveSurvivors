@@ -16,6 +16,11 @@ namespace BAMod.Mashiro.SkillStates.BaseStates
         /// </summary>
         public bool Flying;
 
+        /// <summary>
+        /// The recoil to update on the main state
+        /// </summary>
+        public Vector3 Recoil;
+
         private ItemDef Magazine;
 
         //MashiroCharacterMain.cs code start
@@ -43,7 +48,7 @@ namespace BAMod.Mashiro.SkillStates.BaseStates
                     }
                     else
                     {
-                        characterBody.characterMotor.isFlying = true;
+                        characterBody.characterMotor.isFlying = false;
                     }
                 }
                 else
@@ -57,6 +62,14 @@ namespace BAMod.Mashiro.SkillStates.BaseStates
                         characterBody.characterMotor.isFlying = true;
                     }
                 }
+
+                if (Recoil != Vector3.zero)
+                {
+                    var newMagnitutde = Recoil.magnitude / 2;
+                    Recoil = Recoil * newMagnitutde;
+                    characterBody.characterMotor.rootMotion += Recoil;
+                }
+
             }
         }
         public override void OnExit()

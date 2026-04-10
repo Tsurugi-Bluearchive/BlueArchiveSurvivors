@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5546148668493058234}
+  - {fileID: 6369190820034396807}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50,7 +50,7 @@ MonoBehaviour:
   ParentProjectileDestroyedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!1001 &5439602508252428113
+--- !u!1001 &6911143284499359084
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -75,19 +75,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77534bc21f4856d45afee226147b0da6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77534bc21f4856d45afee226147b0da6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.000000021855694
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77534bc21f4856d45afee226147b0da6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77534bc21f4856d45afee226147b0da6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77534bc21f4856d45afee226147b0da6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -95,7 +95,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77534bc21f4856d45afee226147b0da6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77534bc21f4856d45afee226147b0da6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -103,12 +103,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 77534bc21f4856d45afee226147b0da6, type: 3}
       propertyPath: m_Name
-      value: Matshiro Snapshot Round
+      value: Mashiro Snapshot Round
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77534bc21f4856d45afee226147b0da6, type: 3}
---- !u!4 &5546148668493058234 stripped
+--- !u!4 &6369190820034396807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 77534bc21f4856d45afee226147b0da6, type: 3}
-  m_PrefabInstance: {fileID: 5439602508252428113}
+  m_PrefabInstance: {fileID: 6911143284499359084}
   m_PrefabAsset: {fileID: 0}

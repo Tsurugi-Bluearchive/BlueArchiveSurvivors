@@ -8,7 +8,7 @@ namespace BAMod.Mashiro.SkillStates.Secondary
 {
     internal class BigRoundReload : BaseMashiroSkillState
     {
-        protected override float baseDuration => 1f;
+        protected override float baseDuration => 10f;
         protected override float baseFireDelay => 1f;
         protected override float fireTime => 1f;
 
