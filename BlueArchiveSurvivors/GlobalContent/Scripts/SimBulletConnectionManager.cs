@@ -1,13 +1,17 @@
-﻿using RoR2;
+﻿using BAMod.GlobalContent.Components;
+using R2API;
+using RoR2;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace BAMod.GlobalContent.Scripts
 {
-    static class AwaitRunStart
+    static class SimBulletConnectionManager
     {
         private static bool initialized;
+
+        public static GameObject SimBulletServerObject;
         public static void Init()
         {
             On.RoR2.Run.Start += Run_Start;
@@ -21,15 +25,15 @@ namespace BAMod.GlobalContent.Scripts
 
         public static async Task StartBehaviorsAsync()
         {
-            initialized = true;
-
-            while (!NetworkServer.active)
+            while (!NetworkServer.active && !NetworkClient.active)
             {
                 await Task.Yield();
             }
 
-            SimBulletManager.Init();
-
+            if (NetworkServer.active)
+            {
+                SimBulletManager.Init();
+            }
         }
     }
 }

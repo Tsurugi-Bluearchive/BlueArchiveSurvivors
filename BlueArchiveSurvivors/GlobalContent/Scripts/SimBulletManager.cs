@@ -1,5 +1,8 @@
 ﻿using BAMod.GlobalContent.Components;
 using BAMod.Mashiro.Content;
+using HG;
+using IL.RoR2.Networking;
+using R2API;
 using R2API.Utils;
 using RoR2;
 using RoR2.Projectile;
@@ -19,6 +22,7 @@ namespace BAMod.GlobalContent.Scripts
     static class SimBulletManager
     {
         public static ServerBulletSimNetworkBehavior ServerInstance;
+        public static GameObject ServerInstanceObject;
         public static int nextSimBulletInstance;
         public static GameObject networkController;
         private static List<GameObject> SimBulletPrefabs = new();
@@ -58,7 +62,7 @@ namespace BAMod.GlobalContent.Scripts
             public bool explodeOnExpire;
             public float explosionRadius = 8f;
             public float explosionDamage = 1f;
-            public DamageTypeCombo explosionDamageType = DamageTypeCombo.Generic;
+            public DamageType explosionDamageType = DamageTypeCombo.Generic;
             public float explosionProcCoefficient = 1f;
             public float explosionForce = 0f;
             public BlastAttack.FalloffModel falloffModel;
@@ -345,10 +349,6 @@ namespace BAMod.GlobalContent.Scripts
             ServerInstance.RegisterBullet(NetworkPacket, bullet.origin, bullet.direction, bullet.velocity, bullet.dropSpeed, bullet.resolution, bullet.prefabIndex, bullet.hitMask, bullet.stopperMask, bullet.radius, MashiroAssets.MashiroSmallBullet);
         }
 
-        /// <summary>
-        /// Not yet implemented
-        /// </summary>
-        /// <param name="points"></param>
         public static void SpawnTracers(List<ReturnPositionalValues> points)
         {
             for (int i = 0; i < points.Count - 1; i++)
@@ -388,14 +388,15 @@ namespace BAMod.GlobalContent.Scripts
             return false;
         }
 
-        public static void Init(bool client = false)
+        public static void Init()
         {
-            var globalSimBullet = GameObject.Instantiate(new GameObject("SimBulletSever"));
+            ServerInstanceObject = GameObject.Instantiate(new GameObject("SimBulletServer"));
 
-            var identity = globalSimBullet.AddComponent<NetworkIdentity>();
-            var behavior = globalSimBullet.AddComponent<ServerBulletSimNetworkBehavior>();
-            
-            NetworkServer.Spawn(globalSimBullet);
+            var behavior = ServerInstanceObject.AddComponent<ServerBulletSimNetworkBehavior>();
+            var Identity = ServerInstanceObject.AddComponent<NetworkIdentity>();
+            PrefabAPI.RegisterNetworkPrefab(ServerInstanceObject);
+            NetworkServer.Spawn(ServerInstanceObject);
+
         }
     }
 }

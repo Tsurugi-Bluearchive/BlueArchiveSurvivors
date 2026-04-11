@@ -1,5 +1,6 @@
 ﻿using BAMod.GlobalContent.Scripts;
 using HarmonyLib;
+using HG;
 using Newtonsoft.Json.Utilities;
 using RoR2;
 using System;
@@ -10,16 +11,19 @@ using static BAMod.GlobalContent.Scripts.SimBulletManager;
 
 namespace BAMod.GlobalContent.Components
 {
+    [DisallowMultipleComponent]
+    [RequireComponent(typeof(NetworkIdentity))]
     internal class ServerBulletSimNetworkBehavior : NetworkBehaviour
     {
         private int _nextBulletId = 1;
+
         public ServerSimBulletPool _bulletPool = new();
-        private Queue<(int id, SimBullet bullet, int prefabIndex)> _pendingBullets = new();
+
+        public Queue<(int id, SimBullet bullet, int prefabIndex)> _pendingBullets = new();
 
         [ServerCallback]
         void ServerPhysicsUpdate()
         {
-            // Spawn pending bullets
             while (_pendingBullets.Count > 0)
             {
                 var (id, bullet, prefabIndex) = _pendingBullets.Dequeue();
@@ -270,14 +274,120 @@ namespace BAMod.GlobalContent.Components
                 CmdRegisterBullet(packet, origin, direction, velocity, dropSpeed, resolution, bulletIndex, hitMask, stopperMask, radius, prefabIndex);
         }
 
-        void Awake()
+        void OnEnable()
         {
-            if (SimBulletManager.ServerInstance != null)
+            SimBulletManager.ServerInstance = SingletonHelper.Assign(SimBulletManager.ServerInstance, this);
+        }
+
+        void OnDisable()
+        {
+            SimBulletManager.ServerInstance = SingletonHelper.Unassign(SimBulletManager.ServerInstance, this);
+        }
+
+
+        public override bool OnSerialize(NetworkWriter writer, bool initialState)
+        {
+            writer.WritePackedUInt32((uint)_nextBulletId);
+
+            if (initialState)
             {
-                Destroy(SimBulletManager.ServerInstance.gameObject);
+                var activeBullets = _bulletPool.ServerBullets;
+
+                writer.WritePackedUInt32((uint)activeBullets.Count);
+
+                foreach (var pair in activeBullets)
+                {
+                    writer.WritePackedUInt32((uint)pair.Key);
+                    SerializeSimBullet(writer, pair.Value);
+                }
+
+                return true;
             }
-            SimBulletManager.ServerInstance = this;
-            DontDestroyOnLoad(gameObject);
+            else
+            {
+                return true;
+            }
+        }
+
+        public override void OnDeserialize(NetworkReader reader, bool initialState)
+        {
+            _nextBulletId = (int)reader.ReadPackedUInt32();
+
+            if (initialState)
+            {
+                int count = (int)reader.ReadPackedUInt32();
+
+                for (int i = 0; i < count; i++)
+                {
+                    int id = (int)reader.ReadPackedUInt32();
+                    SimBullet bullet = DeserializeSimBullet(reader);
+
+                    if (bullet != null)
+                    {
+                        ClientSimBulletPool.AddBullet(id, null, bullet);
+                    }
+                }
+            }
+        }
+
+        private void SerializeSimBullet(NetworkWriter writer, SimBullet bullet)
+        {
+            if (bullet == null)
+            {
+                writer.Write(false);
+                return;
+            }
+
+            writer.Write(true);
+
+            writer.Write(bullet.origin);
+            writer.Write(bullet.direction);
+            writer.Write(bullet.velocity);
+            writer.Write(bullet.dropSpeed);
+            writer.WritePackedUInt32((byte)bullet.resolution);
+            writer.Write(bullet.travelTime);
+            writer.Write((byte)bullet.type);
+            writer.Write(bullet.active);
+            writer.Write(bullet.radius);
+
+            writer.Write(bullet.explodeOnPassthrough);
+            writer.Write(bullet.explodeOnExpire);
+            writer.Write(bullet.explosionRadius);
+            writer.Write(bullet.explosionDamage);
+            writer.Write((uint)bullet.explosionDamageType);
+            writer.Write(bullet.explosionProcCoefficient);
+            writer.Write(bullet.explosionForce);
+            writer.Write((byte)bullet.falloffModel);
+        }
+
+        private SimBullet DeserializeSimBullet(NetworkReader reader)
+        {
+            bool hasValue = reader.ReadBoolean();
+            if (!hasValue) return null;
+
+            var bullet = new SimBullet
+            {
+                origin = reader.ReadVector3(),
+                direction = reader.ReadVector3(),
+                velocity = reader.ReadSingle(),
+                dropSpeed = reader.ReadSingle(),
+                resolution = (byte)reader.ReadPackedUInt32(),
+                travelTime = reader.ReadSingle(),
+                type = (SimBulletType)reader.ReadByte(),
+                active = reader.ReadBoolean(),
+                radius = reader.ReadSingle(),
+
+                explodeOnPassthrough = reader.ReadBoolean(),
+                explodeOnExpire = reader.ReadBoolean(),
+                explosionRadius = reader.ReadSingle(),
+                explosionDamage = reader.ReadSingle(),
+                explosionDamageType = (DamageType)reader.ReadInt32(),
+                explosionProcCoefficient = reader.ReadSingle(),
+                explosionForce = reader.ReadSingle(),
+                falloffModel = (BlastAttack.FalloffModel)reader.ReadByte(),
+            };
+
+            return bullet;
         }
     }
 

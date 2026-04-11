@@ -22,26 +22,30 @@ namespace BAMod.Mashiro.Content
 
         private static void HealthComponent_TakeDamageProcess(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
         {
-            var echoDamageInfo = new DamageInfo()
+            var echoDamageInfo = new DamageInfo();
+            if (self)
             {
-                damage = damageInfo.damage,
-                damageColorIndex = DamageColorIndex.Sniper,
-                inflictedHurtbox = damageInfo.inflictedHurtbox,
-                crit = damageInfo.crit,
-                damageType = damageInfo.damageType,
-                delayedDamageSecondHalf = damageInfo.delayedDamageSecondHalf,
-                attacker = damageInfo.attacker,
-                canRejectForce = damageInfo.canRejectForce,
-                physForceFlags = damageInfo.physForceFlags,
-                position = damageInfo.position,
-                dotIndex = damageInfo.dotIndex,
-                firstHitOfDelayedDamageSecondHalf = damageInfo.firstHitOfDelayedDamageSecondHalf,
-                force = damageInfo.force,
-                inflictor = damageInfo.inflictor,
-                procChainMask = damageInfo.procChainMask,
-                procCoefficient = damageInfo.procCoefficient,
-                rejected = damageInfo.rejected
-            };
+                echoDamageInfo = new DamageInfo()
+                {
+                    damage = damageInfo.damage,
+                    damageColorIndex = DamageColorIndex.Sniper,
+                    inflictedHurtbox = damageInfo.inflictedHurtbox,
+                    crit = damageInfo.crit,
+                    damageType = damageInfo.damageType,
+                    delayedDamageSecondHalf = damageInfo.delayedDamageSecondHalf,
+                    attacker = damageInfo.attacker,
+                    canRejectForce = damageInfo.canRejectForce,
+                    physForceFlags = damageInfo.physForceFlags,
+                    position = damageInfo.position,
+                    dotIndex = damageInfo.dotIndex,
+                    firstHitOfDelayedDamageSecondHalf = damageInfo.firstHitOfDelayedDamageSecondHalf,
+                    force = damageInfo.force,
+                    inflictor = damageInfo.inflictor,
+                    procChainMask = damageInfo.procChainMask,
+                    procCoefficient = damageInfo.procCoefficient,
+                    rejected = damageInfo.rejected
+                };
+            }
 
             orig(self, damageInfo);
             

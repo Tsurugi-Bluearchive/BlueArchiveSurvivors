@@ -8,6 +8,7 @@ using System.Security.Permissions;
 using BAMod.Tsurugi;
 using BAMod.GlobalContent.Components;
 using BAMod.GlobalContent.Scripts;
+using RoR2.Networking;
 
 [module: UnverifiableCode]
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -48,8 +49,7 @@ namespace BAMod
 
             // used when you want to properly set up language folders
             Modules.Language.Init();
-            AwaitRunStart.Init();
-
+            SimBulletConnectionManager.Init();
 
             // character initializatio
             new SaoriSurvivor().Initialize();
