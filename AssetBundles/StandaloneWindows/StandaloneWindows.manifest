@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 3760078250
+CRC: 2597519311
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -14,3 +14,11 @@ AssetBundleManifest:
       Dependencies:
         Dependency_0: tsurugiassetbundle
         Dependency_1: saoriassetbundle
+    Info_3:
+      Name: momoiassetbundle
+      Dependencies:
+        Dependency_0: saoriassetbundle
+    Info_4:
+      Name: arisuassetbundle
+      Dependencies:
+        Dependency_0: saoriassetbundle

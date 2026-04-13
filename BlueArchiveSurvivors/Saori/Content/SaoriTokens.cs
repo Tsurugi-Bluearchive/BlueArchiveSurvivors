@@ -52,7 +52,7 @@ namespace BAMod.Saori.Content
 
             #region Secondary
             Language.Add(prefix + "SECONDARY_GUN_NAME", "Scope In");
-            Language.Add(prefix + "SECONDARY_GUN_DESCRIPTION", $"Scope in to accurately shoot a bullet for <style=cIsDamage>{100f * SaoriStaticValues.scopedDamage}%</style> damage with 1.0 Proc every 2 seconds. Scoped attacks deal gaurintee'd crit damage");
+            Language.Add(prefix + "SECONDARY_GUN_DESCRIPTION", $"Turns primary into 'To Kill Them', which marks targets, gaurinteeing critical strike damage and drone targeting priority");
             #endregion
 
             #region Utility
@@ -62,7 +62,7 @@ namespace BAMod.Saori.Content
 
             #region Special
             Language.Add(prefix + "SPECIAL_ULTIMATE_NAME", "Et Omnia Vnitas！  ...and all is vanity!");
-            Language.Add(prefix + "SPECIAL_ULTIMATE_DESCRIPTION", $"Rooting. Shielding. Implant and Gain of TOTAL HEALTH as shield and remain rooted for 3s while chargin, after finished allies now gaurintee Crit and habe 250% additional crit damage");
+            Language.Add(prefix + "SPECIAL_ULTIMATE_DESCRIPTION", $"Rooting. Shielding. Implant and Gain of TOTAL HEALTH as shield and remain rooted for 3s while charging, after finished allies now have 500% additional crit damage for 20s");
             #endregion
 
             #region Achievements

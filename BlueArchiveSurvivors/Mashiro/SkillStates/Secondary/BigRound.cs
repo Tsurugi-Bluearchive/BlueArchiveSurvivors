@@ -55,10 +55,11 @@ namespace BAMod.Mashiro.SkillStates.Secondary
                     velocity = 100,
                     owner = gameObject,
                     prefabIndex = MashiroAssets.MashiroBigBullet,
-                    type = GlobalContent.Components.SimBulletType.exponential,
+                    type = SimBulletType.exponential,
                     falloffModel = BlastAttack.FalloffModel.None,
                     explodeOnExpire = true
-                });
+                }, MashiroMain.NetworkBehavior,
+                MashiroAssets.MashiroBigBullet);
 
                 fired = true;
                 characterBody.characterMotor.Motor.ForceUnground();

@@ -26,6 +26,7 @@ namespace BAMod.Saori.SkillStates.Utility
             base.FixedUpdate();
             if (isAuthority)
             {
+
                 if (fixedAge < baseDuration)
                 {
                     characterMotor.velocity = Vector3.zero;

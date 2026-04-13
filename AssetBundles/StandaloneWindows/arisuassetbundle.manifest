@@ -1,0 +1,206 @@
+ManifestFileVersion: 0
+CRC: 255921830
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ebecffff6925a2cd8ea7a09b07554f08
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0d9848ed5fc688b08ca1fd883bdfa083
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 678291247, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -517518216, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 319
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: RoR2
+  ClassName: ChildLocator/NameTransformPair
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent
+Assets:
+- Assets/ArisuBundle/Icons/texHenryIcon.png
+- Assets/ArisuBundle/Animation/clips/DefaultPose.anim
+- Assets/ArisuBundle/Animation/clips/Ascend.anim
+- Assets/ArisuBundle/Animation/maskBandana.mask
+- Assets/ArisuBundle/VFX/Textures/texEmbers.png
+- Assets/ArisuBundle/VFX/ImpactHenrySlash.prefab
+- Assets/ArisuBundle/Animation/clips/RestIdleIn.anim
+- Assets/ArisuBundle/VFX/Materials/matSwingEffect.mat
+- Assets/ArisuBundle/Mesh/meshDanteCoat.mesh
+- Assets/ArisuBundle/Animation/clips/IdleAdditive.anim
+- Assets/ArisuBundle/Icons/texDanteAchievement.png
+- Assets/ArisuBundle/Animation/clips/SprintF.anim
+- Assets/ArisuBundle/Animation/clips/WalkL.anim
+- Assets/ArisuBundle/Animation/clips/WalkF.anim
+- Assets/ArisuBundle/VFX/Mesh/meshPunchShockwave.mesh
+- Assets/ArisuBundle/VFX/ImpactHenryPunch.prefab
+- Assets/ArisuBundle/VFX/Materials/matHitSparkPunch.mat
+- Assets/ArisuBundle/Textures/texBoxingGlove.png
+- Assets/ArisuBundle/Textures/texBazooka.png
+- Assets/ArisuBundle/Icons/texPistolIcon.png
+- Assets/ArisuBundle/VFX/Textures/texFistSwing.png
+- Assets/ArisuBundle/VFX/Textures/texPunchImpactShadow.png
+- Assets/ArisuBundle/Materials/matRebellion.mat
+- Assets/ArisuBundle/Materials/matBazooka.mat
+- Assets/ArisuBundle/Icons/texScepterSpecialIcon.png
+- Assets/ArisuBundle/Icons/texUziIcon.png
+- Assets/ArisuBundle/Animation/clips/LightImpact.anim
+- Assets/ArisuBundle/Animation/clips/AimYaw.anim
+- Assets/ArisuBundle/Mesh/meshYamato.mesh
+- Assets/ArisuBundle/VFX/Mesh/meshSwing.asset
+- Assets/ArisuBundle/Materials/matHenryAlt.mat
+- Assets/ArisuBundle/VFX/Materials/matPunchImpactShadow.mat
+- Assets/ArisuBundle/VFX/BombExplosionEffect.prefab
+- Assets/ArisuBundle/Materials/matBoxingGlove.mat
+- Assets/ArisuBundle/Animation/maskImpact.mask
+- Assets/ArisuBundle/Textures/texHenryJedi.png
+- Assets/ArisuBundle/VFX/Materials/matPunchEffect.mat
+- Assets/ArisuBundle/Animation/clips/ShootGun.anim
+- Assets/ArisuBundle/Animation/clips/WalkB.anim
+- Assets/ArisuBundle/Animation/clips/IdleIn.anim
+- Assets/ArisuBundle/Materials/matHenry.mat
+- Assets/ArisuBundle/VFX/Materials/matHitSpark.mat
+- Assets/ArisuBundle/Animation/clips/Roll.anim
+- Assets/ArisuBundle/Materials/matHenryJedi.mat
+- Assets/ArisuBundle/Animation/clips/MenuIdle.anim
+- Assets/ArisuBundle/Animation/animHenry.controller
+- Assets/ArisuBundle/Textures/texHenryJediEmission.png
+- Assets/ArisuBundle/VFX/HenryFistSwingEffect.prefab
+- Assets/ArisuBundle/Mesh/meshHenryAlt.mesh
+- Assets/ArisuBundle/Animation/clips/DescendFast.anim
+- Assets/ArisuBundle/Mesh/meshPistol.mesh
+- Assets/ArisuBundle/Icons/texBazookaOutIcon.png
+- Assets/ArisuBundle/Materials/matShotgun.mat
+- Assets/ArisuBundle/VFX/Materials/matSwingShadow.mat
+- Assets/ArisuBundle/VFX/Materials/matSmoke.mat
+- Assets/ArisuBundle/VFX/Materials/matFire.mat
+- Assets/ArisuBundle/Mesh/meshDante.mesh
+- Assets/ArisuBundle/Mesh/meshUzi.mesh
+- Assets/ArisuBundle/Mesh/meshHenrySwordAlt.mesh
+- Assets/ArisuBundle/Animation/clips/WalkR.anim
+- Assets/ArisuBundle/Animation/clips/SprintR.anim
+- Assets/ArisuBundle/VFX/Textures/texSlash.png
+- Assets/ArisuBundle/Mesh/meshVergilCoat.mesh
+- Assets/ArisuBundle/mdlArisu.prefab
+- Assets/ArisuBundle/VFX/Materials/matDust.mat
+- Assets/ArisuBundle/Mesh/meshHenrySword.mesh
+- Assets/ArisuBundle/Icons/texBazookaIconScepter.png
+- Assets/ArisuBundle/Icons/texBazookaIcon.png
+- Assets/ArisuBundle/Textures/texHenryDanteEmission.png
+- Assets/ArisuBundle/Icons/texBoxingGlovesIcon.png
+- Assets/ArisuBundle/VFX/Materials/matRipple.mat
+- Assets/ArisuBundle/Animation/clips/Descend.anim
+- Assets/ArisuBundle/VFX/HenryBazookaMuzzleFlash.prefab
+- Assets/ArisuBundle/Mesh/meshNeoCoat.mesh
+- Assets/ArisuBundle/VFX/Materials/matEmbers.mat
+- Assets/ArisuBundle/Icons/texSpecialIcon.png
+- Assets/ArisuBundle/Animation/maskAimBazooka.mask
+- Assets/ArisuBundle/Icons/texMainSkin.png
+- Assets/ArisuBundle/VFX/Textures/texHenrySwing2.png
+- Assets/ArisuBundle/ArisuDisplay.prefab
+- Assets/ArisuBundle/VFX/Materials/matFistSwing.mat
+- Assets/ArisuBundle/VFX/Textures/texPunchImpact.png
+- Assets/ArisuBundle/Materials/matDante.mat
+- Assets/ArisuBundle/Animation/clips/Slash2.anim
+- Assets/ArisuBundle/VFX/HenryBazookaExplosionEffect.prefab
+- Assets/ArisuBundle/Textures/texHenryVergil.png
+- Assets/ArisuBundle/Animation/clips/Jump.anim
+- Assets/ArisuBundle/Icons/texUtilityIcon.png
+- Assets/ArisuBundle/Materials/matVergil.mat
+- Assets/ArisuBundle/Icons/texStingerIcon.png
+- Assets/ArisuBundle/Icons/texGrandMasteryAchievement.png
+- Assets/ArisuBundle/Animation/clips/SprintL.anim
+- Assets/ArisuBundle/Icons/texVergilAchievement.png
+- Assets/ArisuBundle/Textures/texHenryAlt.png
+- Assets/ArisuBundle/Materials/matRoy.mat
+- Assets/ArisuBundle/Textures/texHenryDante.png
+- Assets/ArisuBundle/Icons/texPrimaryIcon.png
+- Assets/ArisuBundle/ArisuCoreEjection.fbx
+- Assets/ArisuBundle/Animation/maskLeftArm.mask
+- Assets/ArisuBundle/Materials/matHenryNeo.mat
+- Assets/ArisuBundle/ArisuiMonsterMaster.prefab
+- Assets/ArisuBundle/VFX/HenryDustEffect.prefab
+- Assets/ArisuBundle/Icons/texMasteryAchievement.png
+- Assets/ArisuBundle/Animation/clips/ThrowBomb.anim
+- Assets/ArisuBundle/VFX/Materials/matSlash.mat
+- Assets/ArisuBundle/Animation/maskAimYaw.mask
+- Assets/ArisuBundle/VFX/Textures/texFire.tga
+- Assets/ArisuBundle/Materials/matBazookaRocket.mat
+- Assets/ArisuBundle/Mesh/meshRebellion.mesh
+- Assets/ArisuBundle/VFX/Materials/matAnimeShapes.mat
+- Assets/ArisuBundle/Mesh/meshVergil.mesh
+- Assets/ArisuBundle/Icons/texHenryAchievement.png
+- Assets/ArisuBundle/Icons/texBazookaFireIcon.png
+- Assets/ArisuBundle/VFX/Textures/texLightning.tif
+- Assets/ArisuBundle/Textures/texHenry.png
+- Assets/ArisuBundle/VFX/Materials/matPunchImpact.mat
+- Assets/ArisuBundle/VFX/Textures/texSwingEffect.png
+- Assets/ArisuBundle/VFX/Materials/matHenrySwing2.mat
+- Assets/ArisuBundle/Mesh/MeshHenryGun.mesh
+- Assets/ArisuBundle/Animation/clips/Idle.anim
+- Assets/ArisuBundle/VFX/Textures/texSmoke.png
+- Assets/ArisuBundle/Mesh/meshHenryNeo.mesh
+- Assets/ArisuBundle/VFX/Mesh/meshBoxingGlove.mesh
+- Assets/ArisuBundle/VFX/FistBarrageEffect.prefab
+- Assets/ArisuBundle/Textures/texHenryNeo.png
+- Assets/ArisuBundle/VFX/Textures/texHitSpark.png
+- Assets/ArisuBundle/Icons/texPassiveIcon.png
+- Assets/ArisuBundle/Animation/maskAimPitch.mask
+- Assets/ArisuBundle/Animation/animHenryMenu.controller
+- Assets/ArisuBundle/VFX/HenrySwordSwingEffect.prefab
+- Assets/ArisuBundle/Textures/texShotgun.png
+- Assets/ArisuBundle/Animation/clips/MenuIdleIn.anim
+- Assets/ArisuBundle/VFX/Textures/texRipple.png
+- Assets/ArisuBundle/Icons/texShotgunIcon.png
+- Assets/ArisuBundle/Mesh/meshHenry.mesh
+- Assets/ArisuBundle/Animation/clips/RestIdle.anim
+- Assets/ArisuBundle/Animation/clips/AimPitch.anim
+- Assets/ArisuBundle/Animation/clips/Slash1.anim
+- Assets/ArisuBundle/VFX/Textures/texDust.png
+- Assets/ArisuBundle/Icons/texSecondaryIcon.png
+- Assets/ArisuBundle/AritsuCoreEjectionGhost.prefab
+- Assets/ArisuBundle/Animation/maskGesture.mask
+- Assets/ArisuBundle/VFX/Materials/matTrail.mat
+Dependencies:
+- C:/Users/dmans/BlueArchiveSurvivors/AssetBundles/StandaloneWindows/saoriassetbundle

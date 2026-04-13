@@ -48,12 +48,11 @@
 		<PackageReference Include="R2API.Language" Version="1.*" />
 		<PackageReference Include="R2API.Sound" Version="1.*" />
 		<PackageReference Include="R2API.Loadout" Version="1.*" />
-		<PackageReference Include="R2API.Networking" Version ="1.*" />
+		<PackageReference Include="R2API.Networking" Version="1.*" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Saori\Components\" />
-	  <Folder Include="Mashiro\Components\" />
+	  <Folder Include="Arisu\Components\" />
 	</ItemGroup>
     
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">

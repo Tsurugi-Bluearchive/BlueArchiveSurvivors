@@ -114,6 +114,7 @@ namespace BAMod.Mashiro
             bodyPrefab.AddComponent<CrazyWomanPassiveDictator>();
             bodyPrefab.AddComponent<ModelSkinController>();
             displayPrefab.AddComponent<ModelSkinController>();
+            bodyPrefab.AddComponent<MashiroNetworkBehavior>();
         }
 
         public void AddHitboxes()

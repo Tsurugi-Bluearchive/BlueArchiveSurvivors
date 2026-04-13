@@ -1,4 +1,5 @@
 ﻿using BAMod.GlobalContent.Components;
+using BAMod.GlobalContent.Interfaces;
 using BAMod.Mashiro.Content;
 using HG;
 using IL.RoR2.Networking;
@@ -21,8 +22,6 @@ namespace BAMod.GlobalContent.Scripts
 {
     static class SimBulletManager
     {
-        public static ServerBulletSimNetworkBehavior ServerInstance;
-        public static GameObject ServerInstanceObject;
         public static int nextSimBulletInstance;
         public static GameObject networkController;
         private static List<GameObject> SimBulletPrefabs = new();
@@ -325,28 +324,10 @@ namespace BAMod.GlobalContent.Scripts
             return stopperCollision.collider != null;
         }
 
-        public static void Fire(SimBullet bullet)
+        public static void Fire(SimBullet bullet, ISimBulletCharacterUser characterNetworking, int index)
         {
-            if (bullet.aborted) return;
-            if (ServerInstance.gameObject.activeSelf == false)
-            {
-                ServerInstance.gameObject.SetActive(true);
-
-            }
             bullet.fireTime = Time.time;
-            var NetworkPacket = new AttemptDamagePacket()
-            {
-                Damage = bullet.damageInfo.damage,
-                AttackerNetworkID = bullet.owner.GetComponent<NetworkIdentity>().netId,
-                colorIndex = bullet.damageInfo.damageColorIndex,
-                InflictorNetworkID = bullet.damageInfo.inflictor ? bullet.damageInfo.inflictor.GetComponent<NetworkIdentity>().netId : bullet.owner.GetComponent<NetworkIdentity>().netId,
-                crit = bullet.damageInfo.crit,
-                force = bullet.damageInfo.force,
-                procChainMask = bullet.damageInfo.procChainMask,
-                procCoefficient = bullet.damageInfo.procCoefficient,
-                type = bullet.type
-            };
-            ServerInstance.RegisterBullet(NetworkPacket, bullet.origin, bullet.direction, bullet.velocity, bullet.dropSpeed, bullet.resolution, bullet.prefabIndex, bullet.hitMask, bullet.stopperMask, bullet.radius, MashiroAssets.MashiroSmallBullet);
+            characterNetworking.FireSimBullet(bullet, index);
         }
 
         public static void SpawnTracers(List<ReturnPositionalValues> points)
@@ -356,11 +337,11 @@ namespace BAMod.GlobalContent.Scripts
             }
         }
 
-        public static void RegisterSimBulletObject(out int Index, GameObject bulletObject)
+        public static void RegisterSimBulletObject(out int Index, GameObject bulletObject, string name)
         {
-            if (!bulletObject.GetComponent<BulletSimComponent>())
+            if (!bulletObject.GetComponent<SimBulletNetworkBehavior>())
             {
-                bulletObject.AddComponent<BulletSimComponent>();
+                bulletObject.AddComponent<SimBulletNetworkBehavior>();
             }
             if (!bulletObject.GetComponent<NetworkIdentity>())
             {
@@ -370,7 +351,9 @@ namespace BAMod.GlobalContent.Scripts
             {
                 bulletObject.GetComponent<ProjectileGhostController>().enabled = false;
             }
+            bulletObject = PrefabAPI.InstantiateClone(bulletObject, name);
             SimBulletPrefabs.Add(bulletObject);
+            PrefabAPI.RegisterNetworkPrefab(bulletObject);
             Index = SimBulletPrefabs.Count - 1;
         }
 
@@ -387,16 +370,14 @@ namespace BAMod.GlobalContent.Scripts
             Log.Error("Please Select a valid SimBulletIndex");
             return false;
         }
-
-        public static void Init()
-        {
-            ServerInstanceObject = GameObject.Instantiate(new GameObject("SimBulletServer"));
-
-            var behavior = ServerInstanceObject.AddComponent<ServerBulletSimNetworkBehavior>();
-            var Identity = ServerInstanceObject.AddComponent<NetworkIdentity>();
-            PrefabAPI.RegisterNetworkPrefab(ServerInstanceObject);
-            NetworkServer.Spawn(ServerInstanceObject);
-
-        }
     }
+    public enum SimBulletType
+    {
+        linear,
+        exponential,
+        logarithmic,
+        realisticGravity,
+
+    }
+
 }

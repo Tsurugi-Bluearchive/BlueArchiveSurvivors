@@ -6,7 +6,7 @@ using UnityEngine.PlayerLoop;
 
 namespace BAMod.Mashiro.SkillStates.BaseStates
 {
-    public abstract class BaseMashiroSkillState : BaseSkillState
+    internal abstract class BaseMashiroSkillState : BaseSkillState
     {
         /// <summary>
         /// Cached SchoolgirlCharacterMain

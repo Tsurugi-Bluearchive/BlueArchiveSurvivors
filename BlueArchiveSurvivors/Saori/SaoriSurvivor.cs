@@ -242,13 +242,13 @@ namespace BAMod.Saori
                 keywordTokens = ["KEYWORD_AGILE"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(Scope)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(ToKill)),
                 activationStateMachineName = "Scope",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
-                baseRechargeInterval = float.MaxValue,
+                baseRechargeInterval = 30f,
 
-                rechargeStock = 0,
+                rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 0,
                 baseMaxStock = 2,
@@ -257,7 +257,7 @@ namespace BAMod.Saori
                 fullRestockOnAssign = true,
                 dontAllowPastMaxStocks = false,
                 mustKeyPress = true,
-                beginSkillCooldownOnSkillEnd = false,
+                beginSkillCooldownOnSkillEnd = true,
 
                 isCombatSkill = false,
                 canceledFromSprinting = false,
@@ -274,7 +274,7 @@ namespace BAMod.Saori
                 keywordTokens = ["KEYWORD_AGILE"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(ScopePrimaryOverride)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(ToKillPrimaryOverride)),
                 activationStateMachineName = "Gun",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 

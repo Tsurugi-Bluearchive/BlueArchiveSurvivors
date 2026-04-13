@@ -56,8 +56,9 @@ namespace BAMod.Mashiro.SkillStates.Primary
                         velocity = 700,
                         owner = this.gameObject,
                         prefabIndex = MashiroAssets.MashiroSmallBullet,
-                        type = GlobalContent.Components.SimBulletType.exponential,
-                    });
+                        type = SimBulletType.exponential,
+                    }, MashiroMain.NetworkBehavior, 
+                    MashiroAssets.MashiroSmallBullet);
                     fired = true;
                 }
                 if (fixedAge > duration)

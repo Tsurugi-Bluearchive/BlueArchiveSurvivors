@@ -1,0 +1,157 @@
+﻿using EntityStates.Commando.CommandoWeapon;
+using R2API;
+using Rewired.Demos;
+using RoR2;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+using EntityStates;
+using BAMod.Mutsuki.SkillStates.BaseStates;
+using BAMod.Mutsuki.Content;
+using Rewired.ComponentControls.Data;
+
+namespace BAMod.Mutsuki.SkillStates.Primary
+{
+    internal class FlameRifle : BaseMutsukiSkillState
+    {
+        protected override float baseDuration => 4;
+        protected override float baseFireDelay => 0.2f;
+        protected override float fireTime => 1;
+        private bool fired = false;
+        public GameObject hitEffectPrefab = FireBarrage.hitEffectPrefab;
+        public GameObject tracerEffectPrefab = FireBarrage.tracerEffectPrefab;
+        public DamageType damageType = DamageType.IgniteOnHit;
+        private float tick;
+        private int FiredAmount;
+        public override void OnEnter()
+        {
+            base.OnEnter();
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            if (isAuthority)
+            {
+                var aimRay = GetAimRay();
+                if (!MutsukiMain.AutoShotty)
+                {
+                    var pelletVectors = ScatterVectors(aimRay.direction, 1, 6f, 1f);
+                    foreach (var p in pelletVectors)
+                    {
+                        BulletAttack bullet = new BulletAttack
+                        {
+                            owner = base.gameObject,
+                            weapon = base.gameObject,
+                            origin = aimRay.origin,
+                            aimVector = p + aimRay.direction * 2,
+                            minSpread = 0f,
+                            maxSpread = base.characterBody.spreadBloomAngle,
+                            bulletCount = 1U,
+                            procCoefficient = 1f,
+                            damage = base.characterBody.damage * MutsukiStaticValues.burstDamage,
+                            force = 3,
+                            falloffModel = BulletAttack.FalloffModel.DefaultBullet,
+                            tracerEffectPrefab = this.tracerEffectPrefab,
+                            hitEffectPrefab = this.hitEffectPrefab,
+                            isCrit = base.RollCrit(),
+                            HitEffectNormal = false,
+                            stopperMask = BulletAttack.defaultStopperMask,
+                            smartCollision = true,
+                            maxDistance = 300f,
+                            damageType = damageType,
+                            radius = 1
+                        };
+                        bullet.AddModdedDamageType(MutsukiCustomDamageTypes.MutsukiIgnite);
+                        bullet.Fire();
+                        tick -= 0.05f;
+                        FiredAmount += 1;
+                    }
+                }
+                else
+                {
+                    var pelletVectors = ScatterVectors(aimRay.direction, 6, 6f, 1f);
+                    foreach (var p in pelletVectors)
+                    {
+                        BulletAttack bullet = new BulletAttack
+                        {
+                            owner = base.gameObject,
+                            weapon = base.gameObject,
+                            origin = aimRay.origin,
+                            aimVector = p + aimRay.direction * 2,
+                            minSpread = 0f,
+                            maxSpread = base.characterBody.spreadBloomAngle,
+                            bulletCount = 1U,
+                            procCoefficient = 1f,
+                            damage = base.characterBody.damage * MutsukiStaticValues.burstDamage,
+                            force = 3,
+                            falloffModel = BulletAttack.FalloffModel.DefaultBullet,
+                            tracerEffectPrefab = this.tracerEffectPrefab,
+                            hitEffectPrefab = this.hitEffectPrefab,
+                            isCrit = base.RollCrit(),
+                            HitEffectNormal = false,
+                            stopperMask = BulletAttack.defaultStopperMask,
+                            smartCollision = true,
+                            maxDistance = 300f,
+                            damageType = damageType,
+                            radius = 1
+                        };
+                        bullet.Fire();
+                        tick -= 0.05f;
+                        FiredAmount += 1;
+                    }
+
+                }
+                outer.SetNextStateToMain();
+                return;
+            }
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            if (skillLocator.primary.stock <= 0)
+            {
+                MutsukiMain.AutoShotty = false;
+            }
+        }
+
+        public static List<Vector3> ScatterVectors(
+            Vector3 forward,
+            int pelletCount,
+            float maxAngle,
+            float randomness = 0.5f
+        )
+        {
+            List<Vector3> directions = new List<Vector3>();
+
+            forward.Normalize();
+            Quaternion baseRotation = Quaternion.LookRotation(forward);
+
+            for (int i = 0; i < pelletCount; i++)
+            {
+                float t = (i + Random.value * randomness) / pelletCount;
+                float spreadAngle = maxAngle * Mathf.Sqrt(t);
+
+                float theta = (i * 137.5f) % 360f;
+                theta += Random.Range(-180f, 180f) * randomness;
+
+                Quaternion aroundForward = Quaternion.AngleAxis(theta, Vector3.forward);
+                Quaternion outwardTilt = Quaternion.AngleAxis(spreadAngle, Vector3.right);
+
+                Vector3 dir = baseRotation * (aroundForward * outwardTilt * Vector3.forward);
+
+                dir = Vector3.Slerp(forward, dir, 0.9f);
+
+                directions.Add(dir.normalized);
+            }
+
+            return directions;
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
+    }
+}

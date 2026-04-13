@@ -10,8 +10,8 @@ namespace BAMod.Saori.Content
         public static void Init()
         {
             Modules.Content.AddEntityState(typeof(SaoriCharacterMain));
-            Modules.Content.AddEntityState(typeof(Scope));
-            Modules.Content.AddEntityState(typeof(ScopePrimaryOverride));
+            Modules.Content.AddEntityState(typeof(ToKill));
+            Modules.Content.AddEntityState(typeof(ToKillPrimaryOverride));
             Modules.Content.AddEntityState(typeof(BurstRifle));
             Modules.Content.AddEntityState(typeof(BurstRifleReload));
             Modules.Content.AddEntityState(typeof(SaoriUlt));

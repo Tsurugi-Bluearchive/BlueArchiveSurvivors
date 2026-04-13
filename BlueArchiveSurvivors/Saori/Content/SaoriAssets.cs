@@ -1,6 +1,10 @@
 ﻿using RoR2;
 using UnityEngine;
 using RoR2.Projectile;
+using BAMod.GlobalContent.Components;
+using BAMod.Mashiro.Content;
+using R2API;
+using UnityEngine.Networking.Types;
 
 namespace BAMod.Saori.Content
 {
@@ -9,6 +13,10 @@ namespace BAMod.Saori.Content
         // particle effects
         public static GameObject swordSwingEffect;
         public static GameObject swordHitImpactEffect;
+        public static GameObject mainMarkBuffEffect;
+        public static GameObject secondaryMarkBuffEffect;
+        public static GameObject markTargetEffect;
+        public static GameObject markSecondaryTargetEffect;
 
         public static GameObject bombExplosionEffect;
 
@@ -36,6 +44,20 @@ namespace BAMod.Saori.Content
         #region effects
         private static void CreateEffects()
         {
+            mainMarkBuffEffect = PrefabAPI.InstantiateClone(_assetBundle.LoadAsset<GameObject>("UIMainMark"), "Main Mark Buff");
+            var controller = mainMarkBuffEffect.AddComponent<DisplayAboveModelTransform>();
+            controller.parentBuff = SaoriBuffs.SaoriPrimaryMarkBuff;
+            controller.enabled = false;
+
+            secondaryMarkBuffEffect = PrefabAPI.InstantiateClone(_assetBundle.LoadAsset<GameObject>("UISecondaryMark"), "Secondary Mark Buff");
+            controller = secondaryMarkBuffEffect.AddComponent<DisplayAboveModelTransform>();
+            controller.parentBuff = SaoriBuffs.SaoriMarkBuff;
+
+            markTargetEffect = PrefabAPI.InstantiateClone(_assetBundle.LoadAsset<GameObject>("UIMainMarkSkill"), "Main Mark Skill");
+            controller = markTargetEffect.AddComponent<DisplayAboveModelTransform>();
+
+            markSecondaryTargetEffect = PrefabAPI.InstantiateClone(_assetBundle.LoadAsset<GameObject>("UISecondaryMarkSkill"), "Secondary Mark Skill");
+            controller = markSecondaryTargetEffect.AddComponent<DisplayAboveModelTransform>();
 
         }
         #endregion effects

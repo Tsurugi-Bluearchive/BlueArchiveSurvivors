@@ -1,0 +1,198 @@
+ManifestFileVersion: 0
+CRC: 3896741373
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1ba76bd214319d87982ae287b9a10e6c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 732bd3a6184131cd916f701da0f746d8
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -517518216, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 319
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: RoR2
+  ClassName: ChildLocator/NameTransformPair
+Assets:
+- Assets/MomoiBundle/Animation/clips/DescendFast.anim
+- Assets/MomoiBundle/VFX/Textures/texEmbers.png
+- Assets/MomoiBundle/VFX/Materials/matDust.mat
+- Assets/MomoiBundle/VFX/Materials/matSwingShadow.mat
+- Assets/MomoiBundle/Icons/texBazookaIcon.png
+- Assets/MomoiBundle/Textures/texHenry.png
+- Assets/MomoiBundle/Icons/texGrandMasteryAchievement.png
+- Assets/MomoiBundle/Animation/clips/ShootGun.anim
+- Assets/MomoiBundle/Animation/clips/Jump.anim
+- Assets/MomoiBundle/VFX/Materials/matSlash.mat
+- Assets/MomoiBundle/Textures/texHenryDante.png
+- Assets/MomoiBundle/Icons/texDanteAchievement.png
+- Assets/MomoiBundle/VFX/Textures/texDust.png
+- Assets/MomoiBundle/Mesh/meshVergilCoat.mesh
+- Assets/MomoiBundle/Animation/animHenryMenu.controller
+- Assets/MomoiBundle/Animation/clips/AimYaw.anim
+- Assets/MomoiBundle/Materials/matDante.mat
+- Assets/MomoiBundle/Mesh/meshHenryAlt.mesh
+- Assets/MomoiBundle/Animation/clips/Slash1.anim
+- Assets/MomoiBundle/Animation/clips/SprintR.anim
+- Assets/MomoiBundle/Textures/texHenryVergil.png
+- Assets/MomoiBundle/VFX/Materials/matHitSpark.mat
+- Assets/MomoiBundle/Mesh/meshRebellion.mesh
+- Assets/MomoiBundle/VFX/Textures/texHitSpark.png
+- Assets/MomoiBundle/VFX/FistBarrageEffect.prefab
+- Assets/MomoiBundle/Textures/texHenryJedi.png
+- Assets/MomoiBundle/Animation/clips/Ascend.anim
+- Assets/MomoiBundle/Mesh/meshNeoCoat.mesh
+- Assets/MomoiBundle/Textures/texHenryJediEmission.png
+- Assets/MomoiBundle/Animation/clips/SprintF.anim
+- Assets/MomoiBundle/VFX/Materials/matHenrySwing2.mat
+- Assets/MomoiBundle/VFX/Materials/matSwingEffect.mat
+- Assets/MomoiBundle/Materials/matHenry.mat
+- Assets/MomoiBundle/Textures/texHenryDanteEmission.png
+- Assets/MomoiBundle/Animation/clips/LightImpact.anim
+- Assets/MomoiBundle/Animation/clips/SprintL.anim
+- Assets/MomoiBundle/Mesh/meshDanteCoat.mesh
+- Assets/MomoiBundle/Icons/texMasteryAchievement.png
+- Assets/MomoiBundle/Icons/texPrimaryIcon.png
+- Assets/MomoiBundle/VFX/Materials/matFire.mat
+- Assets/MomoiBundle/VFX/Textures/texSlash.png
+- Assets/MomoiBundle/Animation/clips/IdleAdditive.anim
+- Assets/MomoiBundle/Animation/clips/Roll.anim
+- Assets/MomoiBundle/VFX/HenryBazookaExplosionEffect.prefab
+- Assets/MomoiBundle/VFX/HenrySwordSwingEffect.prefab
+- Assets/MomoiBundle/VFX/Textures/texPunchImpactShadow.png
+- Assets/MomoiBundle/Animation/maskAimYaw.mask
+- Assets/MomoiBundle/Textures/texBazooka.png
+- Assets/MomoiBundle/Mesh/meshUzi.mesh
+- Assets/MomoiBundle/VFX/Textures/texSmoke.png
+- Assets/MomoiBundle/Animation/clips/WalkF.anim
+- Assets/MomoiBundle/Materials/matHenryAlt.mat
+- Assets/MomoiBundle/Mesh/meshPistol.mesh
+- Assets/MomoiBundle/Materials/matShotgun.mat
+- Assets/MomoiBundle/Icons/texUziIcon.png
+- Assets/MomoiBundle/VFX/HenryBazookaMuzzleFlash.prefab
+- Assets/MomoiBundle/VFX/ImpactHenrySlash.prefab
+- Assets/MomoiBundle/Animation/clips/Descend.anim
+- Assets/MomoiBundle/VFX/Materials/matHitSparkPunch.mat
+- Assets/MomoiBundle/Mesh/meshDante.mesh
+- Assets/MomoiBundle/VFX/Textures/texSwingEffect.png
+- Assets/MomoiBundle/Animation/maskImpact.mask
+- Assets/MomoiBundle/Textures/texHenryNeo.png
+- Assets/MomoiBundle/Mesh/meshHenrySword.mesh
+- Assets/MomoiBundle/VFX/BombExplosionEffect.prefab
+- Assets/MomoiBundle/Icons/texSpecialIcon.png
+- Assets/MomoiBundle/Icons/texShotgunIcon.png
+- Assets/MomoiBundle/Materials/matHenryJedi.mat
+- Assets/MomoiBundle/VFX/Textures/texFistSwing.png
+- Assets/MomoiBundle/Icons/texHenryIcon.png
+- Assets/MomoiBundle/Animation/clips/AimPitch.anim
+- Assets/MomoiBundle/Animation/clips/MenuIdle.anim
+- Assets/MomoiBundle/Icons/texBazookaFireIcon.png
+- Assets/MomoiBundle/Mesh/MeshHenryGun.mesh
+- Assets/MomoiBundle/Materials/matBazooka.mat
+- Assets/MomoiBundle/Icons/texBazookaOutIcon.png
+- Assets/MomoiBundle/Icons/texPassiveIcon.png
+- Assets/MomoiBundle/Animation/clips/Slash2.anim
+- Assets/MomoiBundle/Textures/texHenryAlt.png
+- Assets/MomoiBundle/Materials/matVergil.mat
+- Assets/MomoiBundle/Materials/matBoxingGlove.mat
+- Assets/MomoiBundle/VFX/Materials/matAnimeShapes.mat
+- Assets/MomoiBundle/Animation/animHenry.controller
+- Assets/MomoiBundle/Animation/clips/RestIdleIn.anim
+- Assets/MomoiBundle/Icons/texHenryAchievement.png
+- Assets/MomoiBundle/Mesh/meshHenrySwordAlt.mesh
+- Assets/MomoiBundle/VFX/Textures/texHenrySwing2.png
+- Assets/MomoiBundle/Icons/texSecondaryIcon.png
+- Assets/MomoiBundle/Animation/maskAimPitch.mask
+- Assets/MomoiBundle/Animation/maskGesture.mask
+- Assets/MomoiBundle/Animation/clips/IdleIn.anim
+- Assets/MomoiBundle/Animation/clips/WalkB.anim
+- Assets/MomoiBundle/Animation/clips/DefaultPose.anim
+- Assets/MomoiBundle/Icons/texUtilityIcon.png
+- Assets/MomoiBundle/VFX/Textures/texLightning.tif
+- Assets/MomoiBundle/Animation/maskBandana.mask
+- Assets/MomoiBundle/Materials/matRoy.mat
+- Assets/MomoiBundle/Mesh/meshHenry.mesh
+- Assets/MomoiBundle/Animation/clips/WalkL.anim
+- Assets/MomoiBundle/Animation/maskAimBazooka.mask
+- Assets/MomoiBundle/VFX/Textures/texRipple.png
+- Assets/MomoiBundle/Textures/texShotgun.png
+- Assets/MomoiBundle/Textures/texBoxingGlove.png
+- Assets/MomoiBundle/Mesh/meshYamato.mesh
+- Assets/MomoiBundle/Materials/matBazookaRocket.mat
+- Assets/MomoiBundle/VFX/Materials/matEmbers.mat
+- Assets/MomoiBundle/Icons/texPistolIcon.png
+- Assets/MomoiBundle/mdlMomoi.prefab
+- Assets/MomoiBundle/VFX/Mesh/meshBoxingGlove.mesh
+- Assets/MomoiBundle/Icons/texMainSkin.png
+- Assets/MomoiBundle/VFX/Materials/matSmoke.mat
+- Assets/MomoiBundle/VFX/Textures/texPunchImpact.png
+- Assets/MomoiBundle/VFX/HenryDustEffect.prefab
+- Assets/MomoiBundle/Icons/texBazookaIconScepter.png
+- Assets/MomoiBundle/Icons/texBoxingGlovesIcon.png
+- Assets/MomoiBundle/Animation/clips/Idle.anim
+- Assets/MomoiBundle/MomoiDisplay.prefab
+- Assets/MomoiBundle/MomoiiMonsterMaster.prefab
+- Assets/MomoiBundle/Mesh/meshHenryNeo.mesh
+- Assets/MomoiBundle/VFX/HenryFistSwingEffect.prefab
+- Assets/MomoiBundle/VFX/ImpactHenryPunch.prefab
+- Assets/MomoiBundle/Materials/matRebellion.mat
+- Assets/MomoiBundle/VFX/Materials/matRipple.mat
+- Assets/MomoiBundle/VFX/Materials/matTrail.mat
+- Assets/MomoiBundle/Animation/clips/RestIdle.anim
+- Assets/MomoiBundle/VFX/Mesh/meshPunchShockwave.mesh
+- Assets/MomoiBundle/Materials/matHenryNeo.mat
+- Assets/MomoiBundle/VFX/Textures/texFire.tga
+- Assets/MomoiBundle/Animation/clips/MenuIdleIn.anim
+- Assets/MomoiBundle/VFX/Materials/matPunchImpact.mat
+- Assets/MomoiBundle/Icons/texScepterSpecialIcon.png
+- Assets/MomoiBundle/VFX/Mesh/meshSwing.asset
+- Assets/MomoiBundle/Mesh/meshVergil.mesh
+- Assets/MomoiBundle/VFX/Materials/matPunchEffect.mat
+- Assets/MomoiBundle/Animation/clips/WalkR.anim
+- Assets/MomoiBundle/Icons/texVergilAchievement.png
+- Assets/MomoiBundle/VFX/Materials/matFistSwing.mat
+- Assets/MomoiBundle/Animation/maskLeftArm.mask
+- Assets/MomoiBundle/Animation/clips/ThrowBomb.anim
+- Assets/MomoiBundle/Icons/texStingerIcon.png
+- Assets/MomoiBundle/VFX/Materials/matPunchImpactShadow.mat
+Dependencies:
+- C:/Users/dmans/BlueArchiveSurvivors/AssetBundles/StandaloneWindows/saoriassetbundle

@@ -30,7 +30,6 @@ namespace BAMod.Saori.SkillStates.Primary
         public override void OnExit()
         {
             base.OnExit();
-            skillLocator.secondary.stock = skillLocator.secondary.maxStock;
             skillLocator.primary.UnsetSkillOverride(this.gameObject, SaoriSurvivor.BurstRifleReload, GenericSkill.SkillOverridePriority.Default);
         }
     }

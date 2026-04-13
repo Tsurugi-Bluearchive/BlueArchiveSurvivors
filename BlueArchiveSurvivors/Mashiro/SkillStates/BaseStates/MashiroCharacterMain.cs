@@ -2,9 +2,11 @@
 using EntityStates;
 using RoR2;
 using BAMod.Mashiro.SkillStates.Special;
+using BAMod.Mashiro.Components;
+using Rewired;
 namespace BAMod.Mashiro.SkillStates.BaseStates
 {
-    public class MashiroCharacterMain : GenericCharacterMain
+    internal class MashiroCharacterMain : GenericCharacterMain
     {
         /// <summary>
         /// Checked every frame, add to this to heal her accurately.
@@ -23,11 +25,14 @@ namespace BAMod.Mashiro.SkillStates.BaseStates
 
         private ItemDef Magazine;
 
+        public MashiroNetworkBehavior NetworkBehavior;
+
         //MashiroCharacterMain.cs code start
         public override void OnEnter()
         {
             base.OnEnter();
             Magazine = LegacyResourcesAPI.Load<ItemDef>("RoR2/Base/SecondarySkillMagazine/SecondarySkillMagazine");
+            NetworkBehavior = GetComponent<MashiroNetworkBehavior>();
         }
 
         public override void FixedUpdate()

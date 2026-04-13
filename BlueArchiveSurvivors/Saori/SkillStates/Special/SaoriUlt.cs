@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using BAMod.Saori.Content;
 
 namespace BAMod.Saori.SkillStates.Special
 {
@@ -38,6 +39,7 @@ namespace BAMod.Saori.SkillStates.Special
                     {
                         member.body.AddTimedBuff(SaoriBuffs.HyperCritBuff, 20f);
                     }
+                    characterBody.AddTimedBuff(SaoriBuffs.SaoriCommanding, 50f);
                     outer.SetNextStateToMain();
                     return;
                 }

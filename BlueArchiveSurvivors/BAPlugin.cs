@@ -1,4 +1,4 @@
-﻿using BAMod.Saori;
+﻿using BAMod.Arisu;
 using BAMod.Mashiro;
 using BepInEx;
 using R2API;
@@ -9,6 +9,8 @@ using BAMod.Tsurugi;
 using BAMod.GlobalContent.Components;
 using BAMod.GlobalContent.Scripts;
 using RoR2.Networking;
+using BAMod.Saori;
+using BAMod.Mutsuki;
 
 [module: UnverifiableCode]
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -34,7 +36,7 @@ namespace BAMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.ami.BAMod";
         public const string MODNAME = "BASurvivors";
-        public const string MODVERSION = "0.1.0";
+        public const string MODVERSION = "1.1.4";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string DEVELOPER_PREFIX = "AMI";
@@ -49,12 +51,13 @@ namespace BAMod
 
             // used when you want to properly set up language folders
             Modules.Language.Init();
-            SimBulletConnectionManager.Init();
 
             // character initializatio
-            new SaoriSurvivor().Initialize();
+            new ArisuSurvivor().Initialize();
             new MashiroSurvivor().Initialize();
             new TsurugiSurvivor().Initialize();
+            new SaoriSurvivor().Initialize();
+            new MutsukiSurvivor().Initialize();
 
             // make a content pack and add it. this has to be last
             new Modules.ContentPacks().Initialize();

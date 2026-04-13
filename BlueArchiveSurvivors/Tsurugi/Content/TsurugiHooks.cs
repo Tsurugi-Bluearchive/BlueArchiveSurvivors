@@ -23,7 +23,7 @@ namespace BAMod.Tsurugi.Content
 
         private static void GlobalEventManager_onServerDamageDealt(DamageReport obj)
         {
-            if (obj.victim && obj.attacker && EntityStateMachine.TryFindByCustomName(obj.attackerBody.gameObject, "Body", out var tsurugiStateMachine) && tsurugiStateMachine.state.GetType() == typeof(TsurugiCharacterMain))
+            if (obj.victim && obj.attacker && obj.attackerBody  && EntityStateMachine.TryFindByCustomName(obj.attackerBody.gameObject, "Body", out var tsurugiStateMachine) && tsurugiStateMachine.state.GetType() == typeof(TsurugiCharacterMain))
             {
                 var tsurugi = (TsurugiCharacterMain)tsurugiStateMachine.state;
                 if (DamageAPI.HasModdedDamageType(ref obj.damageInfo.damageType, TsurugiCustomDamageTypes.BloodBleed))

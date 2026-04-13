@@ -71,10 +71,10 @@ namespace BAMod.Mashiro.Content
         private static void CreateProjectiles()
         {
             BigProjectikle = _assetBundle.LoadAsset<GameObject>("MashiroBigGhost");
-            SimBulletManager.RegisterSimBulletObject(out MashiroBigBullet, BigProjectikle);
+            SimBulletManager.RegisterSimBulletObject(out MashiroBigBullet, BigProjectikle, "Mashiro Big Bullet");
 
             SmallProjectile = _assetBundle.LoadAsset<GameObject>("MashiroSmallGhost");
-            SimBulletManager.RegisterSimBulletObject(out MashiroSmallBullet, SmallProjectile);
+            SimBulletManager.RegisterSimBulletObject(out MashiroSmallBullet, SmallProjectile, "Mashiro Small Bullet");
         }
 
         #endregion projectiles

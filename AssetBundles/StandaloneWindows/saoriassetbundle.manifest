@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3596765301
+CRC: 248149073
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ef8bd5262c6bd3cae9e824126ef4e7fb
+    Hash: 9d8b7cbfe0b9f616a6fea2e968489514
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 732bd3a6184131cd916f701da0f746d8
+    Hash: cb140902fac3dc6cf8434059230ad00e
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -34,7 +34,15 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: 422384671, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f8258ea15b8f74c4889ce485d21cbbb1, type: 3}
+- Class: 114
+  Script: {fileID: -806885394, guid: 67dfb1fdfb2b407222eda8e23ac8b724, type: 3}
+- Class: 114
   Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 768908969, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -517518216, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 115
@@ -47,11 +55,23 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
 - Class: 319
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
 - AssemblyName: RoR2
   ClassName: ChildLocator/NameTransformPair
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.VertexGradient
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: com.unity.multiplayer-hlapi.Runtime
+  ClassName: UnityEngine.Networking.NetworkHash128
+- AssemblyName: com.unity.multiplayer-hlapi.Runtime
+  ClassName: UnityEngine.Networking.NetworkSceneId
 Assets:
 - Assets/SaoriBundle/VFX/ImpactHenryPunch.prefab
 - Assets/SaoriBundle/Mesh/meshVergilCoat.mesh
@@ -100,6 +120,7 @@ Assets:
 - Assets/SaoriBundle/VFX/Textures/texHenrySwing2.png
 - Assets/SaoriBundle/Icons/texShotgunIcon.png
 - Assets/SaoriBundle/VFX/HenryFistSwingEffect.prefab
+- Assets/SaoriBundle/UISecondaryMarkSkill.prefab
 - Assets/SaoriBundle/Animation/maskLeftArm.mask
 - Assets/SaoriBundle/VFX/Textures/texPunchImpactShadow.png
 - Assets/SaoriBundle/Icons/texPistolIcon.png
@@ -121,13 +142,15 @@ Assets:
 - Assets/SaoriBundle/VFX/Materials/matPunchImpactShadow.mat
 - Assets/SaoriBundle/Animation/clips/WalkR.anim
 - Assets/SaoriBundle/Animation/maskAimPitch.mask
-- Assets/SaoriBundle/VFX/Textures/texDust.png
+- Assets/SaoriBundle/UIMainMark.prefab
 - Assets/SaoriBundle/Textures/texShotgun.png
 - Assets/SaoriBundle/Mesh/meshHenry.mesh
-- Assets/SaoriBundle/Mesh/meshYamato.mesh
+- Assets/SaoriBundle/VFX/Textures/texDust.png
+- Assets/SaoriBundle/UISecondaryMark.prefab
 - Assets/SaoriBundle/Animation/clips/SprintF.anim
 - Assets/SaoriBundle/VFX/Materials/matFire.mat
 - Assets/SaoriBundle/Animation/clips/AimPitch.anim
+- Assets/SaoriBundle/Mesh/meshYamato.mesh
 - Assets/SaoriBundle/VFX/Textures/texFistSwing.png
 - Assets/SaoriBundle/Animation/clips/Jump.anim
 - Assets/SaoriBundle/mdlSaori.prefab
@@ -180,9 +203,10 @@ Assets:
 - Assets/SaoriBundle/Icons/texDanteAchievement.png
 - Assets/SaoriBundle/VFX/FistBarrageEffect.prefab
 - Assets/SaoriBundle/VFX/HenryBazookaExplosionEffect.prefab
+- Assets/SaoriBundle/UIMainMarkSkill.prefab
 - Assets/SaoriBundle/VFX/Materials/matFistSwing.mat
-- Assets/SaoriBundle/VFX/Textures/texRipple.png
 - Assets/SaoriBundle/Animation/clips/DefaultPose.anim
+- Assets/SaoriBundle/VFX/Textures/texRipple.png
 - Assets/SaoriBundle/Animation/clips/SprintL.anim
 - Assets/SaoriBundle/Textures/texBazooka.png
 - Assets/SaoriBundle/Mesh/meshNeoCoat.mesh
